@@ -4,8 +4,8 @@
 # Path: /home/$user/							#
 # Based on Vagubunt's .bashrc (http://vagubunt.wordpress.com)		#
 #									#
-# Modified by Thomas Bernard						#
-# Last changes: 20.01.2023 (or later)					#
+# Modified by TomfromBerlin						#
+# Last changes: 21.01.2023 (or later)					#
 #									#
 # Some commands may not work on all distros, e.g. netstat on Arch-Linux	#
 #									#
