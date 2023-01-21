@@ -1,5 +1,5 @@
 # bashrc
-First issue of my bashrc-file with its associates
+First issue of my bashrc with its associates files. It produces a simple but nice output and is suitable for the average user. If you want more functionallity while using e.g. github then you should look for other repos like [Voku/dotfiles](https://github.com/voku/dotfiles).
 
 Instruction: Just download the repo as zip-file and extract it in your home folder. Start a Terminal and see the magic...
 
