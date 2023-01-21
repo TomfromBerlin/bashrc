@@ -1,7 +1,8 @@
 # bashrc
 First issue of my bashrc-file with its associates
 
-Instruction: Just download the repo as zip-file and extract it in your home folder. Start a Terminal and watch the magic...
+Instruction: Just download the repo as zip-file and extract it in your home folder. Start a Terminal and see the magic...
+
 (Checkout the file [terminal.jpg](https://github.com/TomfromBerlin/bashrc/blob/main/terminal.jpg) for spoiler.)
 
 Suggestions are always welcome.
