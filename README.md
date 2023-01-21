@@ -2,6 +2,7 @@
 First issue of my bashrc-file with its associates
 
 Instruction: Just download the file bashrc.7z and extract it in your home folder.
+
 Suggestions are always welcome.
 
 This bashrc consists of several files. On the one hand the actual bashrc and on the other hand a few files that are assigned to certain settings.
