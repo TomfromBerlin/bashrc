@@ -1,0 +1,79 @@
+# This file will be called in .bashrc
+# Here are the functions you will normally find in .bashrc or /etc/bash.bahsrc
+#
+#----------------------------------------------------------------------------------------------------
+#
+# Start Command-not-found (better call in /etc/bash.bashrc)
+#
+# When command-not-found is installed, use it!
+# Unter Arch-Linux folgende Zeile auskommentieren:
+#source /usr/share/doc/pkgfile/command-not-found.bash
+# dann wie bei allen anderen Distros
+if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
+    function command_not_found_handle {
+	    # check because c-n-f could've been removed in the meantime
+               if [ -x /usr/lib/command-not-found ]; then
+           /usr/bin/python /usr/lib/command-not-found -- "$1"
+                   return $?
+                elif [ -x /usr/share/command-not-found/command-not-found ]; then
+           /usr/bin/python /usr/share/command-not-found/command-not-found -- "$1"
+                   return $?
+        else
+           printf "%s: Programm ist scheinbar nicht installiert oder defekt.\n" "$1" >&2
+           return 127
+        fi
+    }
+fi
+#
+# End Command-not-found
+#
+#----------------------------------------------------------------------------------------------------
+#
+# Start less (command)
+# colorized output, comment in if "most" or ~/.colors isn't present
+#man() {
+    #LESS_TERMCAP_md=$'\e[01;31m' \
+    #LESS_TERMCAP_me=$'\e[0m' \
+    #LESS_TERMCAP_us=$'\e[01;32m' \
+    #LESS_TERMCAP_ue=$'\e[0m' \
+    #LESS_TERMCAP_so=$'\e[45;93m' \
+    #LESS_TERMCAP_se=$'\e[0m' \
+
+    #command man "$@"
+#}
+#
+# better output
+[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
+#
+# End less (command)
+#----------------------------------------------------------------------------------------------------
+#
+#----------------------------------------------------------------------------------------------------
+# Eine Datei finden (Benutzung: ff datei)
+function ff() { find . -type f -iname '*'$*'*' -ls; }
+#----------------------------------------------------------------------------------------------------
+# "extract <filename>" extracts all formats
+# credits: urukrama, Ubuntuforums.org
+function extract()
+{
+if [ -f $1 ] ; then
+ case $1 in
+ *.tar.bz2)   tar xvjf $1     ;;
+ *.tar.gz)    tar xvzf $1     ;;
+ *.bz2)       bunzip2 $1      ;;
+ *.rar)       unrar x $1      ;;
+ *.gz)        gunzip $1       ;;
+ *.tar)       tar xvf $1      ;;
+ *.tbz2)      tar xvjf $1     ;;
+ *.tgz)       tar xvzf $1     ;;
+ *.zip)       unzip $1        ;;
+ *.Z)         uncompress $1   ;;
+ *.7z)        7z x $1         ;;
+ *)           echo "'$1' kann nicht mit extract entpackt werden!" ;;
+ esac
+  else
+ echo "'$1' ist keine gültige Datei!"
+fi
+}
+#
+#----------------------------------------------------------------------------------------------------
