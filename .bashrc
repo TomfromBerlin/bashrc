@@ -5,7 +5,7 @@
 # Based on Vagubunt's .bashrc (http://vagubunt.wordpress.com)		#
 #									#
 # Modified by TomfromBerlin						#
-# Last changes: 21.01.2023 (or later)					#
+# Last changes: 20.01.2023 (or later)					#
 #									#
 # Some commands may not work on all distros, e.g. netstat on Arch-Linux	#
 #									#
