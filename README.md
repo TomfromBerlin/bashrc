@@ -7,15 +7,15 @@ First issue of my bashrc with its associates files. It produces a simple but nic
 2. Then download the repo as zip-file and extract it in your home folder.
 3. Start an interactive shell (means: open a terminal). It will look like this:
 
-![terminal.jpg](https://github.com/TomfromBerlin/bashrc/blob/main/terminal_logo.jpg)
+![terminal.jpg](terminal_logo.jpg)
 
 You will only need the follwing files:
-+ [~/.bashrc](/.bashrc) (nessecary)
-+ [~/.logo](/.logo) (optional)
++ [~/.bashrc](.bashrc) (nessecary)
++ [~/.logo](.logo) (optional)
 + [~/shellcfg/.alias](shellcfg/.alias) (nessecary for full functionality)
-+ [~/shellcfg/.colors](/shellcfg/.colors) (optional)
-+ [~/shellcfg/functions](/shellcfg/.functions) (nessecary for full functionality)
-+ [~/shellcfg/.what_shell](/shellcfg/.what_shell) (see also [.what_shell section](/bashrc#what_shell) below)
++ [~/shellcfg/.colors](shellcfg/.colors) (optional)
++ [~/shellcfg/functions](shellcfg/.functions) (nessecary for full functionality)
++ [~/shellcfg/.what_shell](shellcfg/.what_shell) (see also [.what_shell section](bashrc#what_shell) below)
 
 Other stuff that comes with the zip-file won't be nessecary.
 
@@ -33,7 +33,7 @@ In principle, the contents of these files could also be written directly to the 
 There are a few functions and a lot of alias defnitions in the corresponding files (`~/shellcfg/.functions`, `~/shellcfg/.alias`). Some of them are default in most linux distros, some not.
 
 ## .what_shell
-The `~/shellcfg/what_shell` file is actually nonsense because other shells have different file names and the output could have been a simple query (like "$SHELL"). Furthermore the version query does only work in BASH this way. However, it doesn't bother me either, so I left it there. This is only an issue if you do not have a file named .logo in your home directory and/or *lolcat* is not installed. Even in this case I've made a work around (see section [Changing the logo](/bashrc#changing-the-logo))
+The `~/shellcfg/what_shell` file is actually nonsense because other shells have different file names and the output could have been a simple query (like "$SHELL"). Furthermore the version query does only work in BASH this way. However, it doesn't bother me either, so I left it there. This is only an issue if you do not have a file named .logo in your home directory and/or *lolcat* is not installed. Even in this case I've made a work around (see section [Changing the logo](bashrc#changing-the-logo))
 
 By default there is a file named .logo containing a raspberry ascii art. Who knows why...
 
@@ -43,7 +43,7 @@ Some comments within these files as well as some outputs appear to be in German.
 
 ## Changing the logo
 If you want to see another logo when you start an interactive terminal you just have to create an ascii art and save it as ~/.logo. As an alternative you can just delete or rename ~/.logo and you will get an animated intro. The result will look like this:
-![terminal.jpg](/terminal_intro.jpg)
+![terminal.jpg](terminal_intro.jpg)
 
 The output of RAM and the interface table will be shown according to your system language settings. If the interface table is not shown you need to install the package `net-tools` (see section Optional programs). This is avaible at least in Debian and Ubuntu based distros. ARCH Linux, e.g., doesn't have that unfortunately and it will throw an 'command-not-found' msg. In this case just comment out line 247 in the .bashrc
 
