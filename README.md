@@ -1,6 +1,6 @@
 # bashrc
 --------------------------------------------------------------------------------------------------------------------------
-First issue of my bashrc with its associates files. It produces a simple but nice output and is suitable for the average user. If you want more functionallity while using e.g. github then you should look for other repos like [Voku/dotfiles](https://github.com/voku/dotfiles) or [Moesens .dotfile-repo](https://github.com/Moesen/.dotfiles).
+First issue of my bashrc with its associates files. It produces a simple but nice output and is suitable for the average user. If you want more functionallity while using e.g. github then you should look for other repos like [Voku/dotfiles](https://github.com/voku/dotfiles).
 
 ## Instruction
 1. **Backup your current ~/.bashrc**
@@ -15,7 +15,7 @@ You will only need the follwing files:
 + [~/shellcfg/.alias](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.alias) (nessecary for full functionality)
 + [~/shellcfg/.colors](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.colors) (optional)
 + [~/shellcfg/functions](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.functions) (nessecary for full functionality)
-+ [~/shellcfg/.what_shell](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.what_shell) (see also [.what_shell section](/bashrc#what_shell) below)
++ [~/shellcfg/.what_shell](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.what_shell) (see also [.what_shell section](https://github.com/TomfromBerlin/bashrc#what_shell) below)
 
 Other stuff that comes with the zip-file won't be nessecary.
 
