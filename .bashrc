@@ -301,9 +301,9 @@ fi
 #
 if [ "$color_prompt"=yes ]; then
     #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
-    PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$ "
+    PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$\[\e[0;5m\]_\[\e[0m\] "
 else
-    PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
+    PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$\[\e[0;5m\]_\[\e[0m\]"
 fi
 
 unset color_prompt force_color_prompt
@@ -312,7 +312,7 @@ unset color_prompt force_color_prompt
 case "$TERM" in
 xterm*|rxvt*)
 #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$\[\e[0;5m\]_\[\e[0m\] "
+	PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$\[\e[0;5m\]_\[\e[0m\]"
     ;;
 *)
     ;;
