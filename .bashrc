@@ -123,7 +123,7 @@ fi
 #
 #----------------------------------------------------------------------------------------------------
 #
-# sudo hint (should be defined in /etc/bash.bashrc definiert)
+# sudo hint (should be defined in /etc/bash.bashrc)
 #if [ ! -e "$HOME/.sudo_as_admin_successful" ] && [ ! -e "$HOME/.hushlogin" ] ; then
     #case " $(groups) " in *\ admin\ *)
     #if [ -x /usr/bin/sudo ]; then
@@ -144,7 +144,7 @@ fi
 #----------------------------------------------------------------------------------------------------
 # It's the directories on the $PATH that show us the way
 PATH=$PATH
-# export PATH=$PATH:/place/with/the/file              #modify and uncomment this line to add folders to default path
+# export PATH=$PATH:/place/with/the/file              #modify and uncomment this line to add folders to default path variable
 #----------------------------------------------------------------------------------------------------
 #
 ########################################################################
