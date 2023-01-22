@@ -96,7 +96,7 @@ if [ -x /usr/bin/dircolors ]; then
 #
 # ALIASES
 # if aliases can be found in ~/shellcfg/.aliases use it.
-    if [ -f ~/shellcfg/alias ]; then
+    if [ -f ~/shellcfg/.alias ]; then
     . ~/shellcfg/.alias
     fi
 #
@@ -117,7 +117,7 @@ if [ -x /usr/bin/dircolors ]; then
     if [ -f ~/shellcfg/.what_shell ]; then
     . ~/shellcfg/.what_shell
     fi
-# If these -files do not live in ~/shellcfg/, you'll have a - more or less default - command prompt and perhaps that's about it - almost...
+# If these files do not live in ~/shellcfg/, you'll have a - more or less default - command prompt and perhaps that's about it - almost...
 # END COLORS, FUNCTIONS, & ALIASES
 fi
 #
@@ -135,6 +135,12 @@ fi
     #fi
    #esac
 #fi
+#----------------------------------------------------------------------------------------------------
+#
+#if [ -x /bin/most ]; then
+#    export PAGER=“most” #shows man pages in color (run sudo apt install most, if not present)
+#fi
+#
 #----------------------------------------------------------------------------------------------------
 # It's the directories on the $PATH that show us the way
 PATH=$PATH
@@ -170,6 +176,14 @@ shopt -u cdspell        # if set, cdspell corrects minor typos in connection wit
 # abschalten
 shopt -u mailwarn
 unset MAILCHECK         # no notification of incoming mails
+#----------------------------------------------------------------------------------------------------
+# UMOUNT VS. UNMOUNT
+# Deutsche Fehlermeldung, wenn umount nicht richtig verwendet wird.
+alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umount${NC} (das ${RED}n${NC} nach dem ${RED}u${NC} weglassen)"';
+#
+# English error msg, when using umount incorrectly
+# alias unmount='echo -e "${RED}Syntax Error${NC}: Please use ${GREEN}umount${NC} (without ${RED}n${NC} after ${RED}u${NC})"';
+#
 #----------------------------------------------------------------------------------------------------
 # BASH HISTORY
 # You can bind the up and down arrow keys to search through Bash's history
@@ -287,9 +301,9 @@ fi
 #
 if [ "$color_prompt"=yes ]; then
     #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
-    PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$ "
+    PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"
 else
-    PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
+    PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"
 fi
 
 unset color_prompt force_color_prompt
@@ -298,7 +312,7 @@ unset color_prompt force_color_prompt
 case "$TERM" in
 xterm*|rxvt*)
 #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$ "
+	PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
     ;;
 *)
     ;;
