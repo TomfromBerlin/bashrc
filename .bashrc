@@ -136,12 +136,6 @@ fi
    #esac
 #fi
 #----------------------------------------------------------------------------------------------------
-#
-if [ -x /bin/most ]; then
-    export PAGER=“most” #shows man pages in color (run 'sudo apt install most', if desired and not present)
-fi
-#
-#----------------------------------------------------------------------------------------------------
 # It's the directories on the $PATH that show us the way
 PATH=$PATH
 # export PATH=$PATH:/place/with/the/file              #modify and uncomment this line to add folders to default path
