@@ -231,10 +231,10 @@ else
 #clear
 echo -e " ";
 for i in `seq 1 80` ; do spin; done ;echo "";
-echo -ne "${WHITE}Welcome "`whoami`". ${NC}";
+echo -ne		"${WHITE}Welcome "`whoami`". ${NC}";
 echo -e " ";
 echo -e "${NC}"
-echo -e "${LIGHTGRAY}SHELL:				${LIGHTGREEN}$MYSHELL ${LIGHTCYAN} (Version ${BASH_VERSION%.*})";
+echo -e "${LIGHTGRAY}SHELL:			${LIGHTGREEN}$MYSHELL ${LIGHTCYAN} (Version ${BASH_VERSION%.*})";
 echo -e " ";
 echo -e "${LIGHTGRAY}Host Name:		${LIGHTGREEN}" `uname -n`;
 echo -e "${LIGHTGRAY}OS:		    	${LIGHTGREEN}" `uname -o`;
