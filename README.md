@@ -56,5 +56,12 @@ Instead of using the command line to install programs you can use a package mana
 
 ## Configure your prompt conveniently
 This .bashrc makes the prompt configuration a little bit easier. Nonetheless it is often a pain in the a...
+A colorized prompt with some usefull informations will often look like this:
+`PS1='\[\e[0;38;5;42m\]\D{}\n\[\e[0;1;38;5;40m\]\u\[\e[0;38;5;226m\]@\[\e[0;38;5;35m\]\H\[\e[0;38;5;41m\]/\[\e[0;38;5;77m\]\W\[\e[0;38;5;77m\]/\[\e[0;38;5;27m\]$\[\e[0;5m\]_\[\e[0m\]'`
+
+That is a bunch of cryptic strings.
 
 But there are some awesome guys around that will help you. One of them is [Scriptim](]https://github.com/Scriptim/) and he made a phantastic tool: the [Bash Prompt Generator](https://github.com/Scriptim/bash-prompt-generator). You can use this tool to preformat your prompt and afterwards you can change colors into a human readable format. How this works you can learn while studying the file `/bashcfg/.colors`
+The code for the prompt in this bashrc looks like this:
+`PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$\[\e[0;5m\]_\[\e[0m\]`
+As you can see it is more readable. The result can be seen in the pics above.
