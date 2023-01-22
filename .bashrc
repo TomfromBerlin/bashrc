@@ -138,7 +138,7 @@ fi
 #----------------------------------------------------------------------------------------------------
 #
 if [ -x /bin/most ]; then
-    export PAGER=“most” #shows man pages in color (run sudo apt install most, if not present)
+    export PAGER=“most” #shows man pages in color (run 'sudo apt install most', if desired and not present)
 fi
 #
 #----------------------------------------------------------------------------------------------------
@@ -176,14 +176,6 @@ shopt -u cdspell        # if set, cdspell corrects minor typos in connection wit
 # abschalten
 shopt -u mailwarn
 unset MAILCHECK         # no notification of incoming mails
-#----------------------------------------------------------------------------------------------------
-# UMOUNT VS. UNMOUNT
-# Deutsche Fehlermeldung, wenn umount nicht richtig verwendet wird.
-alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umount${NC} (das ${RED}n${NC} nach dem ${RED}u${NC} weglassen)"';
-#
-# English error msg, when using umount incorrectly
-# alias unmount='echo -e "${RED}Syntax Error${NC}: Please use ${GREEN}umount${NC} (without ${RED}n${NC} after ${RED}u${NC})"';
-#
 #----------------------------------------------------------------------------------------------------
 # BASH HISTORY
 # You can bind the up and down arrow keys to search through Bash's history
