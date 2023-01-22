@@ -41,7 +41,7 @@ Some comments within these files as well as some outputs appear to be in German.
 
 ## Changing the logo
 If you want to see another logo when you start an interactive terminal you just have to create an ascii art and save it as ~/.logo. As an alternative you can just delete ~/.logo and you will get an animated intro. It will look like this:
-![terminal.jpg](https://github.com/TomfromBerlin/bashrc/blob/main/terminal_logo.jpg)
+![terminal.jpg](https://github.com/TomfromBerlin/bashrc/blob/main/terminal_intro.jpg)
 The output of RAM and the interface table will be shown according to your system language settings. If the interface table is not shown you need to install net-tools (see section Optional programs). This is avaible at least in Debian and Ubuntu based distros. ARCH Linux, e.g., doesn't have that unfortunately.
 
 ## Optional programs
