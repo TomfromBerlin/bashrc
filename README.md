@@ -13,8 +13,8 @@ You will only need the follwing files:
 + [~/.logo](https://github.com/TomfromBerlin/bashrc/blob/main/.logo) (optional)
 + [~/shellcfg/.alias](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.alias) (nessecary for full functionality)
 + [~/shellcfg/.colors](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.colors) (optional)
-+ ~/shellcfg/.functions (nessecary for full functionality)
-+ [~/shellcfg/.what_shell](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.what_shell) (see also [.what_shell section](https://github.com/TomfromBerlin/bashrc#.what_shell) below)
++ https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.functions (nessecary for full functionality)
++ [~/shellcfg/.what_shell](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.what_shell) (see also [.what_shell section](https://github.com/TomfromBerlin/bashrc#what_shell) below)
 
 Other stuff that comes with the zip-file won't be nessecary. It can be irnored and may be deleted from you home directory.
 
