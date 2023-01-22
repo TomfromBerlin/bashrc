@@ -62,7 +62,7 @@ A colorized prompt with some usefull informations will often look like this:
 
 That is a bunch of cryptic strings. There are escape codes and color codes and you almost have to study rocket science to read and understand it fluently. My .bashrc contains a little explanation of escape codes (the most important only) in German und English. So you don't have to crawl the web to get startet.
 
-But there are some awesome guys around that will help you. One of them is [Scriptim](../Scriptim/) and he made a phantastic tool: the [Bash Prompt Generator](https://github.com/Scriptim/bash-prompt-generator). You can use this tool to preformat your prompt and afterwards you can change colors into a human readable format. How this works you can learn while studying the file `/bashcfg/.colors`. The code for the prompt in my .bashrc looks like this:
+But there are some awesome guys around that will help you. One of them is [Scriptim](../../../../../Scriptim/) and he made a phantastic tool: the [Bash Prompt Generator](https://github.com/Scriptim/bash-prompt-generator). You can use this tool to preformat your prompt and afterwards you can change colors into a human readable format. How this works you can learn while studying the file `/bashcfg/.colors`. The code for the prompt in my .bashrc looks like this:
 
 `PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$\[\e[0;5m\]_\[\e[0m\]`
 
