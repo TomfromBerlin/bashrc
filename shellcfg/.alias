@@ -1,18 +1,22 @@
 # ALIASES
 #
-# With aliases, commands or command chains can be assigned their own names or abbreviations.
-# CAUTION: Existing program calls or built-in commands are overwritten by aliases.
-# So if an alias for cp (copy) is defined with the -i switch, cp will always pass that switch,
-# regardless of whether the switch is specified or not.
+# Mit Aliases können Befehle bzw. Befehlsketten mit eigenen Namen bzw. Kürzeln belegt werden.
 #
 #----------------------------------------------------------------------------------------------------
 # UMOUNT VS. UNMOUNT
 # Deutsche Fehlermeldung, wenn umount nicht richtig verwendet wird.
-alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umount${NC} (das ${RED}n${NC} nach dem ${RED}u${NC} weglassen)"';
+if [ -f /shellcfg/.colors ] ; then
+  alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umount${NC} - ohne ${RED}n${NC} nach dem ersten ${RED}u${NC}."' ;
+else
+  alias unmount='echo -e "Syntaxfehler: der Befehl lautet umount - ohne n nach dem ersten u."';
+fi
 #
 # English error msg, when using umount incorrectly
-# alias unmount='echo -e "${RED}Syntax Error${NC}: Please use ${GREEN}umount${NC} (without ${RED}n${NC} after ${RED}u${NC})"';
-#
+# if [ -f /shellcfg/.colors ] ; then
+# alias unmount='echo -e "${RED}Syntax Error${NC}: Please use ${GREEN}umount${NC} - without ${RED}n${NC} after the first ${RED}u${NC}."' ;
+# else
+# alias unmount='echo -e "Syntax Error: Please use umount (without n after the first u)"';
+# fi
 #----------------------------------------------------------------------------------------------------
 # ls 
 alias la='ls -Al'											# zeige versteckte Dateien in einer Liste
@@ -32,7 +36,7 @@ alias lr='ls -lR |more --color=auto'						# Rekursive Liste mit more (scrollbar)
 # File management 
 alias del='mv --target-directory=~/.Trash/'
 alias rm='rm -iv'
-alias cp='cp -i'
+alias cp='cp -iv'
 alias mv='mv -iv'
 #----------------------------------------------------------------------------------------------------
 # alias tree='tree -Csu|more'								# Alternative zum rekursiven ls; Für Tree noch Befelhl "sudo apt-get install tree"
@@ -49,6 +53,7 @@ alias ps='ps auxf'
 alias home='cd ~'											# wechselt in das Home-Verzeichnis des aktuellen Benutzers
 alias datum='date "+%A, %d.%B %Y    %T %Z"'
 alias bashedit='geany ~/.bashrc'							# Replace "geany" with editor of you choice, e.g. nano, leafpad or vim
+alias agar='sudo apt-get autoremove'						# nicht benötigte Pakete entfernen
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
@@ -69,14 +74,12 @@ alias 644='chmod 644'
 alias 755='chmod 755'
 #----------------------------------------------------------------------------------------------------
 # apt-get Shortcuts
-alias agar='sudo apt-get autoremove'						# nicht benötigte Pakete entfernen
-alias agc='sudo apt-get autoclean'						# übriggebliebene Konfigurationen entfernen
 alias ags='apt-cache search'
 alias agi='sudo apt-get install'
 alias agr='sudo apt-get remove'
 alias agu='sudo apt-get update'
 alias agg='sudo apt-get upgrade'
-# Replace "geany" with your desired editor, e.g. nano, vim (or leafpad for using in a graphical env)
+# Replace "geany" with editor of you choice, e.g. nano, leafpad or vim
 alias sources='sudo geany /etc/apt/sources.list' # YOU SHOULD NOT CONFUSE THE ALIAS named "sources" WITH THE source COMMAND
 #----------------------------------------------------------------------------------------------------
 # Add an "alert" alias for long running commands.  Use like so:
@@ -84,7 +87,6 @@ alias sources='sudo geany /etc/apt/sources.list' # YOU SHOULD NOT CONFUSE THE AL
 # notification will show up in the graphical environment
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 #####################################################################################################
-#
 # Here you can define an alias for your own script
 #----------------------------------------------------------------------------------------------------
 # alias ms='bash /home/USER/my_script.sh'
