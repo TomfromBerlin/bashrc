@@ -103,12 +103,16 @@ __add_command_replace_alias traceroute 'mtr'
 __add_command_replace_alias tracepath 'mtr'
 __add_command_replace_alias top 'htop'
 
------------------------------------------------------------------------------------------------------
-# credit to http://askubuntu.com/a/279014
+#-----------------------------------------------------------------------------------------------------
+#
+# credit to Oktay https://askubuntu.com/users/147615/oktay
+# https://askubuntu.com/questions/27314/script-to-display-all-terminal-colors/279014#279014
+#
 function allcolors() {
 for x in 0 1 4 5 7 8; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""; 
 }
-# Another solution is this: 'msgcat --color=test', but you need to install 'gettext' with: sudo apt install gettext
+#
+# Another solution is this: 'msgcat --color=test', but you need to install 'gettext' (with root privileges): apt install gettext
 #
 #----------------------------------------------------------------------------------------------------
 #
