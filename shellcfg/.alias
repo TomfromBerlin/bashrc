@@ -1,6 +1,17 @@
 # ALIASES
 #
-# Mit Aliases können Befehle bzw. Befehlsketten mit eigenen Namen bzw. Kürzeln belegt werden.
+# With aliases, commands or command chains can be assigned their own names or abbreviations.
+# CAUTION: Existing program calls or built-in commands are overwritten by aliases.
+# So if an alias for cp (copy) is defined with the -i switch, cp will always pass that switch,
+# regardless of whether the switch is specified or not.
+#
+#----------------------------------------------------------------------------------------------------
+# UMOUNT VS. UNMOUNT
+# Deutsche Fehlermeldung, wenn umount nicht richtig verwendet wird.
+alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umount${NC} (das ${RED}n${NC} nach dem ${RED}u${NC} weglassen)"';
+#
+# English error msg, when using umount incorrectly
+# alias unmount='echo -e "${RED}Syntax Error${NC}: Please use ${GREEN}umount${NC} (without ${RED}n${NC} after ${RED}u${NC})"';
 #
 #----------------------------------------------------------------------------------------------------
 # ls 
@@ -21,7 +32,7 @@ alias lr='ls -lR |more --color=auto'						# Rekursive Liste mit more (scrollbar)
 # File management 
 alias del='mv --target-directory=~/.Trash/'
 alias rm='rm -iv'
-alias cp='cp -iv'
+alias cp='cp -i'
 alias mv='mv -iv'
 #----------------------------------------------------------------------------------------------------
 # alias tree='tree -Csu|more'								# Alternative zum rekursiven ls; Für Tree noch Befelhl "sudo apt-get install tree"
