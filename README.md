@@ -3,7 +3,7 @@
 First issue of my bashrc with its associates files. It produces a simple but nice output and is suitable for the average user. If you want more functionallity while using e.g. github then you should look for other repos like [Voku/dotfiles](https://github.com/voku/dotfiles).
 
 ## Instruction
-1. **Backup your current ~/.bashrc**
+1. **Backup your current ~/.bashrc** (`mv -iv .bashrc bashrc.old` Look at your current .bashrc if there is already an alias for mv. Use the alias in case of...)
 2. Then download the repo as zip-file and extract it in your home folder.
 3. Start an interactive shell (means: open a terminal). It will look like this:
 
@@ -53,3 +53,8 @@ There are programs wich will be used and may not be present in the default in yo
 + `lolcat` - It is like *cat* but colorized. (Debian an derivates`sudo apt install lolcat`; Ubuntu: (probably) `pkexec apt install lolcat`)
 
 Instead of using the command line to install programs you can use a package manager like *synaptic* or (if you insists to work in a shell) *aptitude*. Its more convenient.
+
+## Configure your prompt conveniently
+This .bashrc makes the prompt configuration a little bit easier. Nonetheless it is often a pain in the a...
+
+But there are some awesome guys around that will help you. One of them is [Scriptim](]https://github.com/Scriptim/) and he made a phantastic tool: the [Bash Prompt Generator](https://github.com/Scriptim/bash-prompt-generator). You can use this tool to preformat your prompt and afterwards you can change colors into a human readable format. How this works you can learn while studying the file `/bashcfg/.colors`
