@@ -15,7 +15,7 @@ You will only need the follwing files:
 + [~/shellcfg/.alias](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.alias) (nessecary for full functionality)
 + [~/shellcfg/.colors](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.colors) (optional)
 + [~/shellcfg/.functions](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.functions) (nessecary for full functionality)
-+ [~/shellcfg/.what_shell](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.what_shell) (see also [.what_shell section](https://github.com/TomfromBerlin/bashrc#what_shell) below)
++ [~/shellcfg/.what_shell](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.what_shell) (see also [.what_shell section](/README.md#what_shell) below)
 
 Other stuff that comes with the zip-file won't be nessecary.
 
@@ -33,7 +33,7 @@ In principle, the contents of these files could also be written directly to the 
 There are a few functions and a lot of alias defnitions in the corresponding files (`~/shellcfg/.functions`, `~/shellcfg/.alias`). Some of them are default in most linux distros, some not.
 
 ## .what_shell
-The `~/shellcfg/what_shell` file is actually nonsense because other shells have different file names and the output could have been a simple query (like "$SHELL"). Furthermore the version query does only work in BASH this way. However, it doesn't bother me either, so I left it there. This is only an issue if you do not have a file named .logo in your home directory and/or *lolcat* is not installed. Even in this case I've made a work around (see section [Changing the logo](https://github.com/TomfromBerlin/bashrc#changing-the-logo))
+The `~/shellcfg/what_shell` file is actually nonsense because other shells have different file names and the output could have been a simple query (like "$SHELL"). Furthermore the version query does only work in BASH this way. However, it doesn't bother me either, so I left it there. This is only an issue if you do not have a file named .logo in your home directory and/or *lolcat* is not installed. Even in this case I've made a work around (see section [Changing the logo](/README.md#changing-the-logo))
 
 By default there is a file named .logo containing a raspberry ascii art. Who knows why...
 
@@ -45,7 +45,7 @@ Some comments within these files as well as some outputs appear to be in German.
 If you want to see another logo when you start an interactive terminal you just have to create an ascii art and save it as ~/.logo. As an alternative you can just delete or rename ~/.logo and you will get an animated intro. The result will look like this:
 ![terminal.jpg](terminal_intro.jpg)
 
-The output of RAM and the interface table will be shown according to your system language settings. If the interface table is not shown you need to install the package `net-tools` (see section [Optional programs](https://github.com/TomfromBerlin/bashrc#optional-programs)). This is avaible at least in Debian and Ubuntu based distros. ARCH Linux, e.g., doesn't have that unfortunately and it will throw an 'command-not-found' msg. In this case just comment out line 247 in the .bashrc
+The output of RAM and the interface table will be shown according to your system language settings. If the interface table is not shown you need to install the package `net-tools` (see section [Optional programs](/README.md#optional-programs)). This is avaible at least in Debian and Ubuntu based distros. ARCH Linux, e.g., doesn't have that unfortunately and it will throw an 'command-not-found' msg. In this case just comment out line 247 in the .bashrc
 
 ## Optional programs
 There are programs wich will be used and may not be present in the default in your installation. I mentioned them already above, but below they are listed again for your convenience:
