@@ -49,8 +49,8 @@ The output of RAM and the interface table will be shown according to your system
 
 ## Optional programs
 There are programs wich will be used and may not be present in the default in your installation. I mentioned them already above, but below they are listed again for your convenience:
-+ `netstat` - part of net-tools package (Debian and derivates: `sudo apt install net-tools`; Ubuntu: depricated sudo (afak) for security reasons. If this is still true you'll need to use `pkexec apt install net-tools`). The `net-tools` package may not be available in other distros, e.g. ARCH Linux.
-+ `lolcat` - It is like *cat* but colorized. (Debian an derivates`sudo apt install lolcat`; Ubuntu: (probably) `pkexec apt install lolcat`)
++ `netstat` - part of net-tools package (Debian and derivates: `sudo apt install net-tools`; Ubuntu: depricated sudo (afak) for security reasons. If this is still true you'll need to use `pkexec apt install net-tools`). The package may not be available in other distros, e.g. ARCH Linux.
++ `lolcat` - It is like *cat* but colorized. (Debian and derivates may use `sudo apt install lolcat` or `sudo apt-get install lolcat`; Ubuntu: (probably) `pkexec apt install lolcat` resp. `pkexec apt-get install lolcat`). If you want to go really crazy you can set an alias like `alias cat='lolcat $1'`
 
 Instead of using the command line to install programs you can use a package manager like *synaptic* or (if you insists to work in a shell) *aptitude*. Its more convenient.
 
@@ -60,7 +60,7 @@ A colorized prompt with some usefull informations will often look like this:
 
 `PS1='\[\e[0;38;5;42m\]\D{}\n\[\e[0;1;38;5;40m\]\u\[\e[0;38;5;226m\]@\[\e[0;38;5;35m\]\H\[\e[0;38;5;41m\]/\[\e[0;38;5;77m\]\W\[\e[0;38;5;77m\]/\[\e[0;38;5;27m\]$\[\e[0;5m\]_\[\e[0m\]'`
 
-That is a bunch of cryptic strings.
+That is a bunch of cryptic strings. There are escape codes and color codes and you almost have to study rocket science to read and understand it fluently. My .bashrc contains a little explanation of escape codes (the most important only) in German und English. So you don't have to crawl the web to get startet.
 
 But there are some awesome guys around that will help you. One of them is [Scriptim](]https://github.com/Scriptim/) and he made a phantastic tool: the [Bash Prompt Generator](https://github.com/Scriptim/bash-prompt-generator). You can use this tool to preformat your prompt and afterwards you can change colors into a human readable format. How this works you can learn while studying the file `/bashcfg/.colors`. The code for the prompt in my .bashrc looks like this:
 
