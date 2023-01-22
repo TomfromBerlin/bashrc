@@ -50,7 +50,8 @@ The output of RAM and the interface table will be shown according to your system
 ## Optional programs
 There are programs wich will be used and may not be present in the default in your installation. I mentioned them already above, but below they are listed again for your convenience:
 + `netstat` - part of net-tools package (Debian and derivates: `sudo apt install net-tools`; Ubuntu: depricated sudo (afak) for security reasons. If this is still true you'll need to use `pkexec apt install net-tools`). The package may not be available in other distros, e.g. ARCH Linux.
-+ `lolcat` - It is like *cat* but colorized. (Debian and derivates may use `sudo apt install lolcat` or `sudo apt-get install lolcat`; Ubuntu: (probably) `pkexec apt install lolcat` resp. `pkexec apt-get install lolcat`). If you want to go really crazy you can set an alias like `alias cat='lolcat $1'`
++ `lolcat` - It is like *cat* but colorized. (Debian and derivates may use `sudo apt install lolcat` or `sudo apt-get install lolcat`; Ubuntu: (probably) `pkexec apt install lolcat` resp. `pkexec apt-get install lolcat`). There are a few dependecies you have to install too (some Ruby code). If you want to go really crazy you can set an alias like `alias cat='lolcat "$1"'`
++ `most` - this will be the new less **and** the new man. You don't have to change anything. Just throw `sudo apt install most` resp. `pkexec apt install most` at your command line.
 
 Instead of using the command line to install programs you can use a package manager like *synaptic* or (if you insists to work in a shell) *aptitude*. Its more convenient.
 
@@ -67,3 +68,7 @@ But there are some awesome guys around that will help you. One of them is [Scrip
 `PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$\[\e[0;5m\]_\[\e[0m\]`
 
 As you can see it is more readable. The result can be seen in the pics above.
+
+In case you want to have more colors invoke `allcolors` in a terminal. This will show you a lot of color codes and how they will look like. Just try it.
+
+And now have fun!
