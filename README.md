@@ -48,7 +48,7 @@ If you want to see another logo when you start an interactive terminal you just 
 The output of RAM and the interface table will be shown according to your system language settings. If the interface table is not shown you need to install the package `net-tools` (see section [Optional programs](/README.md#optional-programs)). This is avaible at least in Debian and Ubuntu based distros. ARCH Linux, e.g., doesn't have that unfortunately and it will throw an 'command-not-found' msg. In this case just comment out line 247 in the .bashrc
 
 ## Optional programs
-There are programs wich will be used and may not be present in the default in your installation. I mentioned them already above, but below they are listed again for your convenience:
+There are programs wich will be used and may not be present by default in your installation. I mentioned them already above, but below they are listed again for your convenience:
 + `netstat` - part of net-tools package (Debian and derivates: `sudo apt install net-tools`; Ubuntu: depricated sudo (afak) for security reasons. If this is still true you'll need to use `pkexec apt install net-tools`). The package may not be available in other distros, e.g. ARCH Linux.
 + `lolcat` - It is like *cat* but colorized. (Debian and derivates may use `sudo apt install lolcat` or `sudo apt-get install lolcat`; Ubuntu: (probably) `pkexec apt install lolcat` resp. `pkexec apt-get install lolcat`). There are a few dependecies you have to install too (some Ruby code). If you want to go really crazy you can set an alias like `alias cat='lolcat "$1"'`
 + `most` - this will be the new less **and** the new man. You don't have to change anything. Just throw `sudo apt install most` resp. `pkexec apt install most` at your command line.
