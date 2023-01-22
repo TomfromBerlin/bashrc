@@ -15,7 +15,7 @@ You will only need the follwing files:
 + [~/shellcfg/.alias](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.alias) (nessecary for full functionality)
 + [~/shellcfg/.colors](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.colors) (optional)
 + [~/shellcfg/functions](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.functions) (nessecary for full functionality)
-+ [~/shellcfg/.what_shell](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.what_shell) (see also [.what_shell section](https://github.com/TomfromBerlin/bashrc#what_shell) below)
++ [~/shellcfg/.what_shell](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.what_shell) (see also [.what_shell section](/bashrc#what_shell) below)
 
 Other stuff that comes with the zip-file won't be nessecary.
 
@@ -49,7 +49,7 @@ The output of RAM and the interface table will be shown according to your system
 
 ## Optional programs
 There are programs wich will be used and may not be present in the default in your installation. I mentioned them already above, but below they are listed again for your convenience:
-+ `netstat` - part of net-tools package (Debian and derivates: `sudo apt install net-tools`; Ubuntu: depricated sudo (afak) for security reasons. If this is still true you'll need to use `pkexec apt install net-tools`). This may not be available in other distros, e.g. ARCH Linux.
++ `netstat` - part of net-tools package (Debian and derivates: `sudo apt install net-tools`; Ubuntu: depricated sudo (afak) for security reasons. If this is still true you'll need to use `pkexec apt install net-tools`). The `net-tools` package may not be available in other distros, e.g. ARCH Linux.
 + `lolcat` - It is like *cat* but colorized. (Debian an derivates`sudo apt install lolcat`; Ubuntu: (probably) `pkexec apt install lolcat`)
 
 Instead of using the command line to install programs you can use a package manager like *synaptic* or (if you insists to work in a shell) *aptitude*. Its more convenient.
