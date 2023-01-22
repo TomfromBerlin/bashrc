@@ -103,18 +103,12 @@ __add_command_replace_alias traceroute 'mtr'
 __add_command_replace_alias tracepath 'mtr'
 __add_command_replace_alias top 'htop'
 
+-----------------------------------------------------------------------------------------------------
+# credit to http://askubuntu.com/a/279014
 function allcolors() {
-    # credit to http://askubuntu.com/a/279014
-    for x in 0 1 4 5 7 8; do
-        for i in `seq 30 37`; do
-            for a in `seq 40 47`; do
-                echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "
-            done
-            echo
-        done
-    done
-    echo ""
+for x in 0 1 4 5 7 8; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""; 
 }
+# Another solution is this: 'msgcat --color=test', but you need to install 'gettext' with: sudo apt install gettext
 #
 #----------------------------------------------------------------------------------------------------
 #
