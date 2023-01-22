@@ -3,8 +3,8 @@
 First issue of my bashrc with its associates files. It produces a simple but nice output and is suitable for the average user. If you want more functionallity while using e.g. github then you should look for other repos like [Voku/dotfiles](https://github.com/voku/dotfiles).
 
 ## Instruction
-1. **Backup your current ~/.bashrc** (e.g. with the comman `mv -iv .bashrc bashrc.old`. If there is already an alias for mv use that alias. It's probably defined in your current .bashrc-file)
-2. Then download the repo as zip-file and extract it in your home folder.
+1. **Backup your current ~/.bashrc** (e.g. with the command `mv -iv .bashrc bashrc.old` or `cp -i .bashrc bashrc.old`. If there is already set an alias for `mv` or `cp` use that alias. In case of it's probably defined in your current .bashrc file and therefor you don't need to use the switches. The `-i` switch makes the command ask you, if you want to overwrite existing files, when they already exists. The `v` stands for *verbose* and it will show you what the command does.
+2. Download the repo as zip-file and extract it in your home folder. Overwrite existing files (**Do not forget to backup your current files.** Just saying!)
 3. Start an interactive shell (means: open a terminal). It will look like this:
 
 ![terminal.jpg](terminal_logo.jpg)
