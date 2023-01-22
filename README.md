@@ -10,17 +10,17 @@ First issue of my bashrc with its associates files. It produces a simple but nic
 ![terminal.jpg](terminal_logo.jpg)
 
 You will only need the follwing files:
-+ [~/.bashrc](.bashrc) (nessecary)
-+ [~/.logo](.logo) (optional)
-+ [~/shellcfg/.alias](shellcfg/.alias) (nessecary for full functionality)
-+ [~/shellcfg/.colors](shellcfg/.colors) (optional)
-+ [~/shellcfg/functions](shellcfg/.functions) (nessecary for full functionality)
-+ [~/shellcfg/.what_shell](shellcfg/.what_shell) (see also [.what_shell section](bashrc#what_shell) below)
++ [~/.bashrc](https://github.com/TomfromBerlin/bashrc/blob/main/.bashrc) (nessecary)
++ [~/.logo](https://github.com/TomfromBerlin/bashrc/blob/main/.logo) (optional)
++ [~/shellcfg/.alias](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.alias) (nessecary for full functionality)
++ [~/shellcfg/.colors](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.colors) (optional)
++ [~/shellcfg/functions](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.functions) (nessecary for full functionality)
++ [~/shellcfg/.what_shell](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.what_shell) (see also [.what_shell section](https://github.com/TomfromBerlin/bashrc#what_shell) below)
 
 Other stuff that comes with the zip-file won't be nessecary.
 
 ## Automated Backup
-Every time you start a terminal with this .bashrc it will check if there is a backup folder in `~/shellcfg`. If not, it will create one and backup those files. If you cannot see the original files in your favorite file manager, you need to enable "Show hidden files". The backup files are not hidden and named `$FILENAME.BACKUP` resp `$FILENAME.backup` resp `$FILENAME.backup~` (You'll have two versions of the backup). If you messed up and want to roll back, you need to copy the backup files from `~/shellcfg/backup/`to `~/` and rename them to `.$FILENAME`. Backups are only created when files have been modified.
+Every time you start a terminal with this .bashrc it will check if there is a backup folder in `~/shellcfg`. If not, it will create one and backup those files. If you cannot see the original files in your favorite file manager, you need to enable "Show hidden files". The backup files are not hidden and named `$FILENAME.backup` resp `$FILENAME.backup~` (You'll have two versions of the backup). If you messed up and want to roll back, you need to copy the backup files from `~/shellcfg/backup/`to `~/` and rename them to `.$FILENAME`. Backups are only created when files have been modified.
 
 Suggestions are always welcome.
 
@@ -33,7 +33,7 @@ In principle, the contents of these files could also be written directly to the 
 There are a few functions and a lot of alias defnitions in the corresponding files (`~/shellcfg/.functions`, `~/shellcfg/.alias`). Some of them are default in most linux distros, some not.
 
 ## .what_shell
-The `~/shellcfg/what_shell` file is actually nonsense because other shells have different file names and the output could have been a simple query (like "$SHELL"). Furthermore the version query does only work in BASH this way. However, it doesn't bother me either, so I left it there. This is only an issue if you do not have a file named .logo in your home directory and/or *lolcat* is not installed. Even in this case I've made a work around (see section [Changing the logo](bashrc#changing-the-logo))
+The `~/shellcfg/what_shell` file is actually nonsense because other shells have different file names and the output could have been a simple query (like "$SHELL"). Furthermore the version query does only work in BASH this way. However, it doesn't bother me either, so I left it there. This is only an issue if you do not have a file named .logo in your home directory and/or *lolcat* is not installed. Even in this case I've made a work around (see section [Changing the logo](https://github.com/TomfromBerlin/bashrc#changing-the-logo))
 
 By default there is a file named .logo containing a raspberry ascii art. Who knows why...
 
