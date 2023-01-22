@@ -45,7 +45,7 @@ Some comments within these files as well as some outputs appear to be in German.
 If you want to see another logo when you start an interactive terminal you just have to create an ascii art and save it as ~/.logo. As an alternative you can just delete or rename ~/.logo and you will get an animated intro. The result will look like this:
 ![terminal.jpg](terminal_intro.jpg)
 
-The output of RAM and the interface table will be shown according to your system language settings. If the interface table is not shown you need to install the package `net-tools` (see section Optional programs). This is avaible at least in Debian and Ubuntu based distros. ARCH Linux, e.g., doesn't have that unfortunately and it will throw an 'command-not-found' msg. In this case just comment out line 247 in the .bashrc
+The output of RAM and the interface table will be shown according to your system language settings. If the interface table is not shown you need to install the package `net-tools` (see section [Optional programs](https://github.com/TomfromBerlin/bashrc#optional-programs)). This is avaible at least in Debian and Ubuntu based distros. ARCH Linux, e.g., doesn't have that unfortunately and it will throw an 'command-not-found' msg. In this case just comment out line 247 in the .bashrc
 
 ## Optional programs
 There are programs wich will be used and may not be present in the default in your installation. I mentioned them already above, but below they are listed again for your convenience:
