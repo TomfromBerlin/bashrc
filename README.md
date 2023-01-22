@@ -17,10 +17,10 @@ You will only need the follwing files:
 + https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.functions (nessecary for full functionality)
 + [~/shellcfg/.what_shell](https://github.com/TomfromBerlin/bashrc/blob/main/shellcfg/.what_shell) (see also [.what_shell section](https://github.com/TomfromBerlin/bashrc#what_shell) below)
 
-Other stuff that comes with the zip-file won't be nessecary. It can be irnored and may be deleted from you home directory.
+Other stuff that comes with the zip-file won't be nessecary.
 
-# Automated Backup
-Every time you start a terminal with this .bashrc it will check if there is a backup folder in ~/shellcfg. If not, it will create one and backup those files. If you cannot see the original files in your favorite file manager, you need to enable "Show hidden files". The backup files are not hidden. If you messed up and want to roll back, you need to copy the backup files from `~/shellcfg/backup/`to `~/` and rename them to `.$FILENAME`. You have two iterations of the backup. Backups are only created when files have been modified.
+## Automated Backup
+Every time you start a terminal with this .bashrc it will check if there is a backup folder in `~/shellcfg`. If not, it will create one and backup those files. If you cannot see the original files in your favorite file manager, you need to enable "Show hidden files". The backup files are not hidden and named `$FILENAME.BACKUP` resp `$FILENAME.backup` resp `$FILENAME.backup~` (You'll have two versions of the backup). If you messed up and want to roll back, you need to copy the backup files from `~/shellcfg/backup/`to `~/` and rename them to `.$FILENAME`. Backups are only created when files have been modified.
 
 Suggestions are always welcome.
 
