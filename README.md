@@ -3,7 +3,7 @@
 First issue of my bashrc with its associates files. It produces a simple but nice output and is suitable for the average user. If you want more functionallity while using e.g. github then you should look for other repos like [Voku/dotfiles](https://github.com/voku/dotfiles).
 
 ## Instruction
-1. **Backup your current ~/.bashrc** (`mv -iv .bashrc bashrc.old` Look at your current .bashrc if there is already an alias for mv. Use the alias in case of...)
+1. **Backup your current ~/.bashrc** (e.g. with the comman `mv -iv .bashrc bashrc.old`. If there is already an alias for mv use that alias. It's probably defined in your current .bashrc-file)
 2. Then download the repo as zip-file and extract it in your home folder.
 3. Start an interactive shell (means: open a terminal). It will look like this:
 
