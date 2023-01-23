@@ -72,11 +72,11 @@ fi
 #
 #----------------------------------------------------------------------------------------------------
 # Define language variable
-LANG=de_DE.UTF-8	# substitute de_DE.UTF-8 with your desired one
-export LANG 
+# LANG=de_DE.UTF-8	# substitute de_DE.UTF-8 with your desired one and uncomment, if your 'locale' is not set
+# export LANG		# and if you want localized output, default is English
 #
 #----------------------------------------------------------------------------------------------------
-# activates completion features (maybe activated already in /etc/bash.bashrc or /etc/profile
+# activates completion features (probably already activated in /etc/bash.bashrc or /etc/profile
 #if [ -f /etc/bash_completion.d ]; then
 #	./etc/bash_completion
 #fi
@@ -123,7 +123,7 @@ fi
 #
 #----------------------------------------------------------------------------------------------------
 #
-# sudo hint (should be defined in /etc/bash.bashrc definiert)
+# sudo hint (should be defined in /etc/bash.bashrc)
 #if [ ! -e "$HOME/.sudo_as_admin_successful" ] && [ ! -e "$HOME/.hushlogin" ] ; then
     #case " $(groups) " in *\ admin\ *)
     #if [ -x /usr/bin/sudo ]; then
@@ -138,13 +138,13 @@ fi
 #----------------------------------------------------------------------------------------------------
 #
 #if [ -x /bin/most ]; then
-#    export PAGER=“most” #shows man pages in color (run sudo apt install most, if not present)
+#    export PAGER=“most” #shows cat output in color (run sudo apt install most, if not present)
 #fi
 #
 #----------------------------------------------------------------------------------------------------
 # It's the directories on the $PATH that show us the way
-PATH=$PATH
-# export PATH=$PATH:/place/with/the/file              #modify and uncomment this line to add folders to default path
+PATH=$PATH				# This will read when an interactive shell will be started
+export PATH=$PATH:/usr/games/		# put this line in your /etc/environment to make the extended path globally available, separate entries with ":"
 #----------------------------------------------------------------------------------------------------
 #
 ########################################################################
