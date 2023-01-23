@@ -5,7 +5,7 @@ First issue of my .bashrc with its associates files. It produces a simple but ni
 <span style="color:green">Suggestions are always welcome.</span>
 
 ## Instructions
-1. **Backup your current ~/.bashrc** (e.g. with the command `mv -iv .bashrc bashrc.old` or `cp -i .bashrc bashrc.old`.
+1. **Backup your current ~/.bashrc** e.g. with `mv -iv .bashrc bashrc.old` or `cp -i .bashrc bashrc.old`.
 2. Download the repo as zip-file and extract the content into your home folder.<br>Overwrite existing files. (**Do not forget to backup your current files.** Just saying!)
 3. Start an interactive shell (means: open a terminal). At start it will look like this:
 
