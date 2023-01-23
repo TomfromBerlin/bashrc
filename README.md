@@ -1,6 +1,6 @@
 # bashrc
 --------------------------------------------------------------------------------------------------------------------------
-First issue of my .bashrc with its associates files. It produces a simple but nice output and is suitable for the average user. If you want more functionallity while using e.g. github then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
+First issue of my .bashrc with its associates files. It produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. github then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
 <br></br>
 <span style="color:green">Suggestions are always welcome.</span>
 
