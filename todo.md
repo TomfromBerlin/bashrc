@@ -1,8 +1,9 @@
 # To do list
 --------------------------------------------------------------------------------------------------
-- [ ] \(Optional) Make the screen output bilingual 🇩🇪 🇺🇸
+- [ ] \(Optional) adding a convenient rollback functionality (rollback should be invoked by one command)
+- [ ] \(Optional) make the screen output bilingual 🇩🇪 🇺🇸
 - [ ] \(Optional) make more logos in ascii art for other distros and let the system decide wich one has to be shown
-- [ ] \(Optional) Cancel full time job 🏴‍☠️
+- [ ] \(Optional) cancel full time job 🏴‍☠️
 - [ ] \(Optional) ❓
 - [ ] \(Optional) become rich 💎🍾
 - [ ] \(Optional) make more stuff
