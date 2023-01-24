@@ -33,11 +33,12 @@ In principle, the contents of these files could also be written directly to the 
 <br>These files can be found in the `~/shellcfg/` directory.
 
 ## Aliases and functions
-There are a few functions and aliases as well as color definitions in the corresponding files. To take full advantage, be sure to check out these files.<br>However, be aware that things can get messed up very quickly if the files are modified in the wrong way (see section [Automated Backup](/README.md#automated-backup)).
+There are a few functions and aliases as well as color definitions in the corresponding files. To take full advantage, be sure to check out these files.
 + [~/shellcfg/.alias](/shellcfg/.alias)
 + [~/shellcfg/.colors](/shellcfg/.colors)
 + [~/shellcfg/.functions](/shellcfg/.functions)
 
+However, be aware that things can get messed up very quickly if the files are modified in the wrong way (see section [Automated Backup](/README.md#automated-backup)).
 #### Aliases in `/shellcfg/.alias`
 Way to much to mention all here. Most of them are explained in the file, but currently mostly in German. (see [todo list](/todo.md))
 
