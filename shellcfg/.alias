@@ -1,22 +1,18 @@
 # ALIASES
 #
 # Mit Aliases können Befehle bzw. Befehlsketten mit eigenen Namen bzw. Kürzeln belegt werden.
-#
+# more under https://www.gnu.org/software/bash/manual/html_node/Aliases.html
 #----------------------------------------------------------------------------------------------------
 # UMOUNT VS. UNMOUNT
 # Deutsche Fehlermeldung, wenn umount nicht richtig verwendet wird.
-if [ -f /shellcfg/.colors ] ; then
-  alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umount${NC} - ohne ${RED}n${NC} nach dem ersten ${RED}u${NC}."' ;
-else
-  alias unmount='echo -e "Syntaxfehler: der Befehl lautet umount - ohne n nach dem ersten u."';
-fi
+#
+alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umount${NC} - ohne ${RED}n${NC} nach dem ersten ${RED}u${NC}."'
+# alias unmount='echo -e "Syntaxfehler: der Befehl lautet umount - ohne n nach dem ersten u."'
 #
 # English error msg, when using umount incorrectly
-# if [ -f /shellcfg/.colors ] ; then
-# alias unmount='echo -e "${RED}Syntax Error${NC}: Please use ${GREEN}umount${NC} - without ${RED}n${NC} after the first ${RED}u${NC}."' ;
-# else
-# alias unmount='echo -e "Syntax Error: Please use umount (without n after the first u)"';
-# fi
+# alias unmount='echo -e "${RED}Syntax Error${NC}: Please use ${GREEN}umount${NC} - without ${RED}n${NC} after the first ${RED}u${NC}."'
+# alias unmount='echo -e "Syntax Error: Please use umount - without n after the first u"'
+#
 #----------------------------------------------------------------------------------------------------
 # ls 
 alias la='ls -Al'											# zeige versteckte Dateien in einer Liste
