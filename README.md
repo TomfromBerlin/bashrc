@@ -52,10 +52,6 @@ Way to much to mention all here. Most of them are explained in the file, but cur
 The `~/shellcfg/what_shell` file currently is actually nonsense because other shells have different file names and the output could have been a simple query (like "$SHELL") or just writing "BASH" since it will always be BASH with a .bashrc, you know. Furthermore the version query does only work in BASH this way. However, it doesn't bother me either, so I left it there. This is only an issue if you do not have a file named .logo in your home directory and/or *lolcat* is not installed.
 If I can spare time I would make it suitable for other shells. In this case the file would only have to be renamed and then the query could become useful. Until then, it's just a gimmick, more or less useless.
 
-## Modifying
-If you want to modify the .bashrc and its associated files for other shells, feel free to do so. Just fork this repo and send me some love when you do so.
-Some comments within these files as well as some outputs appear to be in German. You can translate it by yourself or live with that.
-
 ## Changing the logo
 By default there is a file named .logo containing a raspberry ascii art. Who knows why...<br>
 If you want to see another logo when you start an interactive shell you just have to create an ascii art and save it as ~/.logo. As an alternative you can just delete or rename ~/.logo and you will get an animated intro. The result will look like this:
@@ -73,7 +69,7 @@ There are programs wich will be used and may not be present by default in your i
 
 You can use `apt install package` instead of `apt-get install package`. Depending on your distro, one or the other will offer more options. For the installation, however, it is initially unimportant.
 
-|🌟 Hint 🌟|Instead of using command line tools you can use a package manager like *Synaptic* (`apt-get install synaptic`) or (if you insist to work in a shell) *Aptitude* `apt-get install aptitude`. It's more convenient to use a package manager.<br>If you use Synaptic, I recommend installing xapian-tools and xapian-index as well, including their dependencies of course. This gives Synaptic a search bar in the main window that is always visible and prevents a new window from opening each time you do a search. A reboot is necessary after installing these two packages for the search bar to appear in Synaptic.
+|🌟 Hint 🌟|Instead of using command line tools you can use a package manager like *Synaptic* (`apt-get install synaptic`) or (if you insist to work in a shell) *Aptitude* `apt-get install aptitude`. It's more convenient to use a package manager.<br>If you use Synaptic, I recommend installing xapian-tools and xapian-index as well, including their dependencies of course. This gives Synaptic a search bar in the main window that is always visible and prevents from opening a dialog window each time you want to do a search. After installing these two packages, a reboot will likely be required for the search bar to appear in Synaptic.
 |:-:|:-|
 
 ## Configure your prompt conveniently
@@ -91,5 +87,9 @@ But there are some awesome guys around that will help you.<br>One of them is [Sc
 As you can see it is more readable. The result can be seen in the pics above.
 
 In case you want to have more colors invoke `allcolors` in a terminal. This will show you a lot of color codes and how they will look like. You can then add the desired color codes to the ~/shellcfg/.colors file and use them accordingly to format the prompt. Just try it.
+
+## Modifying
+If you want to modify the .bashrc and its associated files for other shells, feel free to do so. Just fork this repo and send me some love when you do so.
+Some comments within these files as well as some outputs appear to be in German. You can translate it by yourself or live with that.
 
 And now have fun!
