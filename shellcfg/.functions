@@ -30,7 +30,7 @@ fi
 #----------------------------------------------------------------------------------------------------
 #
 # Start less (command)
-# colorized output, comment in if "most" or ~/.colors isn't present
+# colorized output, comment in if the file ~/shellcfg/.colors isn't present
 #man() {
     #LESS_TERMCAP_md=$'\e[01;31m' \
     #LESS_TERMCAP_me=$'\e[0m' \
@@ -49,7 +49,7 @@ fi
 #----------------------------------------------------------------------------------------------------
 #
 #----------------------------------------------------------------------------------------------------
-# Eine Datei finden (Benutzung: ff datei)
+# Find file (Usage: ff <filename>)
 function ff() { find . -type f -iname '*'$*'*' -ls; }
 #----------------------------------------------------------------------------------------------------
 # "extract <filename>" extracts all formats
@@ -112,11 +112,11 @@ function allcolors() {
 for x in 0 1 4 5 7 8; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""; 
 }
 #
-# Another solution is this: 'msgcat --color=test', but you need to install 'gettext' (with root privileges): apt install gettext
+# Another solution is this: 'msgcat --color=test', but you need to install 'gettext': sudo apt install gettext
 #
 #----------------------------------------------------------------------------------------------------
 #
-# wtfis: Show what a given command really is. It is a combination of "type", "file"
+# wtfis: Shows what a given command really is. It is a combination of "type", "file"
 # and "ls". Unlike "which", it does not only take $PATH into account. This
 # means it works for aliases and hashes, too. (The name "whatis" was taken,
 # and I did not want to overwrite "which", hence "wtfis".)
