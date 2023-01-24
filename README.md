@@ -1,4 +1,4 @@
-# bashrc
+# The .bashrc-file
 --------------------------------------------------------------------------------------------------------------------------
 First issue of my .bashrc with its associates files. It produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. github then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
 <br></br>
@@ -72,7 +72,7 @@ There are programs wich will be used and may not be present by default in your i
 
 You can use `apt install package` instead of `apt-get install package`. Depending on your distro, one or the other will offer more options. For the installation, however, it is initially unimportant.
 
-|🌟 Hint 🌟|Instead of using command line tools you can use a package manager like *Synaptic* (`apt-get install synaptic`) or (if you insist to work in a shell) *Aptitude* `apt-get install aptitude`. It's more convenient to use a package manager.<br>If you use Synaptic, I recommend installing xapian-tools and xapian-index as well, including their dependencies of course. This gives Synaptic a search bar in the main window that is always visible and prevents a new window from opening each time you do a search.|
+|🌟 Hint 🌟|Instead of using command line tools you can use a package manager like *Synaptic* (`apt-get install synaptic`) or (if you insist to work in a shell) *Aptitude* `apt-get install aptitude`. It's more convenient to use a package manager.<br>If you use Synaptic, I recommend installing xapian-tools and xapian-index as well, including their dependencies of course. This gives Synaptic a search bar in the main window that is always visible and prevents a new window from opening each time you do a search. A reboot is necessary after installing these two packages for the search bar to appear in Synaptic.
 |:-:|:-|
 
 ## Configure your prompt conveniently
