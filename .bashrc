@@ -117,7 +117,7 @@ if [ -x /usr/bin/dircolors ]; then
     if [ -f ~/shellcfg/.what_shell ]; then
     . ~/shellcfg/.what_shell
     fi
-# If these files do not live in ~/shellcfg/, you'll have a - more or less default - command prompt and perhaps that's about it - almost...
+# If these files do not live in ~/shellcfg/ you'll have a - more or less - default command prompt and perhaps that's about it - almost...
 # END COLORS, FUNCTIONS, & ALIASES
 fi
 #
@@ -144,7 +144,7 @@ fi
 #----------------------------------------------------------------------------------------------------
 # It's the directories on the $PATH that show us the way
 PATH=$PATH				# This will read when an interactive shell will be started
-export PATH=$PATH:/usr/games/		# put this line in your /etc/environment to make the extended path globally available, separate entries with ":"
+export PATH=$PATH:/usr/games/		# separate entries with ":"
 #----------------------------------------------------------------------------------------------------
 #
 ########################################################################
