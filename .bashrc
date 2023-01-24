@@ -161,17 +161,19 @@ set -o nounset
 # anschalten
 shopt -s autocd         # if only a directory name is entered, the directory is automatically changed
 #shopt -s cdable_vars   # Set path variable, e.g. export ne="/etc/network/"
-#shopt -s checkhash
+#shopt -s checkhash	# If this is set, Bash checks that a command found in the hash table exists before trying to execute it. If a hashed command no longer exists, a normal path search is performed.
 shopt -s checkjobs      # before exiting an interactive shell, all running and stopped jobs are checked
-shopt -s no_empty_cmd_completion # Bash will not attempt to search the PATH for possible completions when completion is attempted on an empty line
+shopt -s no_empty_cmd_completion # If Readline is being used Bash will not attempt to search the PATH for possible completions when completion is attempted on an empty line.
 shopt -s cmdhist        # multi-line commands are saved in the same history entry - simplifies later editing
 shopt -s lithist        # only in connection with "shopt -s cmdhist"; multiline entries are saved with embedded newlines instead of semicolons
 shopt -s histappend     # Command history is appended to the existing one and is not overwritten.
 shopt -s histreedit
 shopt -s histverify
 shopt -s nocaseglob     # Bash matches filenames in a case-insensitive fashion when performing filename expansion
+shopt -s dotglob	# If set, Bash includes filenames beginning with a ‘.’ in the results of filename expansion. The filenames ‘.’ and ‘..’ must always be matched explicitly, even if dotglob is set.
 #shopt -s extglob       # usefull for programmable completion
-shopt -u cdspell        # if set, cdspell corrects minor typos in connection with the "cd" command
+shopt -s cdspell        # if set, cdspell corrects minor typos in connection with the "cd" command
+shopt -s dirspell	# If set, Bash attempts spelling correction on directory names during word completion if the directory name initially supplied does not exist.
 #----------------------------------------------------------------------------------------------------
 # abschalten
 shopt -u mailwarn
