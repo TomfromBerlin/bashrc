@@ -39,7 +39,7 @@ if [ -f ~/shellcfg/backup/bashrc.backup ]; then
 fi
 #
 if [ -f ~/shellcfg/backup/alias.backup ]; then
-	cp -f -b ~/shellcfg/.alias ~/shellcfg/bash_backup/alias.backup
+	cp -f -b ~/shellcfg/.alias ~/shellcfg/backup/alias.backup
     else
 	cp -u ~/shellcfg/.alias ~/shellcfg/backup/alias.backup
 fi
