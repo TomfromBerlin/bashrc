@@ -29,7 +29,7 @@ With this .bashrc every time you start a terminal it will check if there is a ba
 
 ## Content
 This .bashrc consists of several files. On the one hand the actual .bashrc and on the other hand a few files that are assigned to certain settings (mentioned above).
-In principle, the contents of these files could also be written directly to the bashrc, but it is a bit clearer this way.
+In principle, the contents of these files could also be written directly to the bashrc, but it is a bit cleaner this way.
 <br>These files can be found in the `~/shellcfg/` directory.
 
 ## Aliases and functions
@@ -46,24 +46,35 @@ Way to much to mention all here. Most of them are explained in the file, but cur
 |Name|Usage|Description|
 |-|-|-|
 | _*allcolors*_ | allcolors | It will show you almost all color codes that can be used when prettifying your prompt. <br> Before you fiddle around with color codes just have a look at the file [~/shellcfg/.colors](/shellcfg/.colors). There is a chance your desired color has already a human readable equivalent.|
-| _*wtfis*_ | wtfis&nbsp;'arg' | Like `which` but exposes much more info. <br>'arg' has to be the name of a program that is installed on your system, e.g. `wtfis man`. <br> ❗**Be patient!** This function needs some time to parse all the information.❗|
+| _*wtfis*_ | wtfis&nbsp;&lt;arg&gt; | Like `which` but exposes much more info. <br>&lt;arg&gt; has to be the name of a program that is installed on your system, e.g. `wtfis man`. <br> ❗**Be patient!** This function needs some time to parse all the information.❗|
 
 ## .what_shell
-The `~/shellcfg/what_shell` file currently is actually nonsense because other shells have different file names and the output could have been a simple query (like "$SHELL") or just writing "BASH" since it will always be BASH with a .bashrc, you know. Furthermore the version query does only work in BASH this way. However, it doesn't bother me either, so I left it there. This is only an issue if you do not have a file named .logo in your home directory and/or *lolcat* is not installed.
-If I can spare time I would make it suitable for other shells. In this case the file would only have to be renamed and then the query could become useful. Until then, it's just a gimmick, more or less useless.
+The `~/shellcfg/what_shell` file currently is actually nonsense because other shells have different file names and the output could have been a simple query. As usual in Linux, there is more than one way to achieve a goal. To check which shell is being used, the following commands can be used:
+
++ `$SHELL` - the easiest way and the most commonly used, and displays the default shell for the system (or user), which is usually (but not necessarily) the shell actually being used at any given time.
++ `ps -cp "$$" -o command=""` - shows the actual shell currently in use, but that wouldn't always work everywhere, e.g. in tenex c shell (tcsh) it will not.
+
+But the standard output for `$SHELL` is ugly: /bin/bash. `ps -cp "$$" -o command=""` isn't much better either: bash<br>Yes it's functional and yes it's ugly. Because of this, I wrote a few lines to send the output to a variable and change the display accordingly. That's why the terminal says "BASH" and not "/bin/bash", although the query is made using the "$SHELL" command. The idea behind it was to make the whole thing accessible to other shells as well and to prevent, if possible, that - apart from renaming the ~/.bashrc file - any user-side changes to the files are necessary for it to work.
+
+Furthermore the version query does only work in BASH this way. In order to be able to use this "feature" in other shells as well, the corresponding query would have to be adapted depending on the shell used. However, this should then also be done without the user having to do anything. But to be honest, I have my slightest doubts as to whether this goal can ever be achieved.
+
+For now, I don't recommend using these files without customizations in shells other than BASH, so this should only be a problem if a file called `~/.logo` doesn't exist in your home directory and/or `lolcat` hasn't been installed. See also the next section [Changing the logo](/README.md#changing-the-logo).<br>
+If possible I will try to make it suitable for other shells. In this case the file `~/.bashrc` would only have to be renamed and then the query could become useful. Until then, it's just a gimmick, more or less useless.
 
 ## Changing the logo
-By default there is a file named .logo containing a raspberry ascii art. Who knows why...<br>
-If you want to see another logo when you start an interactive shell you just have to create an ascii art and save it as ~/.logo. As an alternative you can just delete or rename ~/.logo and you will get an animated intro. The result will look like this:
+By default, the downloaded zip file includes a file named ".logo" that contains a raspberry ASCII graphic. Who knows why...<br>
+If you want to see another logo when you start an interactive shell you just have to create an ascii art and save it as `~/.logo`. Alternatively, you can simply delete or rename this file and get an animated intro. The result will look like this:
 ![screenshot of the terminal output with intro](terminal_intro.jpg)
 
-The output of RAM (command `free -h`) and the interface table (command `netstat -i`) will be shown according to your system language settings. If the interface table is not shown you need to install the package `net-tools` (see section [Optional programs](/README.md#optional-programs)). This is avaible at least in Debian and Ubuntu based distros. ARCH Linux, e.g., doesn't have that unfortunately and it will throw an 'command-not-found' msg. In this case just comment out line 247 in the .bashrc
+The output of RAM (command `free -h`) and the interface table (command `netstat -i`) will be shown according to your system language settings. If the interface table is not shown you need to install the package `net-tools` (see section [Optional programs](/README.md#optional-programs)). This is avaible at least in Debian and Ubuntu based distros. The package may not be available by default in other distributions. In this case, a "command not found" message is issued. If this applies to you, just comment out line 247 in `~/.bashrc`.
 
 ## Optional programs
-There are programs wich will be used and may not be present by default in your installation. I mentioned some of them already above. Below is a list of all progs this .bashrc is using:
-+ `netstat` - part of net-tools package (`apt-get install net-tools` The package may not be available in other distros, e.g. ARCH Linux.)
-+ `lolcat` - It is like *cat* but colorized. (`apt-get install lolcat`, install all dependencies ).
+There are programs wich will be used and may not be present by default in your installation. I mentioned some of them already above.<br>Below is a list of these programs that are more or less necessary for full functionality:
++ `netstat` - part of net-tools package (`apt-get install net-tools`)
++ `lolcat` - It is like *cat* but colorized. (`apt-get install lolcat`).
 + `most` - this will be the new less. (`apt-get install most`)
+
+One or the other package may not be available in distros other than Debian- or Ubuntu-based.
 
 *Of course you need root privileges to install packages. Usually this is obtained by using 'sudo' in front of the program to be executed (in our case 'apt-get') or with the command 'sudo -i'. The 'sudo -i' command logs you in as root and you remain in that status in that terminal window until the 'exit' command is entered or the window is closed.*
 
@@ -73,20 +84,20 @@ You can use `apt install package` instead of `apt-get install package`. Dependin
 |:-:|:-|
 
 ## Configure your prompt conveniently
-This .bashrc makes the prompt configuration a little bit easier. Nonetheless it is often a pain in the a...<br>
-A colorized prompt with some usefull informations will often look like this in the .bashrc file:
+This `.bashrc` makes the prompt configuration a little bit easier. Nonetheless it is often a pain in the a...<br>
+A colored prompt with some useful information often looks like this in the .bashrc file:
 
 `PS1='\[\e[0;38;5;42m\]\D{}\n\[\e[0;1;38;5;40m\]\u\[\e[0;38;5;226m\]@\[\e[0;38;5;35m\]\H\[\e[0;38;5;41m\]/\[\e[0;38;5;77m\]\W\[\e[0;38;5;77m\]/\[\e[0;38;5;27m\]$\[\e[0;5m\]_\[\e[0m\]'`
 
-That is a bunch of cryptic strings. There are escape codes and color codes and you almost have to study rocket science to read and understand it fluently. My .bashrc contains a little explanation of escape codes (the most important only) in German und English. So you don't have to crawl the web to get startet.
+That's a bunch of cryptic strings. There are escape codes and color codes and it almost takes rocket science to read and understand fluently. (my .bashrc contains a small explanation of escape codes, but only the most important ones, in German and English. So you don't have to search the web to get started.)
 
-But there are some awesome guys around that will help you.<br>One of them is [Scriptim](../../../../../Scriptim/) and he made a phantastic tool: the [Bash Prompt Generator](../../../../../Scriptim/bash-prompt-generator). You can use this tool to preformat your prompt and afterwards you can change colors into a human readable format. How this works you can learn while studying the file `/bashcfg/.colors`. The code for the prompt in my .bashrc looks like this:
+But if you don't hate your life then you won't turn down help and there are some really badass guys out there who will use their skills to make your life easier.<br>One of them is [Scriptim](../../../../../Scriptim/) and he made a phantastic tool: the [Bash Prompt Generator](../../../../../Scriptim/bash-prompt-generator). You can use this tool to preformat your prompt and afterwards you can change colors into a human readable format. How this works you can learn while studying the file `/bashcfg/.colors`. The code for the prompt in my .bashrc looks like this:
 
 `PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$\[\e[0;5m\]_\[\e[0m\]`
 
 As you can see it is more readable. The result can be seen in the pics above.
 
-In case you want to have more colors invoke `allcolors` in a terminal. This will show you a lot of color codes and how they will look like. You can then add the desired color codes to the ~/shellcfg/.colors file and use them accordingly to format the prompt. Just try it.
+In case you want to have more colors invoke `allcolors` in a terminal. This will show you a lot of color codes and how they will look like. You can then add the desired color codes to the ~/shellcfg/.colors file using the following format: `<unique color name>=<color code>` and you're good to go. In order to use that human readable format, colors must be indicated in the prompt configuration as follows: `\[${COLORNAME}\]`<br>It still remains a small challenge.
 
 ## Modifying
 If you want to modify the .bashrc and its associated files for other shells, feel free to do so. Just fork this repo and send me some love when you do so.
