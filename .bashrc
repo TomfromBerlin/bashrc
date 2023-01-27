@@ -24,42 +24,40 @@
 [ -z "$PS1" ] && return
 #
 #----------------------------------------------------------------------------------------------------
-# Backup the current .bashrc and .bashrc_*-files without overwriting the last backup. You'll never know...
-# Watch for the number of backups in this folders.
+# Backup the current .bashrc and .-files without overwriting the last backup. You'll never know...
 # At first we look for the backup folder. If not exist create one
-# If you're running another shell, e.g. zsh, it's mandatory to rename (directory and) file names accordingly
-if [ -d ~/shellcfg/backup ]; then :
-	else mkdir ~/shellcfg/backup
+if [ -d ~/.shellcfg/backup ]; then :
+	else mkdir ~/.shellcfg/backup
 fi
 #
-if [ -f ~/shellcfg/backup/bashrc.backup ]; then
-	cp -f -b ~/.bashrc ~/shellcfg/backup/bashrc.backup
+if [ -f ~/.shellcfg/backup/bashrc.backup ]; then
+	cp -f -b ~/.bashrc ~/.shellcfg/backup/bashrc.backup
     else
-	cp -u ~/.bashrc ~/shellcfg/backup/bashrc.backup
+	cp -u ~/.bashrc ~/.shellcfg/backup/bashrc.backup
 fi
 #
-if [ -f ~/shellcfg/backup/alias.backup ]; then
-	cp -f -b ~/shellcfg/.alias ~/shellcfg/backup/alias.backup
+if [ -f ~/.shellcfg/backup/alias.backup ]; then
+	cp -f -b ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup
     else
-	cp -u ~/shellcfg/.alias ~/shellcfg/backup/alias.backup
+	cp -u ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup
 fi
 #
-if [ -f ~/shellcfg/backup/functions.backup ]; then
-	cp -f -b ~/shellcfg/.functions ~/shellcfg/backup/functions.backup
+if [ -f ~/.shellcfg/backup/functions.backup ]; then
+	cp -f -b ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup
     else
-	cp -u ~/shellcfg/.functions ~/shellcfg/backup/functions.backup
+	cp -u ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup
 fi
 #
-if [ -f ~/shellcfg/backup/colors.backup ]; then
-	cp -f -b ~/shellcfg/.colors ~/shellcfg/backup/colors.backup
+if [ -f ~/.shellcfg/backup/colors.backup ]; then
+	cp -f -b ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup
     else
-	cp -u ~/shellcfg/.colors ~/shellcfg/backup/colors.backup
+	cp -u ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup
 fi
 #
-if [ -f ~/shellcfg/backup/what_shell.backup ]; then
-	cp -f -b ~/shellcfg/.what_shell ~/shellcfg/backup/what_shell.backup
+if [ -f ~/.shellcfg/backup/what_shell.backup ]; then
+	cp -f -b ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup
     else
-	cp -u ~/shellcfg/.what_shell ~/shellcfg/backup/what_shell.backup
+	cp -u ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup
 fi
 cd ~
 #----------------------------------------------------------------------------------------------------
@@ -95,29 +93,28 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 #
 # ALIASES
-# if aliases can be found in ~/shellcfg/.aliases use it.
-    if [ -f ~/shellcfg/.alias ]; then
-    . ~/shellcfg/.alias
+# if aliases can be found in ~/.shellcfg/aliases use it.
+    if [ -f ~/.shellcfg/.alias ]; then
+    . ~/.shellcfg/alias
     fi
 #
 # FUNCTIONS
-# if functions can be found in ~/shellcfg/.functions use it.
-    if [ -f ~/shellcfg/.functions ]; then
-    . ~/shellcfg/.functions
+# if functions can be found in ~/.shellcfg/functions use it.
+    if [ -f ~/.shellcfg/functions ]; then
+    . ~/.shellcfg/functions
     fi
 #
 # Colors
-# if colors can be found in ~/shellcfg/.colors use it.
-    if [ -f ~/shellcfg/.colors ]; then
-    . ~/shellcfg/.colors
+# if colors can be found in ~/.shellcfg/colors use it.
+    if [ -f ~/.shellcfg/colors ]; then
+    . ~/.shellcfg/colors
     fi
 #
 # Shell
-# If ~/shellcfg/.what_shell can be found use it.
-    if [ -f ~/shellcfg/.what_shell ]; then
-    . ~/shellcfg/.what_shell
+# If ~/.shellcfg/what_shell can be found use it.
+    if [ -f ~/.shellcfg/..what_shell ]; then
+    . ~/.shellcfg/what_shell
     fi
-# If these files do not live in ~/shellcfg/ you'll have a - more or less - default command prompt and perhaps that's about it - almost...
 # END COLORS, FUNCTIONS, & ALIASES
 fi
 #
