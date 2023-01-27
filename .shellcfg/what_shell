@@ -1,8 +1,8 @@
 # What Shell do we have?
 MYSHELL=$SHELL
-if MYSHELL=/bin/bash ; then MYSHELL=BASH;
+    if MYSHELL=/bin/bash ; then MYSHELL=BASH;
     else 
-	    if MYSHELL=/bin/zsh ; then MYSHELL=Z-Shell;
+	if MYSHELL=/bin/zsh ; then MYSHELL=Z-Shell;
     else 
 	if MYSHELL=/bin/ksh ; then MYSHELL=Korn-Shell;
     else
