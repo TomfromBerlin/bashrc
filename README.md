@@ -148,12 +148,12 @@ I'll break it down into individual pieces for better understanding:
 |`"`|The second and last quotation mark defines the end of the content of the variable|
 | |Without the tailing spaces the output looks very squeezed.|
 
-Which colors already have been "transformed" into human readable format you can learn while studying the file[~/.shellcfg/colors](/.shellcfg/colors).
+Which colors already have been "transformed" into human readable format you can learn while studying the file [~/.shellcfg/colors](/.shellcfg/colors).
 In case you want to have more colors invoke `allcolors` in a terminal. This will show you a lot of color codes and how they will look like. You can then add the desired color codes into the [~/.shellcfg/colors](/.shellcfg/colors) file using the following format: `<unique color name>=<color code>` and you're good to go. In order to use that human readable format, colors must be indicated in the prompt configuration as follows: `\[${COLORNAME}\]`<br>It still remains a small challenge.
 
 ## Modifying
 
-If you want to modify the .bashrc and its associated files for other shells, feel free to do so. Just fork this repo and send me some love when you do so.
-Some comments within these files as well as some outputs appear to be in German. You can translate it by yourself or live with that.
+If you want to modify the [.bashrc](/.bashrc) and its associated files for other shells, feel free to do so. Just fork this repo and be nice to others when you do so.
+Some comments within these files as well as some outputs appear to be in German. Maybe I will implement some code to have the output according to the system language. For now, you can translate it by yourself if you want or just live with the Sauerkraut. It really could be worse.
 
 And now have fun!
