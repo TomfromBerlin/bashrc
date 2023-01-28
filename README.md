@@ -126,7 +126,8 @@ As you can see it is more readable. The result can be seen in the pics above.
 I'll break it down into individual pieces for better understanding:
 |Code|Description|
 |:-:|-|
-|`PS1=`|path var, you can define more than one path var, e.g. one for the default user and one for root|
+|`PS1`|path var, you can define more than one path var, e.g. one for the default user and one for root|
+|`=`|equal sign, splits the name of the variable from the content|
 |`"`|The first quotation mark defines the beginning of the content of the variable|
 |`\n`|line break / new line|
 |`\[${LIGHTGRAY}\]`|color indication|
