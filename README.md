@@ -178,32 +178,6 @@ Despite the human-readable format, configuring the prompt remains a small challe
 Which colors already have been "transformed" into human-readable format you can learn while studying the file [~/.shellcfg/colors](/.shellcfg/colors).
 In case you want to have more colors invoke `allcolors` in a terminal. This will show you a lot of color codes and how they will look like. You can then add the desired color codes to the [~/.shellcfg/colors](/.shellcfg/colors) file using the following format: `<unique color name>=<'color code'>` (the quotation marks are required) and you're good to go. In order to use that human-readable format, colors must be indicated in the prompt configuration as follows: `\[${COLORNAME}\]`. The specified color remains valid until another color is specified or reset with `\[${NC}\]`. Theoretically, up to [256 colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting) can be used, but I recommend to limit yourself to the colors that `allcolors` outputs, since these are surely supported in the respective terminal.
 
-Save the following code in a script file (e.g. 256-colors.sh) and make it executable. Then call it from the command line to see if your terminal can do the job.
-`
-    #!/bin/bash
-
-    # This program is free software. It comes without any warranty, to
-    # the extent permitted by applicable law. You can redistribute it
-    # and/or modify it under the terms of the Do What The Fuck You Want
-    # To Public License, Version 2, as published by Sam Hocevar. See
-    # http://sam.zoy.org/wtfpl/COPYING for more details.
-     
-    for fgbg in 38 48 ; do # Foreground / Background
-        for color in {0..255} ; do # Colors
-            # Display the color
-            printf "\e[${fgbg};5;%sm  %3s  \e[0m" $color $color
-            # Display 6 colors per lines
-            if [ $((($color + 1) % 6)) == 4 ] ; then
-                echo # New line
-            fi
-        done
-        echo # New line
-    done
-     
-    exit 0
-
-`
-
 ## Modifying
 
 If you want to modify or adapt the code for other shells, feel free to do so. Only the corresponding references and credits must be preserved. Don't adorn yourself with borrowed plumes, as you didn't come up with this whole soup on your own.
