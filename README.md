@@ -1,6 +1,8 @@
 # The .bashrc-file
 
 --------------------------------------------------------------------------------------------------------------------------
+Phew. This will be bigger than originally thought. Actually I only wanted to backup the configuration of my bash and now this...
+
 First issue of my [.bashrc](/.bashrc) and its associated files. It produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. GitHub then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
 
 Some comments in these files as well as some screen outputs are in German. Maybe someday I will implement some code to have the output according to the system language or translate everything into English. For now, you can translate it yourself if you want, or just live with the sauerkraut. It really could be worse.
@@ -61,7 +63,7 @@ Way to much to mention all here. Most of them are explained in the file, but cur
 |Name|Usage|Description|
 |-|-|-|
 |  **__add_command_replace_alias** | _will be invoked automatically_ | This function checks if certain applications are installed and defines aliases in case of. This will not remove the application. But if you call it the usual way the more sophisticated version will be used, e.g. 'htop' instead of 'top'.<br> Source: _<https://github.com/slomkowski/bash-full-of-colors/blob/master/bash_aliases.sh>_|
-| **allcolors** | allcolors | It will show you almost all color codes that can be used when prettifying your prompt. <br> Before you fiddle around with color codes just have a look at the file [~/shellcfg/.colors](/shellcfg/.colors). There is a chance your desired color has already a human readable equivalent. Well, that's actually only half the truth, because this only outputs 16 foreground colors plus 16 background colors in the possible combinations. Additionally there are blinking versions if the terminal supports this attribute. The colors themselves are usually available in a dark and a light version. This should be sufficient in most cases. But if, for example, fifty shades of gray are needed (pun intended), I have something up my sleeve. Type `truecolors` on the command line. If the terminal has the capability, you should now see the color codes for 256 colors. I know, true color would be 16 million colors. The name of the function is rather a reminiscence of the song by Cindy Lauper.|
+| **allcolors** | allcolors | It will show you almost all color codes that can be used when prettifying your prompt. <br> Before you fiddle around with color codes just have a look at the file [~/shellcfg/.colors](/shellcfg/.colors). There is a chance your desired color has already a human readable equivalent.[^1]|
 | **command&nbsp;not&nbsp;found** | _will be invoked automatically_ | When command-not-found is installed, use it. This is available in most distributions, but not necessarily installed. It should actually be called in `/etc/bash.bashrc` for the function to be available globally, but it doesn't hurt if it lives there either. Under Arch Linux, line 10 must also be commented out (#source /usr/share/doc/pkgfile/command-not-found.bash) and should be processed before the function will be declared, otherwise the whole thing won't work in this distribution.|
 | **extract** | extract&nbsp;&lt;filename&gt; | extracts all formats of archive files (credits: urukrama, Ubuntuforums.org)
 | **find file** | ff&nbsp;&lt;filename&gt; | The name says it all: It finds files.|
@@ -201,3 +203,5 @@ Save the following code in a script file (e.g. 256-colors.sh) and make it execut
 If you want to modify or adapt the code for other shells, feel free to do so. Only the corresponding references and credits must be preserved. Don't adorn yourself with borrowed plumes, as you didn't come up with this whole soup on your own.
 
 And now have fun!
+
+[^1] Well, that's actually only half the truth, because this only outputs 16 foreground colors plus 16 background colors in the possible combinations. Additionally there are blinking versions if the terminal supports this attribute. The colors themselves are usually available in a dark and a light version. This should be sufficient in most cases. But if, for example, fifty shades of gray are needed (pun intended), I have something up my sleeve. Type `truecolors` on the command line. If the terminal has the capability, you should now see the color codes for 256 colors. I know, true color would be 16 million colors. The name of the function is rather a reminiscence of the song by Cindy Lauper.
