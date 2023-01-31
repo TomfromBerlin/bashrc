@@ -27,28 +27,27 @@ alias lm='ls -al |more --color=auto'						# ls mit more (scrollbar)
 alias lr='ls -lR |more --color=auto'						# Rekursive Liste mit more (scrollbar)
 #
 #----------------------------------------------------------------------------------------------------
-# MISC & STUFF
-#
 # File management 
 alias del='mv --target-directory=~/.Trash/'
 alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
 #----------------------------------------------------------------------------------------------------
+# MISC & STUFF
 # alias tree='tree -Csu|more'								# Alternative zum rekursiven ls; Für Tree noch Befelhl "sudo apt-get install tree"
 alias ping='ping -c 10'
 #alias beep='echo -en "\x07"'
 alias cls='clear'											# leert das Terminalfenster
 alias reload='source ~/.bashrc'								# leert das Terminalfenster und lädt .bashrc neu
 alias pg='ps aux | grep'									# Prozess greppen -> pg name
-alias h='history'											# BASH Befehlshistory
-alias which='type -a'										# Dateityp?
-alias du='du -kh --max-depth=1'								# lesbarer Output
+alias h='history'											# BASH command history
+alias which='type -a'										# usage 'wich name' (consider using 'wtfis' instead, since it exposes more info about the file)
+alias du='du -kh --max-depth=1'								# readable output
 alias df='df -kTh'											#    ^       ^
 alias ps='ps auxf'
-alias home='cd ~'											# wechselt in das Home-Verzeichnis des aktuellen Benutzers
-alias datum='date "+%A, %d.%B %Y    %T %Z"'
-alias bashedit='geany ~/.bashrc'							# Replace "geany" with editor of you choice, e.g. nano, leafpad or vim
+alias home='cd ~'											# Change to the current users home directory
+alias date='date "+%A, %d.%B %Y    %T %Z"'
+alias bashedit='nano ~/.bashrc'							    # replace "nano" with editor of you choice, e.g. leafpad or vim
 alias agar='sudo apt-get autoremove'						# nicht benötigte Pakete entfernen
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
@@ -75,8 +74,8 @@ alias agi='sudo apt-get install'
 alias agr='sudo apt-get remove'
 alias agu='sudo apt-get update'
 alias agg='sudo apt-get upgrade'
-# Replace "geany" with editor of you choice, e.g. nano, leafpad or vim
-alias sources='sudo geany /etc/apt/sources.list' # YOU SHOULD NOT CONFUSE THE ALIAS named "sources" WITH THE source COMMAND
+# Replace "nano" with editor of you choice, e.g. leafpad or vim
+alias sources='sudo nano /etc/apt/sources.list' # YOU SHOULD NOT CONFUSE THE ALIAS NAMED "sources" WITH THE source COMMAND
 #----------------------------------------------------------------------------------------------------
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert << replace the command 'sleep 10' with a desired one

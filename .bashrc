@@ -219,7 +219,7 @@ echo -ne "${RED}\b+${NC}"
 # It must contain ascii art (or be empty) or it will produce garbage.
 if [ -f ~/.logo ]; then
     # Also we look for lolcat, a little funny tool that will output simple (b/w) ascii art
-    # with nice colors. If not installed, run "sudo apt install lolcat".
+    # with nice colors. If not installed, run "sudo apt install lolcat", if you want that.
     if [ -x /usr/games/lolcat ]; then
     lolcat ~/.logo
     fi
@@ -227,10 +227,13 @@ else
 #
 # animated intro (Start)
 # If ~/.logo and/or lolcat can't be found, we have an alternative and more informative output
+# but we need the file ~/.shellcfg/colors to be present.
+if [ -f ~/.shellcfg/colors]; then
+
 #clear
 echo -e " ";
 for i in `seq 1 80` ; do spin; done ;echo "";
-echo -ne "${WHITE}Welcome "`whoami`". ${NC}";
+echo -ne              "${WHITE}Welcome "`whoami`". ${NC}";
 echo -e " ";
 echo -e "${NC}"
 echo -e "${LIGHTGRAY}SHELL:			${LIGHTGREEN}$MYSHELL ${LIGHTCYAN} (Version ${BASH_VERSION%.*})";
@@ -243,14 +246,22 @@ echo -e "${LIGHTGRAY}Architecture:       	${LIGHTGREEN}" `uname -m`;
 echo -e "$NC";
 echo -e "${LIGHTCYAN}RAM:${LIGHTGREEN}";free -h;echo"";
 echo -e "${NC}";
-echo -e "${LIGHTCYAN}";netstat -i;echo "";  # not available in Arch-Linux
+echo -e "${LIGHTCYAN}";netstat -i;echo "";
 echo -e " ";
 echo -e "${NC}";
 # echo -ne "${LIGHTGREEN}";date '+%A, der %d.%m.%Y';
 for i in `seq 1 80` ; do spin; done ;echo "";
-fi
 # animated intro (End)
 echo -e "${NC}";
+
+else
+echo -e " ";
+for i in `seq 1 80` ; do spin; done ;echo -e "Can't find the file '\e[1;34m'~/.shellcfg/colors'\e[0m' but that's not a problem, just a pity."
+for i in `seq 1 80` ; do spin; done ;echo -e "You may have noticed that we have colors nonetheless. Let's go straight to work."
+for i in `seq 1 80` ; do spin; done ;echo -e " "
+echo -e " ";
+fi
+fi
 #----------------------------------------------------------------------------------------------------
 #
 #Clock in terminal (more or less useless since we have time output at the prompt
@@ -298,21 +309,43 @@ fi
 # www.gnu.org/software/bash/manual/html_node/Printing-a-Prompt.html)	# www.gnu.org/software/bash/manual/html_node/Printing-a-Prompt.html)	#
 #################################################################################################################################################
 #
-if [ "$color_prompt"=yes ]; then
-    #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
-    PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"
+if [ -f ~/.shellcfg/colors]; then
+
+    if [ "$color_prompt"=yes ]; then
+        #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
+        PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$\[\e[0;5m\]_\e[0m"
+    else
+        PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"
+    fi
+
+    unset color_prompt force_color_prompt
+
+    # If this is an xterm set the title to user@host:dir
+    case "$TERM" in
+    xterm*|rxvt*)
+    #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+	    PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$\[\e[0;5m\]_\e[0m"
+        ;;
+    *)
+        ;;
+    esac
 else
-    PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"
+    if [ "$color_prompt"=yes ]; then
+        #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
+        PS1="\n\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$\[\e[0;5m\]_\e[0m"
+    else
+        PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"
+    fi
+
+    unset color_prompt force_color_prompt
+
+    # If this is an xterm set the title to user@host:dir
+    case "$TERM" in
+    xterm*|rxvt*)
+    #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+	    PS1=PS1="\n\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$\[\e[0;5m\]_\e[0m"
+        ;;
+    *)
+        ;;
+    esac
 fi
-
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-#	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
-    ;;
-*)
-    ;;
-esac
