@@ -228,7 +228,7 @@ else
 # animated intro (Start)
 # If ~/.logo and/or lolcat can't be found, we have an alternative and more informative output
 # but we need the file ~/.shellcfg/colors to be present.
-if [ -f ~/.shellcfg/colors]; then
+if [ -f ~/.shellcfg/colors ]; then
 
 #clear
 echo -e " ";
@@ -256,9 +256,9 @@ echo -e "${NC}";
 
 else
 echo -e " ";
-for i in `seq 1 80` ; do spin; done ;echo -e "Can't find the file '\e[1;34m'~/.shellcfg/colors'\e[0m' but that's not a problem, just a pity."
-for i in `seq 1 80` ; do spin; done ;echo -e "You may have noticed that we have colors nonetheless. Let's go straight to work."
-for i in `seq 1 80` ; do spin; done ;echo -e " "
+for i in `seq 1 80` ; do spin; done ;echo -e "Can't find the file '\e[1;34m'~/.shellcfg/colors'\e[0m' but that's not a problem, just a pity.";
+for i in `seq 1 80` ; do spin; done ;echo -e "You may have noticed that we have colors nonetheless. Let's go straight to work.";
+for i in `seq 1 80` ; do spin; done ;echo -e " ";
 echo -e " ";
 fi
 fi
@@ -332,7 +332,7 @@ if [ -f ~/.shellcfg/colors]; then
 else
     if [ "$color_prompt"=yes ]; then
         #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
-        PS1="\n\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$\[\e[0;5m\]_\e[0m"
+        PS1="\n\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\e[0m:\$\[\e[0;5m\]_\e[0m"
     else
         PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"
     fi
@@ -343,7 +343,7 @@ else
     case "$TERM" in
     xterm*|rxvt*)
     #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	    PS1="\n\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$\[\e[0;5m\]_\e[0m"
+	    PS1="\n\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\e[0m:\$\[\e[0;5m\]_\e[0m"
         ;;
     *)
         ;;

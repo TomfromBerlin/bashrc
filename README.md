@@ -1,3 +1,9 @@
+# DO NOT USE THIS, SINCE IT IS BUGGY!
+
+I still work on this and there are some serious issues. You have been warned.
+
+--------------------------------------------------------------
+
 # The .bashrc-file
 
 --------------------------------------------------------------------------------------------------------------------------
