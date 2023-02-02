@@ -1,15 +1,9 @@
-# DO NOT USE THIS, SINCE IT IS BUGGY!
-
-I still work on this and there are some serious issues. You have been warned.
-
---------------------------------------------------------------
-
 # The .bashrc-file
 
 --------------------------------------------------------------------------------------------------------------------------
-Phew. This will be bigger than originally thought. Actually I only wanted to backup the configuration of my bash and now this...
+Phew. This gets bigger than I originally thought. Actually I only wanted to backup the configuration of my bash and now this...
 
-First issue of my [.bashrc](/.bashrc) and its associated files. It produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. GitHub then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
+My [.bashrc](/.bashrc) and its associated files. It produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. GitHub then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
 
 Some comments in these files as well as some screen outputs are in German. Maybe someday I will implement some code to have the output according to the system language or translate everything into English. For now, you can translate it yourself if you want, or just live with the sauerkraut. It really could be worse.
 
@@ -77,7 +71,7 @@ Way to much to mention all here. Most of them are explained in the file, but cur
 
 #### what the (s)hell
 
-The idea behind the what_shell-file was to make the whole thing accessible to other shells as well and if possible, to prevent that any user-side changes to the files are necessary for it to work - apart from renaming the [.bashrc](/.bashrc) file. For now, the query should work in the following environments: Bourne Shell (sh),  Bourne-Again Shell (bash), Korn-Shell (ksh) and maybe Z-Shell (zsh). The Debian-Almqist-Shell (dash) is also recognized, although using dash as an interactive shell is not recommended, since there are always shell scripts that are not fully POSIX-compatible and only work if Bash is used instead of dash.
+The idea behind the what_shell-file was to make the whole thing accessible to other shells as well and if possible, to prevent that any user-side changes to the files are necessary for it to work - apart from renaming the [.bashrc](/.bashrc) file. For now, the query should work in the following environments: Bourne Shell (sh),  Bourne-Again Shell (bash), Korn-Shell (ksh) and maybe Z-Shell (zsh). The Debian-Almqist-Shell (dash), Yet Another Shell (yash), and Process Offloed Shell (posh) are also recognized. When using dash as an interactive shell it is recommended, to check that all scripts that don't have the `#!/bin/bash` directive in their shebang are fully POSIX compliant.
 
 However, there is another tiny problem: Different shells have different filenames and especially different features and functions. Also, the commands may vary depending on which shell is used and whether that is also the default shell or possibly called from another shell, which can lead to different results. This may require different queries. Therefore, the file [~/.shellcfg/what_shell](/.shellcfg/what_shell) is currently only safe to use in in the Bourne Again Shell (bash) and Bourne Shell (sh) and should not cause any problems here, but may work within Korn-Shell as well, perhaps even within the Z-Shell. But as I said, all the shells mentioned are initially recognized. However, whether the rest will also work is not certain at the moment.
 
@@ -90,11 +84,12 @@ But the standard output for `$SHELL` is ugly: _/bin/bash_
 
 `ps -cp "$$" -o command=""` isn't much better either: _bash_
 
-Yes it's functional and yes it's ugly. Because of this, I wrote a few lines to send the output to a variable $MYSHELL to change the displayed information. That's why the terminal says "Bourne Again Shell (bash)" and not "/bin/bash", although the query is made using the "$SHELL" command.
+Yes it's functional and yes it's ugly. Because of this, I wrote a few lines to change the displayed information. That's why the terminal says i.e. "Bourne Again Shell - Version <version>" and not "/bin/bash".
 
-Furthermore the version query does only work in BASH this way. In order to be able to use this "feature" in other shells as well, the corresponding query would have to be adapted depending on the shell used. However, this should then also be done without the user having to do anything. (This has not yet been implemented.)
+The version query should also work in other shells (sh, bash, ksh, zsh, posh and yash). This does not apply to dash as dash has no information about its version for historical reasons.
 
-But to be honest, I have my slightest doubts as to whether this goal can ever be achieved. For now, I don't recommend using these files without customizations in shells other than BASH. If possible I will try to make it suitable for other shells. In this case the file [~/.bashrc](/.bashrc) would only have to be renamed and then the query could become useful. Until then, it remains just a gimmick, more or less useless.
+| ❗ |I can't stress this enough: If you use these files in shells other than bash, I strongly recommend checking the contents for compatibility.|
+|-|:-|
 
 ## Changing the logo
 
