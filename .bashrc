@@ -93,8 +93,8 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 #
 # ALIASES
-# if aliases can be found in ~/.shellcfg/aliases use it.
-    if [ -f ~/.shellcfg/.alias ]; then
+# if aliases can be found in ~/.shellcfg/alias use it.
+    if [ -f ~/.shellcfg/alias ]; then
     . ~/.shellcfg/alias
     fi
 #
@@ -111,10 +111,8 @@ if [ -x /usr/bin/dircolors ]; then
     fi
 #
 # Shell
-# If ~/.shellcfg/what_shell can be found use it.
-    if [ -f ~/.shellcfg/what_shell ]; then
-    . ~/.shellcfg/what_shell
-    fi
+# if ~/.shellcfg/what_shell can be found use it.
+#    if [ -f ~/.shellcfg/what_shell ]; then . ~/.shellcfg/what_shell; else echo "alien shell" fi
 # END COLORS, FUNCTIONS, & ALIASES
 fi
 #
@@ -170,14 +168,6 @@ shopt -s dirspell	# If set, Bash attempts spelling correction on directory names
 shopt -u mailwarn
 unset MAILCHECK         # no notification of incoming mails
 #----------------------------------------------------------------------------------------------------
-# UMOUNT VS. UNMOUNT
-# Deutsche Fehlermeldung, wenn umount nicht richtig verwendet wird.
-alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umount${NC} (das ${RED}n${NC} nach dem ${RED}u${NC} weglassen)"';
-#
-# English error msg, when using umount incorrectly
-# alias unmount='echo -e "${RED}Syntax Error${NC}: Please use ${GREEN}umount${NC} (without ${RED}n${NC} after ${RED}u${NC})"';
-#
-#----------------------------------------------------------------------------------------------------
 # BASH HISTORY
 # You can bind the up and down arrow keys to search through Bash's history
 bind '"\e[A": history-search-backward'
@@ -212,11 +202,10 @@ echo -ne "${RED}\b+${NC}"
 # At first we are looking for a file named ".logo". It has to live in your home dir.
 # It must contain ascii art (or be empty) or it will produce garbage.
 if [ -f ~/.logo ]; then
-    # Also we look for lolcat, a little funny tool that will output simple (b/w) ascii art
-    # with nice colors. If not installed, run "sudo apt install lolcat", if you want that.
-    if [ -x /usr/games/lolcat ]; then
-    lolcat ~/.logo
-    fi
+    # Also we look for lolcat, that will output simple (b/w) ascii art with nice colors.
+    # If not installed, run "sudo apt install lolcat", if you want that.
+   if [ -x /usr/games/lolcat ]; then
+	/usr/games/lolcat ~/.logo
 else
 #
 # animated intro (Start)
@@ -230,13 +219,16 @@ for i in `seq 1 80` ; do spin; done ;echo "";
 echo -ne              "${WHITE}Welcome "`whoami`". ${NC}";
 echo -e " ";
 echo -e "${NC}"
-echo -e "${LIGHTGRAY}SHELL:			${LIGHTGREEN}$MYSHELL ${LIGHTCYAN} (Version ${BASH_VERSION%.*})";
+if [ -f ~/.shellcfg/what_shell ]; then
+echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. ~/.shellcfg/what_shell ; )
+else :
+fi
 echo -e " ";
-echo -e "${LIGHTGRAY}Host Name:		${LIGHTGREEN}" `uname -n`;
-echo -e "${LIGHTGRAY}OS:		    	${LIGHTGREEN}" `uname -o`;
-echo -e "${LIGHTGRAY}Kernel Release:		${LIGHTGREEN}" `uname -r`;
-echo -e "${LIGHTGRAY}Kernel Version:    	${LIGHTGREEN}" `uname -v`;
-echo -e "${LIGHTGRAY}Architecture:       	${LIGHTGREEN}" `uname -m`;
+echo -e "${WHITE}Host Name:		${LIGHTGREEN}" `uname -n`;
+echo -e "${WHITE}OS:		    	${LIGHTGREEN}" `uname -o`;
+echo -e "${WHITE}Kernel Release:		${LIGHTGREEN}" `uname -r`;
+echo -e "${WHITE}Kernel Version:    	${LIGHTGREEN}" `uname -v`;
+echo -e "${WHITE}Architecture:       	${LIGHTGREEN}" `uname -m`;
 echo -e "$NC";
 echo -e "${LIGHTCYAN}RAM:${LIGHTGREEN}";free -h;echo"";
 echo -e "${NC}";
@@ -247,13 +239,8 @@ echo -e "${NC}";
 for i in `seq 1 80` ; do spin; done ;echo "";
 # animated intro (End)
 echo -e "${NC}";
-
-else
-echo -e " ";
-for i in `seq 1 80` ; do spin; done ;echo -e "Can't find the file ~/.shellcfg/colors but that's not a problem, just a pity.";
-for i in `seq 1 80` ; do spin; done ;echo -e "You may have noticed that we have colors nonetheless. Let's go straight to work.";
-for i in `seq 1 80` ; do spin; done ;echo -e " ";
-echo -e " ";
+else :
+fi
 fi
 fi
 #----------------------------------------------------------------------------------------------------
@@ -318,7 +305,7 @@ if [ -f ~/.shellcfg/colors ]; then
     case "$TERM" in
     xterm*|rxvt*)
     #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	    PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
+	PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
         ;;
     *)
         ;;
@@ -337,8 +324,7 @@ else
     case "$TERM" in
     xterm*|rxvt*)
     #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	    PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
-	    #PS1="\n\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$"
+	PS1="\n\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$"
         ;;
     *)
         ;;
