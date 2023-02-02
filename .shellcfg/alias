@@ -34,7 +34,7 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 #----------------------------------------------------------------------------------------------------
 # MISC & STUFF
-# alias tree='tree -Csu|more'								# Alternative zum rekursiven ls; Für Tree noch Befelhl "sudo apt-get install tree"
+# alias tree='tree -Csu|more'								# Alternative zum rekursiven ls; Für Tree noch Befehl "sudo apt-get install tree"
 alias ping='ping -c 10'
 #alias beep='echo -en "\x07"'
 alias cls='clear'											# leert das Terminalfenster
@@ -75,7 +75,7 @@ alias agr='sudo apt-get remove'
 alias agu='sudo apt-get update'
 alias agg='sudo apt-get upgrade'
 # Replace "nano" with editor of you choice, e.g. leafpad or vim
-alias sources='sudo nano /etc/apt/sources.list' # YOU SHOULD NOT CONFUSE THE ALIAS NAMED "sources" WITH THE source COMMAND
+alias sources='sudo nano /etc/apt/sources.list' # Don't confuse the ALIAS named "sources" with the source COMMAND
 #----------------------------------------------------------------------------------------------------
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert << replace the command 'sleep 10' with a desired one
@@ -90,8 +90,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 #####################################################################################################
 #
 #----------------------------------------------------------------------------------------------------
-# Start X-Windows (only usefull, X is not started at boot)
-# alias sx='startx'
+# Start X-Windows (only usefull if X is not started at boot)
+alias sx='startx'
 #
 #----------------------------------------------------------------------------------------------------
 #
