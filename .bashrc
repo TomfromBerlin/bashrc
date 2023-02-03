@@ -195,15 +195,15 @@ echo -ne "${RED}\b+${NC}"
 ##
 # At first we are looking for a file named ".logo". It has to live in your home dir.
 # It must contain ascii art (or be empty) or it will produce garbage.
-if [ -f ~/.shellcfg/logos/logo ]; then
+if [ -f ~/.shellcfg/logos/raspberrypi ]; then
     # Also we look for lolcat, that will output simple (b/w) ascii art with nice colors.
     # If not installed, run "sudo apt install lolcat", if you want that.
    if [ -x /usr/games/lolcat ]; then
-	/usr/games/lolcat ~/.shellcfg/logos/logo
+	/usr/games/lolcat ~/.shellcfg/logos/raspberrypi
 else
 #
 # animated intro (Start)
-# If ~/.shellcfg/logos/logo and/or lolcat can't be found, we have an alternative and more informative output
+# If ~/.shellcfg/logos/raspberrypi and/or lolcat can't be found, we have an alternative and more informative output
 # but we need the file ~/.shellcfg/colors to be present.
 if [ -f ~/.shellcfg/colors ]; then
 
