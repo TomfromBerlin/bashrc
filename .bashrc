@@ -5,18 +5,15 @@
 # Based on Vagubunt's .bashrc (http://vagubunt.wordpress.com)		#
 #									#
 # Modified by Thomas Bernard						#
-# Last changes: 20.01.2023 (or later)					#
+# Last changes: 03.02.2023						#
 #									#
-# Some commands may not work on all distros, e.g. netstat on Arch-Linux	#
+# Some commands or functions may not work on all distros		#
 #									#
 # THIS FILE with its associated files MAY OR MAY NOT WORK WITH OTHER	#
 # SHELLS THAN BASH!							#
 #									#
 # CHANCES ARE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED TO WORK	#
 # WITH OTHER SHELLS!							#
-# ksh configuration is typically found in ~/.kshrc, zsh uses ~/.zshrc	#
-#									#
-# YOU HAVE BEEN WARNED!							#
 #									#
 #########################################################################
 #
@@ -24,7 +21,7 @@
 [ -z "$PS1" ] && return
 #
 #----------------------------------------------------------------------------------------------------
-# Backup the current .bashrc and .-files without overwriting the last backup. You'll never know...
+# Backup the current .bashrc and other files without overwriting the last backup. You'll never know...
 # At first we look for the backup folder. If not exist create one
 if [ -d ~/.shellcfg/backup ]; then :
 	else mkdir ~/.shellcfg/backup
@@ -59,7 +56,7 @@ if [ -f ~/.shellcfg/backup/what_shell.backup ]; then
     else
 	cp -u ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup
 fi
-cd ~
+cd ~ # back to home
 #----------------------------------------------------------------------------------------------------
 # Read global settings if there are such things.
 # It makes no sense to throw this in /etc/bash.bashrc.
@@ -74,7 +71,7 @@ fi
 # export LANG		# and if you want localized output, default is English
 #
 #----------------------------------------------------------------------------------------------------
-# activates completion features (probably already activated in /etc/bash.bashrc or /etc/profile
+# activates completion features (probably already activated in /etc/bash.bashrc or /etc/profile)
 #if [ -f /etc/bash_completion.d ]; then
 #	./etc/bash_completion
 #fi
@@ -84,7 +81,7 @@ fi
 # the file /etc/debian_chroot must be present and have content, otherwise almost nothing will happen
 #
 #if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    #debian_chroot=$(cat /etc/debian_chroot)
+#    debian_chroot=$(cat /etc/debian_chroot)
 #fi
 #----------------------------------------------------------------------------------------------------
 # START COLORS, FUNCTIONS, & ALIASES
@@ -93,26 +90,23 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 #
 # ALIASES
-# if aliases can be found in ~/.shellcfg/alias use it.
+# if the file alias can be found in (~/.shellcfg/alias) use it.
     if [ -f ~/.shellcfg/alias ]; then
     . ~/.shellcfg/alias
     fi
 #
 # FUNCTIONS
-# if functions can be found in ~/.shellcfg/functions use it.
+# if the file functions can be found (~/.shellcfg/functions) use it.
     if [ -f ~/.shellcfg/functions ]; then
     . ~/.shellcfg/functions
     fi
 #
 # Colors
-# if colors can be found in ~/.shellcfg/colors use it.
+# if the file colors can be found (~/.shellcfg/colors) use it.
     if [ -f ~/.shellcfg/colors ]; then
     . ~/.shellcfg/colors
     fi
 #
-# Shell
-# if ~/.shellcfg/what_shell can be found use it.
-#    if [ -f ~/.shellcfg/what_shell ]; then . ~/.shellcfg/what_shell; else echo "alien shell" fi
 # END COLORS, FUNCTIONS, & ALIASES
 fi
 #
@@ -201,15 +195,15 @@ echo -ne "${RED}\b+${NC}"
 ##
 # At first we are looking for a file named ".logo". It has to live in your home dir.
 # It must contain ascii art (or be empty) or it will produce garbage.
-if [ -f ~/.logo ]; then
+if [ -f ~/.shellcfg/logos/logo ]; then
     # Also we look for lolcat, that will output simple (b/w) ascii art with nice colors.
     # If not installed, run "sudo apt install lolcat", if you want that.
    if [ -x /usr/games/lolcat ]; then
-	/usr/games/lolcat ~/.logo
+	/usr/games/lolcat ~/.shellcfg/logos/logo
 else
 #
 # animated intro (Start)
-# If ~/.logo and/or lolcat can't be found, we have an alternative and more informative output
+# If ~/.shellcfg/logos/logo and/or lolcat can't be found, we have an alternative and more informative output
 # but we need the file ~/.shellcfg/colors to be present.
 if [ -f ~/.shellcfg/colors ]; then
 
@@ -266,29 +260,8 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
+#
 #----------------------------------------------------------------------------------------------------
-#################################################################################################################################################
-# Code fuer den Prompt:							# Codes for the prompt:							#
-# \@ = Zeit								# \@ = time								#
-# \u = aktueller Benutzer						# \u = current user							#
-# \h = Rechnername							# \h = computer name 							#
-# \t = Zeit								# \t = time								#
-# \d = Datum								# \d = date								#
-# \W = aktuelles Verzeichnis						# \W = current directory						#
-# \w = kompleter Pfad zum aktuellen Verzeichnis				# \w = full path to current directory					#
-# \n = neue Zeile							# \n = new line								#
-# \j = Anzahl der z.Z. verwalteten Prozesse				# \j = number of currently managed processes				#
-# \s = Name der Shell							# \s = shell name							#
-# \v = die Version der Bash						# \v = the version of bash						#
-# \\ = ein \								# \\ = a \								#
-# \[ und \] = Alles was dazwischen steht wird nicht ausgegeben.		# \[ \] = Everything between \[ and \] is not output.			#
-# Farbcodes gehören zwischen diese Zeichen, sonst kommt es zu		# Color codes belong between these characters, e.g. \[${LIGHTCYAN}\]	#
-# Anzeigefehlern, e.g. \[${LIGHTCYAN}\] resp. \[\e[1;36m\].		# resp. \[\e[1;36m\], otherwise display errors will occur.		#
-# Escape-Codes gehören _nicht_ dazwischen.				# Escape codes _do not_ belong in between.				#
-# (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste	# (These are only the most important escape codes, a complete list	#
-# findet ihr in der Manpage der Bash <Befehl "man bash"> oder unter	# can be found in the bash manpage <command "man bash"> or under	#
-# www.gnu.org/software/bash/manual/html_node/Printing-a-Prompt.html)	# www.gnu.org/software/bash/manual/html_node/Printing-a-Prompt.html)	#
-#################################################################################################################################################
 #
 if [ -f ~/.shellcfg/colors ]; then
 
@@ -330,3 +303,28 @@ else
         ;;
     esac
 fi
+#
+#################################################################################################################################################
+# Code fuer den Prompt:							# Codes for the prompt:							#
+# \@ = Zeit								# \@ = time								#
+# \u = aktueller Benutzer						# \u = current user							#
+# \h = Rechnername							# \h = computer name 							#
+# \t = Zeit								# \t = time								#
+# \d = Datum								# \d = date								#
+# \W = aktuelles Verzeichnis						# \W = current directory						#
+# \w = kompleter Pfad zum aktuellen Verzeichnis				# \w = full path to current directory					#
+# \n = neue Zeile							# \n = new line								#
+# \j = Anzahl der z.Z. verwalteten Prozesse				# \j = number of currently managed processes				#
+# \s = Name der Shell							# \s = shell name							#
+# \v = die Version der Bash						# \v = the version of bash						#
+# \\ = ein \								# \\ = a \								#
+# \[ und \] = Alles was dazwischen steht wird nicht ausgegeben.		# \[ \] = Everything between \[ and \] is not output.			#
+# Farbcodes gehören zwischen diese Zeichen, sonst kommt es zu		# Color codes belong between these characters, e.g. \[${LIGHTCYAN}\]	#
+# Anzeigefehlern, e.g. \[${LIGHTCYAN}\] resp. \[\e[1;36m\].		# resp. \[\e[1;36m\], otherwise display errors will occur.		#
+# Escape-Codes gehören _nicht_ dazwischen.				# Escape codes _do not_ belong in between.				#
+# (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste	# (These are only the most important escape codes, a complete list	#
+# findet ihr in der Manpage der Bash <Befehl "man bash"> oder unter	# can be found in the bash manpage <command "man bash"> or under	#
+# www.gnu.org/software/bash/manual/html_node/Printing-a-Prompt.html)	# www.gnu.org/software/bash/manual/html_node/Printing-a-Prompt.html)	#
+#################################################################################################################################################
+# End of .bashrc
+#----------------------------------------------------------------------------------------------------
