@@ -3,30 +3,37 @@
 --------------------------------------------------------------------------------------------------------------------------
 Phew. This gets bigger than I originally thought. Actually I only wanted to backup the configuration of my bash and now this...
 
-My [.bashrc](/.bashrc) and its associated files. It produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. GitHub then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
+My [.bashrc](/.bashrc) and its associated files.
+
+It produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. GitHub then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
 
 Some comments in these files as well as some screen outputs are in German. Maybe someday I will implement some code to have the output according to the system language or translate everything into English. For now, you can translate it yourself if you want, or just live with the sauerkraut. It really could be worse.
 
 Suggestions are always welcome. If errors occur, I would be grateful for information on this and will take them into account accordingly.
 
-## Instructions
+## System requirements
 
-1. **Backup your current ~/.bashrc** e.g. with `mv -iv ~/.bashrc ~/bashrc.old` or `cp -i ~/.bashrc ~/bashrc.old`.
-2. Download the repo as zip-file and extract the content into your home folder. You will then find a new directory named `main-bashrc`. Copy the files mentioned below to `~/` (your home) and `~/.shellcfg/` respectively. Perhaps the directory `~/.shellcfg/` needs to be created because it probably doesn't already exist. Overwrite existing files. If you cannot see the dot-files and the .shellcfg-directory in your favorite file manager, you need to enable "Show hidden files". (**Do not forget to backup your current files.** Just saying!)
-3. Start an interactive shell (means: open a terminal).
+This piece is intented to run on a Linux box with Bourne Again Shell (bash) as the default interactive shell. However, it may work with other shells (see section [what the (s)hell](/README.md#what-the-shell)) and should work with bash compatible shells.
 
 You will only need the follwing files:
 
 + [~/.bashrc](/.bashrc) (necessary)
 + [~/.logo](/.logo) (optional)
 + [~/.shellcfg/alias](/.shellcfg/alias) (necessary for full functionality)
-+ [~/.shellcfg/colors](/.shellcfg/colors) (optional, necessary for color prompt)
-+ [~/.shellcfg/functions](/.shellcfg/functions) (necessary for full functionality)
++ [~/.shellcfg/colors](/.shellcfg/colors) (optional, necessary for color prompt and other color gimmicks)
++ [~/.shellcfg/functions](/.shellcfg/functions) (necessary for enhanced functionality)
 + [~/.shellcfg/what_shell](/.shellcfg/what_shell) (see also [what-the-(s)hell section](/README.md#what-the-(s)hell) below)
 
-If any of these files are missing, the shell will still work. However, under certain circumstances (e.g., your `/etc/bash.bashrc` as well as your `~/.profile` don't contain alias definitions or functions) no or at least lesser [aliases](/.shellcfg/alias) or [functions](/.shellcfg/functions) will then be declared. If [/.shellcfg/colors](/.shellcfg/colors) is missing, the prompt will still appear colored (lack of color support should be the exception), but customization will be more challenging, since you need to use color codes (see section about [configuration of the prompt](/README.md#configure-your-prompt-conveniently)).
+If any of these files are missing, the shell will still work. However, under certain circumstances (e.g., your `/etc/bash.bashrc` as well as your `~/.profile` don't contain alias definitions or functions) no or at least lesser [aliases](/.shellcfg/alias) or [functions](/.shellcfg/functions) will then be available. If [/.shellcfg/colors](/.shellcfg/colors) is missing, the prompt will still appear colored (lack of color support should be the exception), but customization will be more challenging, since you need to use color codes (see section about [configuration of the prompt](/README.md#configure-your-prompt-conveniently)).
 
 Other things that come with the zip file may also be important, but not required, e.g., the README.md you are reading right now.
+
+## Instructions
+
+1. **Backup your current ~/.bashrc** e.g. with `mv -iv ~/.bashrc ~/bashrc.old` or `cp -i ~/.bashrc ~/bashrc.old`.
+2. Download the repo as zip-file and extract the content into your home folder. You will then find a new directory named `main-bashrc`.
+3. Copy the files mentioned above to `~/` (your home) and `~/.shellcfg/` respectively. Perhaps the directory `~/.shellcfg/` needs to be created because it probably doesn't already exist. Overwrite existing files. If you cannot see the dot-files and the .shellcfg-directory in your favorite file manager, you need to enable "Show hidden files". (**Do not forget to backup your current files.** Just saying!)
+4. Start an interactive shell (means: open a terminal).
 
 If something goes wrong, it's no drama. Just rename your backup files to their original names and you'll be fine.
 
@@ -36,13 +43,15 @@ You have backup files, right?
 
 With this [.bashrc](/.bashrc) every time you start a terminal it will check if there is a directory named backup in `~/.shellcfg/`. If not, it will create one and backup the files I mentioned above. Just these files. The backup files are named `<FILENAME>.backup` resp. `<FILENAME>.backup~` (You'll have two versions of the backup). Although the directory `~/.shellcfg/` is hidden the content inside of it is not. You can navigate to the directory with `cd ~/.shellcfg/` and display the content with the `ls` command or just enable "Show hidden files" in your favorite file manager.
 
-If you messed up and want to roll back, you need to copy the backup files from `~/.shellcfg/backup/` to `~/` and `~/.shellcfg/` respectively and rename them to `.<FILENAME >`. Backups are only created when files have been modified. Maybe one day I'll implement a handy rollback feature, but for now you should have a basic knowledge of file management, e.g. how to copy, move, and rename files. For more information use `man cp` or `man mv` at the command line.
+If you messed up and want to roll back, you need to copy the backup files from `~/.shellcfg/backup/` to `~/` and `~/.shellcfg/` respectively and rename them to `.<FILENAME >`. Unfortunately, a file is considered "tampered" even if only one attribute, such as the time of last access, has been changed. The content can be completely identical. This has the consequence that a backup is made every time an interactive shell is started. Except for making the files read-only, I haven't found a way to solve this problem with on-board tools yet. If someone has an idea, leave a comment. I would implement this immediately. Nevertheless, the backup function seems helpful, at least initially. If no further problems arise, it can be safely disabled or removed.
 
-## Content
+Maybe one day I'll implement a handy rollback feature, but for now you should have a basic knowledge of file management, e.g. how to copy, move, and rename files. For more information use `man cp` or `man mv` at the command line.
 
-This [.bashrc](/.bashrc) consists of several files. On the one hand the actual [.bashrc](/.bashrc) and on the other hand a few files that are assigned to certain settings (mentioned above).
+## Scope of functions
+
+This [.bashrc](/.bashrc) actually consists of not just one, but several files. On the one hand the actual [.bashrc](/.bashrc) and on the other hand a few files that contain certain settings, functions, and other stuff (see below).
 In principle, the contents of these files could also be written directly to the [.bashrc](/.bashrc), but it is a bit cleaner this way.
-These files can be found in the `~/.shellcfg/` directory.
+These additional files can be found in the `~/.shellcfg/` directory.
 
 ### Aliases and functions
 
@@ -52,7 +61,7 @@ There are a few functions and aliases as well as color definitions in the corres
 + [~/.shellcfg/colors](/.shellcfg/colors)
 + [~/.shellcfg/functions](/.shellcfg/functions)
 
-However, be aware that things can get messed up very quickly if the files are modified in the wrong way (see section [Automated Backup](/README.md#automated-backup)).
+However, be aware that things can get messed up very quickly if something is modified in the wrong way (see section [Automated Backup](/README.md#automated-backup)).
 
 #### Aliases in [~/.shellcfg/alias](/.shellcfg/alias)
 
@@ -63,15 +72,22 @@ Way to much to mention all here. Most of them are explained in the file, but cur
 |Name|Usage|Description|
 |-|-|-|
 |  **__add_command_replace_alias** | _will be invoked automatically_ | This function checks if certain applications are installed and defines aliases in case of. This will not remove the application. But if you call it the usual way the more sophisticated version will be used, e.g. 'htop' instead of 'top'.<br> Source: _<https://github.com/slomkowski/bash-full-of-colors/blob/master/bash_aliases.sh>_|
-| **allcolors** | allcolors | It will show you almost all color codes that can be used when prettifying your prompt. <br> Before you fiddle around with color codes just have a look at the file [~/shellcfg/.colors](/shellcfg/.colors). There is a chance your desired color has already a human readable equivalent.[^1]|
-| **command&nbsp;not&nbsp;found** | _will be invoked automatically_ | When command-not-found is installed, use it. This is available in most distributions, but not necessarily installed. It should actually be called in `/etc/bash.bashrc` for the function to be available globally, but it doesn't hurt if it lives there either. Under Arch Linux, line 10 must also be commented out (#source /usr/share/doc/pkgfile/command-not-found.bash) and should be processed before the function will be declared, otherwise the whole thing won't work in this distribution.|
+| **allcolors** | allcolors | It will show you color codes that can be used when prettifying your prompt, whereby the name "allcolors" promises more than it delivers. Basically, there are 16 colors + variants that are output.[^1] <br> Before you fiddle around with color codes just have a look at the file [~/shellcfg/.colors](/shellcfg/.colors). There is a chance your desired color has already a human readable equivalent.
+| **command&nbsp;not&nbsp;found** | _will be invoked automatically_ | When command-not-found is installed, use it. This is available in most distributions, but not necessarily installed. It should actually be called in `/etc/bash.bashrc` for the function to be available globally, but it doesn't hurt if it lives there either. Under Arch Linux, line 10 in this file must also be commented out (#source /usr/share/doc/pkgfile/command-not-found.bash) and should be processed before the function will be declared, otherwise the whole thing won't work in this distribution. For other distributions there may be similar requirements.|
 | **extract** | extract&nbsp;&lt;filename&gt; | extracts all formats of archive files (credits: urukrama, Ubuntuforums.org)
-| **find file** | ff&nbsp;&lt;filename&gt; | The name says it all: It finds files.|
+| **ff (find file)** | ff&nbsp;&lt;filename&gt; | Yep, it finds files.|
 | **wtfis** | wtfis&nbsp;&lt;arg&gt; | Like `which` but exposes much more info.<br>&lt;arg&gt; has to be the name of a program, function, or alias that can be found on your system, e.g. `wtfis man`. <br> ❗**Be patient!** This function takes some time to collect all the information.❗<br> Source: <https://raw.githubusercontent.com/janmoesen/tilde/master/.bash/commands>|
 
 #### what the (s)hell
 
-The idea behind the what_shell-file was to make the whole thing accessible to other shells as well and if possible, to prevent that any user-side changes to the files are necessary for it to work - apart from renaming the [.bashrc](/.bashrc) file. For now, the query should work in the following environments: Bourne Shell (sh),  Bourne-Again Shell (bash), Korn-Shell (ksh) and maybe Z-Shell (zsh). The Debian-Almqist-Shell (dash), Yet Another Shell (yash), and Process Offloed Shell (posh) are also recognized. When using dash as an interactive shell it is recommended, to check that all scripts that don't have the `#!/bin/bash` directive in their shebang are fully POSIX compliant.
+The idea that came up with the what_shell file was to make it accessible to other shells as well and if possible, to prevent that any user-side changes to the files are necessary for it to work - apart from renaming the [.bashrc](/.bashrc) file. For now, this query (and I am talking here only about this query, read below) should work in the following environments:
+
++ Bourne-Again Shell (bash)
++ Bourne Shell (sh)
++ Korn-Shell (ksh)
++ and maybe Z-Shell (zsh)
++ Debian-Almqist-Shell (dash) When using dash as an interactive shell it is recommended, to check that all scripts that don't have the `#!/bin/bash` directive in their shebang are fully POSIX compliant.
++ Yet Another Shell (yash), and Process Offloed Shell (posh) are also recognized
 
 However, there is another tiny problem: Different shells have different filenames and especially different features and functions. Also, the commands may vary depending on which shell is used and whether that is also the default shell or possibly called from another shell, which can lead to different results. This may require different queries. Therefore, the file [~/.shellcfg/what_shell](/.shellcfg/what_shell) is currently only safe to use in in the Bourne Again Shell (bash) and Bourne Shell (sh) and should not cause any problems here, but may work within Korn-Shell as well, perhaps even within the Z-Shell. But as I said, all the shells mentioned are initially recognized. However, whether the rest will also work is not certain at the moment.
 
@@ -84,7 +100,7 @@ But the standard output for `$SHELL` is ugly: _/bin/bash_
 
 `ps -cp "$$" -o command=""` isn't much better either: _bash_
 
-Yes it's functional and yes it's ugly. Because of this, I wrote a few lines to change the displayed information. That's why the terminal says i.e. "Bourne Again Shell - Version <version>" and not "/bin/bash".
+Yes it's functional and yes it's ugly. Because of this, I wrote a few lines to change the displayed information. That's why the terminal says i.e. "Bourne Again Shell - Version <version>" and not "/bin/bash Version <version>".
 
 The version query should also work in other shells (sh, bash, ksh, zsh, posh and yash). This does not apply to dash as dash has no information about its version for historical reasons.
 
@@ -127,13 +143,15 @@ You can use _apt install &lt;package name&gt;_ instead of _apt-get install &lt;p
 
 ## Configure your prompt conveniently
 
+Whether the way of configuring the prompt described here also works like this in other shells, I cannot say at the moment. Maybe it works, maybe not.
+
 This [.bashrc](/.bashrc) makes the prompt configuration a little bit easier. Nonetheless it is often a pain in the a...
 
 A colored prompt with some useful information often looks like this in the [.bashrc](/.bashrc) file:
 
 `PS1="\n\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$\[\e[0;5m\]_\e[0m`
 
-That's a bunch of cryptic strings. There are escape codes and color codes and it almost takes rocket science to read and understand fluently. (my [.bashrc](/.bashrc) contains a small explanation of escape codes, but only the most important ones, in German and English. So you don't have to search the web to get started. More you can find [here](https://misc.flogisoft.com/bash/tip_colors_and_formatting))
+This is a bunch of cryptic strings. There are escape codes and color codes and it almost takes rocket science to read and understand. Almost at the end of the file [.bashrc](/.bashrc) you'll find a small explanation of escape codes, but only the most important ones, in German and English. So you don't have to search the web to get started. More you can find [here](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
 
 But if you don't hate your life then you won't turn down help and there are some really badass guys out there who will use their skills to make your life easier. One of them is [Scriptim](../../../../../Scriptim/) and he made a phantastic tool: the [Bash Prompt Generator](../../../../../Scriptim/bash-prompt-generator). You can use this tool to preformat your prompt and afterwards you can change colors into a human readable format. The code for the prompt in my [.bashrc](/.bashrc) looks like this:
 
@@ -143,9 +161,9 @@ As you can see it is more readable. I'll break it down into individual pieces fo
 
 |Code|Description|
 |:-:|-|
-|`PS1`|path var, you can define more than one path var, e.g. one for the default user and one for root|
+|`PS1`|prompt variable, you can define more than one prompt var, (PS1, PS2...PSN (where N is an integer)|
 |`=`|equal sign, splits the name of the variable from the content|
-|`"`|The first quotation mark defines the beginning of the content of the variable. Some will need a single quote instead of a double quote.|
+|`"`|The first quotation mark defines the beginning of the content of the variable. Some will need or just use a single quote instead of a double quote.|
 |`\n`|line break / new line|
 |`\[${LIGHTGRAY}\]`|color formatting|
 |`Systemzeit `|text to be shown (with tailing space)|
@@ -171,7 +189,7 @@ As you can see it is more readable. I'll break it down into individual pieces fo
 Despite the human-readable format, configuring the prompt remains a small challenge.
 
 Which colors already have been "transformed" into human-readable format you can learn while studying the file [~/.shellcfg/colors](/.shellcfg/colors).
-In case you want to have more colors invoke `allcolors` in a terminal. This will show you a lot of color codes and how they will look like. You can then add the desired color codes to the [~/.shellcfg/colors](/.shellcfg/colors) file using the following format: `<unique color name>=<'color code'>` (the quotation marks are required) and you're good to go. In order to use that human-readable format, colors must be indicated in the prompt configuration as follows: `\[${COLORNAME}\]`. The specified color remains valid until another color is specified or reset with `\[${NC}\]`. Theoretically, up to [256 colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting) can be used, but I recommend to limit yourself to the colors that `allcolors` outputs, since these are surely supported in the respective terminal.
+In case you want to have more colors invoke `allcolors` in a terminal. This will show you a lot of color codes and how they will look like. You can then add the desired color codes to the [~/.shellcfg/colors](/.shellcfg/colors) file using the following format: `<unique color name>=<'color code'>` (the quotation marks are required) and you're good to go. In order to use that human-readable format, colors must be indicated in the prompt configuration as follows: `\[${COLORNAME}\]`. The specified color remains valid until another color is specified or reset with `\[${NC}\]`. Theoretically, up to [256 colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting) can be used, but I recommend to limit yourself to the colors that `allcolors` outputs unless you want everything brightly colored.
 
 ## Modifying
 
@@ -179,4 +197,4 @@ If you want to modify or adapt the code for other shells, feel free to do so. On
 
 And now have fun!
 
-[^1]: Well, that's actually only half the truth, because this only outputs 16 foreground colors plus 16 background colors in the possible combinations. Additionally there are blinking versions if the terminal supports this attribute. The colors themselves are usually available in a dark and a light version. This should be sufficient in most cases. But if, for example, fifty shades of gray are needed (pun intended), I have something up my sleeve. Type `truecolors` on the command line. If the terminal has the capability, you should now see the color codes for 256 colors. I know, true color would be 16 million colors. The name of the function is rather a reminiscence of the song by Cindy Lauper.
+[^1]: Well, the command `allcolors` only outputs 16 foreground colors plus 16 background colors in the possible combinations. Additionally there are blinking versions if the terminal supports this attribute. The colors themselves are usually available in a dark and a light version. This should be sufficient in most cases. But if, for example, fifty shades of gray are needed (pun somewhat intended), I have something up my sleeve. Type `truecolors` on the command line and hit Enter. If the terminal has the capability (most will), you should now see the color codes for 256 colors. I know, true color would be 16 million colors. The name of the function is rather a reminiscence of the song by Cindy Lauper.
