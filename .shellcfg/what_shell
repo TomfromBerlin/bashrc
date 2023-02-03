@@ -1,12 +1,12 @@
 # What Shell do we have?
 MYSHELL=$(ps -cp "$$" -o command="")
 case "$MYSHELL" in
-  sh)	echo "Bourne Shell" ;;
-  bash)	echo "Bourne Again Shell - Version ${BASH_VERSION%.*}"   ;;
-  ksh)	echo "Korn-Shell - Version ${KSH_VERSION%.*}"     ;;
-  zsh)	echo "Z-Shell - Version ${ZSH_VERSION%.*}" ;;
-  dash)	echo "Debian-Almquist-Shell"   ;;
-  yash)	echo "Yet Another Shell - Version ${YASH_VERSION%.*}" ;;
+  bash)	echo "Bourne Again Shell - Version ${BASH_VERSION%.*}"  ;;
+  sh)	echo "Bourne Shell - Version ${SH_VERSION%.*}" ;;
+  dash)	echo "Debian-Almquist-Shell"  ;;
+  ksh)	echo "Korn-Shell - Version ${KSH_VERSION%.*}" ;;
   posh)	echo "Process Offload Shell - Version ${POSH_VERSION%.*}" ;;
-  *)   echo "Unknown Shell"     ;;
+  yash)	echo "Yet Another Shell - Version ${YASH_VERSION%.*}" ;;
+  zsh)	echo "Z-Shell - Version ${ZSH_VERSION%.*}"  ;;
+  *)   echo "Unknown Shell" ;;
 esac
