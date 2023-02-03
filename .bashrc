@@ -23,47 +23,18 @@
 #----------------------------------------------------------------------------------------------------
 # Backup the current .bashrc and other files without overwriting the last backup. You'll never know...
 # At first we look for the backup folder. If not exist create one
-if [ -d ~/.shellcfg/backup ]; then :
-	else mkdir ~/.shellcfg/backup
-fi
-#
-if [ -f ~/.shellcfg/backup/bashrc.backup ]; then
-	cp -f -b ~/.bashrc ~/.shellcfg/backup/bashrc.backup
-    else
-	cp -u ~/.bashrc ~/.shellcfg/backup/bashrc.backup
-fi
-#
-if [ -f ~/.shellcfg/backup/alias.backup ]; then
-	cp -f -b ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup
-    else
-	cp -u ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup
-fi
-#
-if [ -f ~/.shellcfg/backup/functions.backup ]; then
-	cp -f -b ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup
-    else
-	cp -u ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup
-fi
-#
-if [ -f ~/.shellcfg/backup/colors.backup ]; then
-	cp -f -b ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup
-    else
-	cp -u ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup
-fi
-#
-if [ -f ~/.shellcfg/backup/what_shell.backup ]; then
-	cp -f -b ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup
-    else
-	cp -u ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup
-fi
+if [ -d ~/.shellcfg/backup ]; then : ; else mkdir ~/.shellcfg/backup; fi
+if [ -f ~/.shellcfg/backup/bashrc.backup ]; then cp -f -b ~/.bashrc ~/.shellcfg/backup/bashrc.backup; else cp -u ~/.bashrc ~/.shellcfg/backup/bashrc.backup; fi
+if [ -f ~/.shellcfg/backup/alias.backup ]; then cp -f -b ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup; else cp -u ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup; fi
+if [ -f ~/.shellcfg/backup/functions.backup ]; then cp -f -b ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup; else cp -u ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup; fi
+if [ -f ~/.shellcfg/backup/colors.backup ]; then cp -f -b ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup; else cp -u ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup; fi
+if [ -f ~/.shellcfg/backup/what_shell.backup ]; then cp -f -b ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup; else cp -u ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup; fi
 cd ~ # back to home
 #----------------------------------------------------------------------------------------------------
 # Read global settings if there are such things.
 # It makes no sense to throw this in /etc/bash.bashrc.
 #
-if [ -f /etc/bashrc ]; then
-        . /etc/bash.bashrc
-fi
+if [ -f /etc/bashrc ]; then . /etc/bash.bashrc; fi
 #
 #----------------------------------------------------------------------------------------------------
 # Define language variable
@@ -85,30 +56,13 @@ fi
 #fi
 #----------------------------------------------------------------------------------------------------
 # START COLORS, FUNCTIONS, & ALIASES
-# Let us have some fancy colors
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-#
-# ALIASES
-# if the file alias can be found in (~/.shellcfg/alias) use it.
-    if [ -f ~/.shellcfg/alias ]; then
-    . ~/.shellcfg/alias
-    fi
-#
-# FUNCTIONS
-# if the file functions can be found (~/.shellcfg/functions) use it.
-    if [ -f ~/.shellcfg/functions ]; then
-    . ~/.shellcfg/functions
-    fi
-#
-# Colors
-# if the file colors can be found (~/.shellcfg/colors) use it.
-    if [ -f ~/.shellcfg/colors ]; then
-    . ~/.shellcfg/colors
-    fi
-#
-# END COLORS, FUNCTIONS, & ALIASES
+# Let's have some fancy aliases, colors, and functions
+if [ -x /usr/bin/dircolors ]; then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+   if [ -f ~/.shellcfg/alias ]; then . ~/.shellcfg/alias; fi
+   if [ -f ~/.shellcfg/colors ]; then . ~/.shellcfg/colors; fi
+   if [ -f ~/.shellcfg/functions ]; then . ~/.shellcfg/functions; fi
 fi
+# END COLORS, FUNCTIONS, & ALIASES
 #
 #----------------------------------------------------------------------------------------------------
 #
@@ -193,30 +147,22 @@ echo -ne "${RED}\b+${NC}"
 #################################################################################
 ## This is where the actual screen output starts
 ##
-# At first we are looking for a file named ".logo". It has to live in your home dir.
-# It must contain ascii art (or be empty) or it will produce garbage.
+# At first we are looking for a file named "~/.shellcfg/logos/raspberry". 
+# It must be a text file (or be empty) or you will see garbage on the screen
 if [ -f ~/.shellcfg/logos/raspberrypi ]; then
     # Also we look for lolcat, that will output simple (b/w) ascii art with nice colors.
     # If not installed, run "sudo apt install lolcat", if you want that.
-   if [ -x /usr/games/lolcat ]; then
-	/usr/games/lolcat ~/.shellcfg/logos/raspberrypi
-else
+   if [ -x /usr/games/lolcat ]; then /usr/games/lolcat ~/.shellcfg/logos/raspberrypi; else
 #
 # animated intro (Start)
 # If ~/.shellcfg/logos/raspberrypi and/or lolcat can't be found, we have an alternative and more informative output
 # but we need the file ~/.shellcfg/colors to be present.
-if [ -f ~/.shellcfg/colors ]; then
-
-#clear
-echo -e " ";
+if [ -f ~/.shellcfg/colors ]; then echo -e " ";
 for i in `seq 1 80` ; do spin; done ;echo "";
 echo -ne              "${WHITE}Welcome "`whoami`". ${NC}";
 echo -e " ";
 echo -e "${NC}"
-if [ -f ~/.shellcfg/what_shell ]; then
-echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. ~/.shellcfg/what_shell ; )
-else :
-fi
+if [ -f ~/.shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. ~/.shellcfg/what_shell); else :; fi
 echo -e " ";
 echo -e "${WHITE}Host Name:		${LIGHTGREEN}" `uname -n`;
 echo -e "${WHITE}OS:		    	${LIGHTGREEN}" `uname -o`;
@@ -264,35 +210,22 @@ fi
 #----------------------------------------------------------------------------------------------------
 #
 if [ -f ~/.shellcfg/colors ]; then
-
     if [ "$color_prompt"=yes ]; then
         #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
-        PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"
-    else
-        PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"
-    fi
-
+        PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"; else PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"; fi
     unset color_prompt force_color_prompt
-
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in
     xterm*|rxvt*)
     #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 	PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
-        ;;
+	;;
     *)
         ;;
     esac
 else
-    if [ "$color_prompt"=yes ]; then
-        #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
-        PS1="\n\[\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$"
-    else
-        PS2="\n\[\e]Systemzeit \A\n\u@\h: \w\a\:\$"
-    fi
-
+    if [ "$color_prompt"=yes ]; then PS1="\n\[\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$"; else PS2="\n\[\e]Systemzeit \A\n\u@\h: \w\a\:\$"; fi
     unset color_prompt force_color_prompt
-
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in
     xterm*|rxvt*)
