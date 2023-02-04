@@ -6,6 +6,7 @@ Phew. This gets bigger than I originally thought. Actually I only wanted to back
 My [.bashrc](/.bashrc) and its associated files.
 
 It produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. GitHub then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
+Note that the amount of time before the command prompt or GUI is available can be noticeably increased. The weaker the hardware, the longer it can take (it seems logical).
 
 Some comments in these files as well as some screen outputs are in German. Maybe someday I will implement some code to have the output according to the system language or translate everything into English. For now, you can translate it yourself if you want, or just live with the sauerkraut. It really could be worse.
 
@@ -32,10 +33,10 @@ Other things that come with the zip file may also be important, but not required
 
 1) Download the repo as zip-file and extract the content into your home folder. You will then find a new directory named `main-bashrc`.
 2) **Backup your current ~/.\*shrc** e.g. with `mv -iv ~/.bashrc ~/bashrc.old` or `cp -i ~/.bashrc ~/bashrc.old`.
-    - Don't use a name like bashrc.backup and put it in the backup directory created by this script when you open a terminal window. It will be overwritten the next time an interactive shell is started. This also applies if you boot your system into the command prompt instead of the graphical environment, since you are then also in an interactive shell.
+    + Don't use a name like bashrc.backup and put it in the backup directory created by this script when you open a terminal window. It will be overwritten the next time an interactive shell is started. This also applies if you boot your system into the command prompt instead of the graphical environment, since you are then also in an interactive shell.
 3) Copy the files mentioned above from ~/main-bashrc/ to `~/` (your home) and `~/.shellcfg/` respectively. Perhaps the directory `~/.shellcfg/` needs to be created because it probably doesn't already exist. Overwrite existing files. If you cannot see the dot-files and the .shellcfg-directory in your favorite file manager, you need to enable "Show hidden files". (**Do not forget to backup your current files.** Just saying!)
 
-    - If you're using this in a shell other than the Bourne Again Shell (bash), you'll need to rename the _.bashrc_ file, e.g., in _.kshrc_ if you use the Korn-Shell (ksh).
+    + If you're using this in a shell other than the Bourne Again Shell (bash), you'll need to rename the _.bashrc_ file, e.g., in _.kshrc_ if you use the Korn-Shell (ksh).
 4) Start an interactive shell (means: open a terminal).
 5) If something goes wrong, it's no drama. Just rename your backup files to their original names and you'll be fine.
 6) _You have backup files, right?_
@@ -79,7 +80,8 @@ Way to much to mention all here. Most of them are explained in the file, but cur
 | **command&nbsp;not&nbsp;found** | _will be invoked automatically_ | This is available in most distributions, but not necessarily installed. It should actually be called in `/etc/bash.bashrc` for the function to be available globally, but it doesn't hurt if it lives there either. Under Arch Linux, line 10 in this file must also be commented out (`#source /usr/share/doc/pkgfile/command-not-found.bash`) and should be processed before the function will be declared, otherwise the whole thing won't work in this distribution. Other non-Debian-/Ubuntu-based distributions may have similar requirements.|
 | **extract** | extract&nbsp;&lt;filename&gt; | extracts all formats of archive files (credits: urukrama, Ubuntuforums.org)
 | **ff (find file)** | ff&nbsp;&lt;filename&gt; | Yep, it finds files.|
-| **wtfis** | wtfis&nbsp;&lt;arg&gt; | Like `which` but exposes much more info.<br>&lt;arg&gt; has to be the name of a program, function, or alias that can be found on your system, e.g. `wtfis man`. <br> ❗**Be patient!** This function takes some time to collect all the information.❗<br> Source: <https://raw.githubusercontent.com/janmoesen/tilde/master/.bash/commands>|
+| **wtfis** | wtfis&nbsp;&lt;arg&gt; | Like `which` but exposes much more info.<br>
+&lt;arg&gt; has to be the name of a program, function, or alias that can be found on your system, e.g. `wtfis man`. <br> ❗**Be patient!** This function takes some time to collect all the information.❗<br> Source: <https://raw.githubusercontent.com/janmoesen/tilde/master/.bash/commands>|
 
 #### what the (s)hell
 
@@ -89,7 +91,8 @@ The idea that came up with the what_shell file was to make it accessible to othe
 + Bourne Shell (sh)
 + Korn-Shell (ksh)
 + and maybe Z-Shell (zsh)
-+ Debian-Almqist-Shell (dash) When using dash as an interactive shell it is recommended, to check that all scripts that don't have the `#!/bin/bash` directive in their shebang are fully POSIX compliant.
++ Debian-Almqist-Shell (dash)
+  + When using dash as an interactive shell it is recommended, to check that all scripts that don't have the `#!/bin/bash` directive in their shebang are fully POSIX compliant.
 + Yet Another Shell (yash), and Process Offloed Shell (posh) are also recognized
 
 However, there is another tiny problem: Different shells have different filenames and especially different features and functions. Also, the commands may vary depending on which shell is used and whether that is also the default shell or possibly called from another shell, which can lead to different results. This may require different queries. Therefore, the file [~/.shellcfg/what_shell](/.shellcfg/what_shell) is currently only safe to use in in the Bourne Again Shell (bash) and Bourne Shell (sh) and should not cause any problems here, but may work within Korn-Shell as well, perhaps even within the Z-Shell. But as I said, all the shells mentioned are initially recognized. However, whether the rest will also work is not certain at the moment.
@@ -103,7 +106,7 @@ But the standard output for `$SHELL` is ugly: _/bin/bash_
 
 `ps -cp "$$" -o command=""` isn't much better either: _bash_
 
-Yes it's functional and yes it's ugly. Because of this, I wrote a few lines to change the displayed information. That's why the terminal says i.e. "Bourne Again Shell - Version <version>" and not "/bin/bash Version <version>".
+Yes it's functional and yes it's ugly. Because of this, I wrote a few lines to change the displayed information. That's why the terminal says i.e. "Bourne Again Shell (bash) - Version version-nr" and not "bash Version version-nr".
 
 The version query should also work in other shells (sh, bash, ksh, zsh, posh and yash). This does not apply to dash as dash has no information about its version for historical reasons.
 
