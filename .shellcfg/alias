@@ -39,12 +39,12 @@ alias ping='ping -c 10'
 #alias beep='echo -en "\x07"'
 alias cls='clear'											# leert das Terminalfenster
 alias reload='source ~/.bashrc'								# leert das Terminalfenster und lädt .bashrc neu
-alias pg='ps aux | grep'									# Prozess greppen -> pg name
+# alias pg='ps aux | grep'									# Prozess greppen -> pg name
 alias h='history'											# BASH command history
 alias which='type -a'										# usage 'wich name' (consider using 'wtfis' instead, since it exposes more info about the file)
 alias du='du -kh --max-depth=1'								# readable output
 alias df='df -kTh'											#    ^       ^
-alias ps='ps auxf'
+# alias psa='ps auxf'
 alias home='cd ~'											# Change to the current users home directory
 alias date='date "+%A, %d.%B %Y    %T %Z"'
 alias bashedit='nano ~/.bashrc'							    # replace "nano" with editor of you choice, e.g. leafpad or vim
@@ -92,6 +92,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 #----------------------------------------------------------------------------------------------------
 # Start X-Windows (only usefull if X is not started at boot)
 alias sx='startx'
+alias restart='sudo systemctl start reboot.target'
 #
 #----------------------------------------------------------------------------------------------------
 #
