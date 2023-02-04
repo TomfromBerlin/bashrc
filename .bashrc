@@ -150,10 +150,9 @@ echo -ne "${RED}\b+${NC}"
 # At first we are looking for a file named "~/.shellcfg/logos/raspberrypi".
 # It must be a text file (or be empty) or you will see garbage on the screen
 if [ -f ~/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat ~/.shellcfg/logos/raspberrypi; else
-#
+# If we were successful we have an output, otherwise we do the following...
 # animated intro (Start)
-# If ~/.shellcfg/logos/raspberrypi and/or lolcat can't be found, we have an alternative and more informative output
-# but we need the file ~/.shellcfg/colors to be present.
+# ...but we need the file ~/.shellcfg/colors to be present. If it's not there, we're done and the prompt will pop up.
 if [ -f ~/.shellcfg/colors ]; then echo -e " ";
 for i in `seq 1 80` ; do spin; done ;echo "";
 echo -ne              "${WHITE}Welcome "`whoami`". ${NC}";
@@ -162,7 +161,7 @@ echo -e "${NC}"
 if [ -f ~/.shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. ~/.shellcfg/what_shell); fi
 echo -e " ";
 echo -e "${WHITE}Host Name:		${LIGHTGREEN}" `uname -n`;
-if [ -f /etc/os-release ]; then echo -e "${WHITE}Distribution           ${LIGHTGREEN} " $(grep -E '^(NAME)=' /etc/os-release)" "$(grep -E '^(VERSION)=' /etc/os-release); else  echo -e "${WHITE}OS:		    	${LIGHTGREEN}" `uname -o`; fi
+if [ -f /etc/*-release ]; then echo -e "${WHITE}Distribution           ${LIGHTGREEN} " $(grep -E '^(NAME)=' /etc/*-release)" "$(grep -E '^(VERSION)=' /etc/*-release); else  echo -e "${WHITE}OS:		    	${LIGHTGREEN}" `uname -o`; fi
 echo -e "${WHITE}Kernel Release:		${LIGHTGREEN}" `uname -r`;
 echo -e "${WHITE}Kernel Version:    	${LIGHTGREEN}" `uname -v`;
 echo -e "${WHITE}Architecture:       	${LIGHTGREEN}" `uname -m`;
@@ -178,15 +177,6 @@ for i in `seq 1 80` ; do spin; done ;echo "";
 echo -e "${NC}";
 fi
 fi
-#
-#----------------------------------------------------------------------------------------------------
-#
-#Clock in terminal (more or less useless since we have time output at the prompt
-#
-#clock ()
-#{
-#while true;do clear;echo "===========";date +"%r";echo "===========";sleep 1;done
-#}
 #
 #----------------------------------------------------------------------------------------------------
 # PROMPT
