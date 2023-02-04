@@ -1,12 +1,12 @@
 # What Shell do we have?
 MYSHELL=$(ps -cp "$$" -o command="")
 case "$MYSHELL" in
-  bash)	echo "Bourne Again Shell - Version ${BASH_VERSION%.*}"  ;;
-  sh)	echo "Bourne Shell - Version ${SH_VERSION%.*}" ;;
-  dash)	echo "Debian-Almquist-Shell"  ;;
-  ksh)	echo "Korn-Shell - Version ${KSH_VERSION%.*}" ;;
-  posh)	echo "Process Offload Shell - Version ${POSH_VERSION%.*}" ;;
-  yash)	echo "Yet Another Shell - Version ${YASH_VERSION%.*}" ;;
-  zsh)	echo "Z-Shell - Version ${ZSH_VERSION%.*}"  ;;
-  *)   echo "Unknown Shell" ;;
+  bash)	echo "Bourne Again Shell ($(ps -cp "$$" -o command="")) - Version ${BASH_VERSION%.*}"  ;;
+  sh)	echo "Bourne Shell ($(ps -cp "$$" -o command=""))- Version ${SH_VERSION%.*}" ;;
+  ash)	echo "Debian-Almquist-Shell ($(ps -cp "$$" -o command=""))"  ;;
+  ksh)	echo "Korn-Shell ($(ps -cp "$$" -o command="")) - Version ${KSH_VERSION%.*}" ;;
+  posh)	echo "Process Offload Shell ($(ps -cp "$$" -o command="")) - Version ${POSH_VERSION%.*}" ;;
+  yash)	echo "Yet Another Shell ($(ps -cp "$$" -o command="")) - Version ${YASH_VERSION%.*}" ;;
+  zsh)	echo "Z-Shell ($(ps -cp "$$" -o command="")) - Version ${ZSH_VERSION%.*}"  ;;
+  *)   echo "Unknown Shell ($(ps -cp "$$" -o command=""))" ;;
 esac
