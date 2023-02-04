@@ -1,14 +1,12 @@
 # This file will be called in .bashrc
 # Here are the functions you will normally find in .bashrc or /etc/bash.bahsrc
 #
-#----------------------------------------------------------------------------------------------------
-#
-# Start Command-not-found (better call in /etc/bash.bashrc)
+# function command-not-found--------------------------------------------------------------------------
+# call in /etc/bash.bashrc to have it available globally
 #
 # When command-not-found is installed, use it!
-# Unter Arch-Linux folgende Zeile auskommentieren:
+# Under Arch Linux comment in following line:
 #source /usr/share/doc/pkgfile/command-not-found.bash
-# dann wie bei allen anderen Distros
 if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
     function command_not_found_handle {
 	    # check because c-n-f could've been removed in the meantime
@@ -27,31 +25,28 @@ fi
 #
 # End Command-not-found
 #
-#----------------------------------------------------------------------------------------------------
-#
-# Start less (command)
-# colorized output, comment in if the file ~/shellcfg/.colors isn't present
-#man() {
-    #LESS_TERMCAP_md=$'\e[01;31m' \
-    #LESS_TERMCAP_me=$'\e[0m' \
-    #LESS_TERMCAP_us=$'\e[01;32m' \
-    #LESS_TERMCAP_ue=$'\e[0m' \
-    #LESS_TERMCAP_so=$'\e[45;93m' \
-    #LESS_TERMCAP_se=$'\e[0m' \
+# Prettifying man------------------------------------------------------------------------------------
+# usage man file_path
+if [ -f ~/.shellcfg/colors ]; then : ; else
+man() {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[45;93m' \
+    LESS_TERMCAP_se=$'\e[0m' \
 
-    #command man "$@"
-#}
-#
+    command man "$@"
+}
+fi
 # better output
-# [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 #
-# End less (command)
-#----------------------------------------------------------------------------------------------------
-#
-#----------------------------------------------------------------------------------------------------
-# Find file (Usage: ff <filename>)
+# Find file------------------------------------------------------------------------------------------
+# Usage: ff <filename>
 function ff() { find . -type f -iname '*'$*'*' -ls; }
-#----------------------------------------------------------------------------------------------------
+#
+# function extract-----------------------------------------------------------------------------------
 # "extract <filename>" extracts all formats
 # credits: urukrama, Ubuntuforums.org
 function extract()
@@ -76,7 +71,7 @@ if [ -f $1 ] ; then
 fi
 }
 #
-#----------------------------------------------------------------------------------------------------
+# function __add_command_replace_alias---------------------------------------------------------------
 # This function checks if certain applications are installed and defines aliases in case of.
 # This will not remove the application. But if you call it the usual way the more sophisticated version
 # will be used, e.g. 'htop' instead of 'top'
@@ -103,7 +98,7 @@ __add_command_replace_alias traceroute 'mtr'
 __add_command_replace_alias tracepath 'mtr'
 __add_command_replace_alias top 'htop'
 
-#-----------------------------------------------------------------------------------------------------
+# function allcolors-----------------------------------------------------------------------------------
 #
 # credit to Oktay https://askubuntu.com/users/147615/oktay
 # https://askubuntu.com/questions/27314/script-to-display-all-terminal-colors/279014#279014
@@ -114,7 +109,7 @@ for x in 0 1 4 5 7 8; do for i in {30..37}; do for a in {40..47}; do echo -ne "\
 #
 # Another solution is this: 'msgcat --color=test', but you need to install 'gettext': sudo apt install gettext
 #
-#----------------------------------------------------------------------------------------------------
+# function truecolors----------------------------------------------------------------------------------
 # This program is free software. It comes without any warranty, to
 # the extent permitted by applicable law. You can redistribute it
 # and/or modify it under the terms of the Do What The Fuck You Want
@@ -135,6 +130,7 @@ done;
 echo "";
 }
 #
+# function wtfis---------------------------------------------------------------------------------------
 # wtfis: Shows what a given command really is. It is a combination of "type", "file"
 # and "ls". Unlike "which", it does not only take $PATH into account. This
 # means it works for aliases and hashes, too. (The name "whatis" was taken,
@@ -146,7 +142,7 @@ echo "";
 #   wtfis man
 #   wtfis vi
 # 
-# sauce: https://raw.githubusercontent.com/janmoesen/tilde/master/.bash/commands
+# source: https://raw.githubusercontent.com/janmoesen/tilde/master/.bash/commands
 #
 wtfis()
 {
@@ -292,3 +288,4 @@ wtfis()
 
   return $ret
 }
+#
