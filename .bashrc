@@ -43,13 +43,17 @@ if [ -f /etc/bashrc ]; then . /etc/bash.bashrc; fi
 #
 #----------------------------------------------------------------------------------------------------
 # activates completion features (probably already activated in /etc/bash.bashrc or /etc/profile)
-#if [ -f /etc/bash_completion.d ]; then ./etc/bash_completion ; fi
+#if [ -f /etc/bash_completion.d ]; then
+#	./etc/bash_completion
+#fi
 #
 #----------------------------------------------------------------------------------------------------
 # set variable identifying the chroot you work in (used in the prompt below)
 # the file /etc/debian_chroot must be present and have content, otherwise almost nothing will happen
 #
-#if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then debian_chroot=$(cat /etc/debian_chroot) ; fi
+#if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+#    debian_chroot=$(cat /etc/debian_chroot)
+#fi
 #----------------------------------------------------------------------------------------------------
 # START COLORS, FUNCTIONS, & ALIASES
 # Let's have some fancy aliases, colors, and functions
@@ -143,12 +147,9 @@ echo -ne "${RED}\b+${NC}"
 #################################################################################
 ## This is where the actual screen output starts
 ##
-# At first we are looking for a file named "~/.shellcfg/logos/raspberry". 
+# At first we are looking for a file named "~/.shellcfg/logos/raspberrypi".
 # It must be a text file (or be empty) or you will see garbage on the screen
-if [ -f ~/.shellcfg/logos/raspberrypi ]; then
-    # Also we look for lolcat, that will output simple (b/w) ascii art with nice colors.
-    # If not installed, run "sudo apt install lolcat", if you want that.
-   if [ -x /usr/games/lolcat ]; then /usr/games/lolcat ~/.shellcfg/logos/raspberrypi; else
+if [ -f ~/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat ~/.shellcfg/logos/raspberrypi; else
 #
 # animated intro (Start)
 # If ~/.shellcfg/logos/raspberrypi and/or lolcat can't be found, we have an alternative and more informative output
@@ -158,10 +159,10 @@ for i in `seq 1 80` ; do spin; done ;echo "";
 echo -ne              "${WHITE}Welcome "`whoami`". ${NC}";
 echo -e " ";
 echo -e "${NC}"
-if [ -f ~/.shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. ~/.shellcfg/what_shell); else :; fi
+if [ -f ~/.shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. ~/.shellcfg/what_shell); fi
 echo -e " ";
 echo -e "${WHITE}Host Name:		${LIGHTGREEN}" `uname -n`;
-echo -e "${WHITE}OS:		    	${LIGHTGREEN}" `uname -o`;
+if [ -f /etc/os-release ]; then echo -e "${WHITE}Distribution           ${LIGHTGREEN} " $(grep -E '^(NAME)=' /etc/os-release)" "$(grep -E '^(VERSION)=' /etc/os-release); else  echo -e "${WHITE}OS:		    	${LIGHTGREEN}" `uname -o`; fi
 echo -e "${WHITE}Kernel Release:		${LIGHTGREEN}" `uname -r`;
 echo -e "${WHITE}Kernel Version:    	${LIGHTGREEN}" `uname -v`;
 echo -e "${WHITE}Architecture:       	${LIGHTGREEN}" `uname -m`;
@@ -175,10 +176,9 @@ echo -e "${NC}";
 for i in `seq 1 80` ; do spin; done ;echo "";
 # animated intro (End)
 echo -e "${NC}";
-else :
 fi
 fi
-fi
+#
 #----------------------------------------------------------------------------------------------------
 #
 #Clock in terminal (more or less useless since we have time output at the prompt
