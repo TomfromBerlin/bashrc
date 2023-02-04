@@ -43,17 +43,13 @@ if [ -f /etc/bashrc ]; then . /etc/bash.bashrc; fi
 #
 #----------------------------------------------------------------------------------------------------
 # activates completion features (probably already activated in /etc/bash.bashrc or /etc/profile)
-#if [ -f /etc/bash_completion.d ]; then
-#	./etc/bash_completion
-#fi
+#if [ -f /etc/bash_completion.d ]; then ./etc/bash_completion ; fi
 #
 #----------------------------------------------------------------------------------------------------
 # set variable identifying the chroot you work in (used in the prompt below)
 # the file /etc/debian_chroot must be present and have content, otherwise almost nothing will happen
 #
-#if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-#    debian_chroot=$(cat /etc/debian_chroot)
-#fi
+#if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then debian_chroot=$(cat /etc/debian_chroot) ; fi
 #----------------------------------------------------------------------------------------------------
 # START COLORS, FUNCTIONS, & ALIASES
 # Let's have some fancy aliases, colors, and functions
