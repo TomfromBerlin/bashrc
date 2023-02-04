@@ -80,8 +80,7 @@ Way to much to mention all here. Most of them are explained in the file, but cur
 | **command&nbsp;not&nbsp;found** | _will be invoked automatically_ | This is available in most distributions, but not necessarily installed. It should actually be called in `/etc/bash.bashrc` for the function to be available globally, but it doesn't hurt if it lives there either. Under Arch Linux, line 10 in this file must also be commented out (`#source /usr/share/doc/pkgfile/command-not-found.bash`) and should be processed before the function will be declared, otherwise the whole thing won't work in this distribution. Other non-Debian-/Ubuntu-based distributions may have similar requirements.|
 | **extract** | extract&nbsp;&lt;filename&gt; | extracts all formats of archive files (credits: urukrama, Ubuntuforums.org)
 | **ff (find file)** | ff&nbsp;&lt;filename&gt; | Yep, it finds files.|
-| **wtfis** | wtfis&nbsp;&lt;arg&gt; | Like `which` but exposes much more info.<br>
-&lt;arg&gt; has to be the name of a program, function, or alias that can be found on your system, e.g. `wtfis man`. <br> ❗**Be patient!** This function takes some time to collect all the information.❗<br> Source: <https://raw.githubusercontent.com/janmoesen/tilde/master/.bash/commands>|
+| **wtfis** | wtfis&nbsp;&lt;arg&gt; | Like `which` but exposes much more info.<br> &lt;arg&gt; has to be the name of a program, function, or alias that can be found on your system, e.g. `wtfis man`. <br> ❗**Be patient!** This function takes some time to collect all the information.❗<br> Source: <https://raw.githubusercontent.com/janmoesen/tilde/master/.bash/commands>|
 
 #### what the (s)hell
 
