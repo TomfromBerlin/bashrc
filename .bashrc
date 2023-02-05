@@ -3,8 +3,8 @@
 # Name: .bashrc								#
 # Path: /home/$user/							#
 #									#
-# by TomfromBerlin						#
-# https://github.com/TomfromBerlin                  #
+# by TomfromBerlin							#
+# https://github.com/TomfromBerlin                 			#
 # Last changes: 05.02.2023						#
 #									#
 # Some commands or functions may not work on all distros		#
@@ -13,7 +13,7 @@
 # SHELLS THAN BASH!							#
 #									#
 # THERE ARE A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED	#
-# TO WORK WITH OTHER SHELLS!							#
+# TO WORK WITH OTHER SHELLS!						#
 #									#
 #########################################################################
 #
@@ -249,7 +249,7 @@ fi
 # Escape-Codes gehören _nicht_ dazwischen.				# Escape codes _do not_ belong in between.				#
 # (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste	# (These are only the most important escape codes, a complete list	#
 # findet ihr in der Manpage der Bash <Befehl "man bash"> oder unter	# can be found in the bash manpage <command "man bash"> or under	#
-#                         https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt                     	#
+#				https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt					#
 #################################################################################################################################################
 # End of .bashrc
 #----------------------------------------------------------------------------------------------------
