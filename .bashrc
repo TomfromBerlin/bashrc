@@ -24,11 +24,11 @@
 # Backup the current .bashrc and other files without overwriting the last backup. You'll never know...
 # At first we look for the backup folder. If not exist create one
 if [ -d ~/.shellcfg/backup ]; then : ; else mkdir ~/.shellcfg/backup; fi
-if [ -f ~/.shellcfg/backup/bashrc.backup ]; then cp -f -b ~/.bashrc ~/.shellcfg/backup/bashrc.backup; else cp -u ~/.bashrc ~/.shellcfg/backup/bashrc.backup; fi
-if [ -f ~/.shellcfg/backup/alias.backup ]; then cp -f -b ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup; else cp -u ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup; fi
-if [ -f ~/.shellcfg/backup/functions.backup ]; then cp -f -b ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup; else cp -u ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup; fi
-if [ -f ~/.shellcfg/backup/colors.backup ]; then cp -f -b ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup; else cp -u ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup; fi
-if [ -f ~/.shellcfg/backup/what_shell.backup ]; then cp -f -b ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup; else cp -u ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup; fi
+if [ -f ~/.shellcfg/backup/bashrc.backup ]; then cp -up -b ~/.bashrc ~/.shellcfg/backup/bashrc.backup; else cp -up ~/.bashrc ~/.shellcfg/backup/bashrc.backup; fi
+if [ -f ~/.shellcfg/backup/alias.backup ]; then cp -up -b ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup; else cp -up ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup; fi
+if [ -f ~/.shellcfg/backup/functions.backup ]; then cp -up -b ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup; else cp -up ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup; fi
+if [ -f ~/.shellcfg/backup/colors.backup ]; then cp -up -b ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup; else cp -up ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup; fi
+if [ -f ~/.shellcfg/backup/what_shell.backup ]; then cp -up -b ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup; else cp -up ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup; fi
 cd ~ # back to home
 #----------------------------------------------------------------------------------------------------
 # Read global settings if there are such things.
@@ -147,12 +147,12 @@ echo -ne "${RED}\b+${NC}"
 #################################################################################
 ## This is where the actual screen output starts
 ##
-# At first we are looking for a file named "~/.shellcfg/logos/raspberrypi".
-# It must be a text file (or be empty) or you will see garbage on the screen
+# At first we are looking for a file named "~/.shellcfg/logos/raspberrypi". It must be a text file (or be empty) or you will see garbage on the screen
+# Then we look for lolcat...
 if [ -f ~/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat ~/.shellcfg/logos/raspberrypi; else
 # If we were successful we have an output, otherwise we do the following...
 # animated intro (Start)
-# ...but we need the file ~/.shellcfg/colors to be present. If it's not there, we're done and the prompt will pop up.
+# ...but we need the file ~/.shellcfg/colors to be present.
 if [ -f ~/.shellcfg/colors ]; then echo -e " ";
 for i in `seq 1 80` ; do spin; done ;echo "";
 echo -ne              "${WHITE}Welcome "`whoami`". ${NC}";
@@ -161,7 +161,7 @@ echo -e "${NC}"
 if [ -f ~/.shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. ~/.shellcfg/what_shell); fi
 echo -e " ";
 echo -e "${WHITE}Host Name:		${LIGHTGREEN}" `uname -n`;
-if [ -f /etc/*-release ]; then echo -e "${WHITE}Distribution           ${LIGHTGREEN} " $(grep -E '^(NAME)=' /etc/*-release)" "$(grep -E '^(VERSION)=' /etc/*-release); else  echo -e "${WHITE}OS:		    	${LIGHTGREEN}" `uname -o`; fi
+if [ -f /etc/os-release ]; then echo -e "${WHITE}Distribution           ${LIGHTGREEN} " $(grep -E '^(NAME)=' /etc/*-release)" "$(grep -E '^(VERSION)=' /etc/*-release); else  echo -e "${WHITE}OS:		    	${LIGHTGREEN}" `uname -o`; fi
 echo -e "${WHITE}Kernel Release:		${LIGHTGREEN}" `uname -r`;
 echo -e "${WHITE}Kernel Version:    	${LIGHTGREEN}" `uname -v`;
 echo -e "${WHITE}Architecture:       	${LIGHTGREEN}" `uname -m`;
@@ -177,6 +177,15 @@ for i in `seq 1 80` ; do spin; done ;echo "";
 echo -e "${NC}";
 fi
 fi
+#
+#----------------------------------------------------------------------------------------------------
+#
+#Clock in terminal (more or less useless since we have time output at the prompt
+#
+#clock ()
+#{
+#while true;do clear;echo "===========";date +"%r";echo "===========";sleep 1;done
+#}
 #
 #----------------------------------------------------------------------------------------------------
 # PROMPT
