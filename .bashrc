@@ -2,18 +2,18 @@
 # BASH Config File							#
 # Name: .bashrc								#
 # Path: /home/$user/							#
-# Based on Vagubunt's .bashrc (http://vagubunt.wordpress.com)		#
 #									#
-# Modified by Thomas Bernard						#
-# Last changes: 03.02.2023						#
+# by TomfromBerlin						#
+# https://github.com/TomfromBerlin                  #
+# Last changes: 05.02.2023						#
 #									#
 # Some commands or functions may not work on all distros		#
 #									#
 # THIS FILE with its associated files MAY OR MAY NOT WORK WITH OTHER	#
 # SHELLS THAN BASH!							#
 #									#
-# CHANCES ARE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED TO WORK	#
-# WITH OTHER SHELLS!							#
+# THERE ARE A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED	#
+# TO WORK WITH OTHER SHELLS!							#
 #									#
 #########################################################################
 #
@@ -78,27 +78,31 @@ fi
     #fi
    #esac
 #fi
+#
 #----------------------------------------------------------------------------------------------------
-# It's the directories on the $PATH that show us the way
+#
+# It's the directories on the $PATH that show us the way to our files
 PATH=$PATH				# This will read when an interactive shell will be started
 export PATH=$PATH:/usr/games/		# separate entries with ":"
 #----------------------------------------------------------------------------------------------------
 #
-########################################################################
-# Settings... (-s = set; -u = unset)
-# more under http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
+#####################################################################################################
+# Builtin-Settings... (-s Enable (set) each optname; -u Disable (unset) each optname; -q Suppresses normal output; the return status indicates whether the optname is set or unset. If multiple optname arguments are given with -q, the return status is zero if all optnames are enabled; non-zero otherwise.
+# more under https://www.gnu.org/software/bash/manual/bash.html#The-Shopt-Builtin
 #.......................................................................
 ulimit -S -c 0		# We don't want coredumps (state of memory at a certain time, generally when a program crashed)
 set -o notify
 set -o noclobber	# if set, bash will not overwrite existing files when using the redirection operands >, >&, and >>
-#set -o ignoreeof
+# set -o ignoreeof
 set -o nounset
-#set -o xtrace		# helpfull while debugging.
+# set -o xtrace		# helpfull while debugging.
 #----------------------------------------------------------------------------------------------------
+# shopt builtin
 # anschalten
+#
 shopt -s autocd         # if only a directory name is entered, the directory is automatically changed
-#shopt -s cdable_vars   # Set path variable, e.g. export ne="/etc/network/"
-#shopt -s checkhash	# If this is set, Bash checks that a command found in the hash table exists before trying to execute it. If a hashed command no longer exists, a normal path search is performed.
+# shopt -s cdable_vars  # Set path variable, e.g. export ne="/etc/network/"
+shopt -s checkhash      # If this is set, Bash checks that a command found in the hash table exists before trying to execute it. If a hashed command no longer exists, a normal path search is performed.
 shopt -s checkjobs      # before exiting an interactive shell, all running and stopped jobs are checked
 shopt -s no_empty_cmd_completion # If Readline is being used Bash will not attempt to search the PATH for possible completions when completion is attempted on an empty line.
 shopt -s cmdhist        # multi-line commands are saved in the same history entry - simplifies later editing
@@ -107,10 +111,10 @@ shopt -s histappend     # Command history is appended to the existing one and is
 shopt -s histreedit
 shopt -s histverify
 shopt -s nocaseglob     # Bash matches filenames in a case-insensitive fashion when performing filename expansion
-shopt -s dotglob	# If set, Bash includes filenames beginning with a ‘.’ in the results of filename expansion. The filenames ‘.’ and ‘..’ must always be matched explicitly, even if dotglob is set.
-#shopt -s extglob       # usefull for programmable completion
+shopt -s dotglob        # If set, Bash includes filenames beginning with a "." in the results of filename expansion. The filenames "." and ".." must always be matched explicitly, even if dotglob is set.
+shopt -s extglob        # usefull for programmable completion
 shopt -s cdspell        # if set, cdspell corrects minor typos in connection with the "cd" command
-shopt -s dirspell	# If set, Bash attempts spelling correction on directory names during word completion if the directory name initially supplied does not exist.
+shopt -s dirspell       # If set, Bash attempts spelling correction on directory names during word completion if the directory name initially supplied does not exist.
 #----------------------------------------------------------------------------------------------------
 # abschalten
 shopt -u mailwarn
@@ -149,8 +153,10 @@ echo -ne "${RED}\b+${NC}"
 ##
 # At first we are looking for a file named "~/.shellcfg/logos/raspberrypi". It must be a text file (or be empty) or you will see garbage on the screen
 # Then we look for lolcat...
-if [ -f ~/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat ~/.shellcfg/logos/raspberrypi; else
-# If we were successful we have an output, otherwise we do the following...
+if [ -f ~/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat ~/.shellcfg/logos/raspberrypi;
+# If we were successful we have an output, and we're done: the prompt will pop up.
+# Otherwise continue here...
+else
 # animated intro (Start)
 # ...but we need the file ~/.shellcfg/colors to be present.
 if [ -f ~/.shellcfg/colors ]; then echo -e " ";
@@ -177,15 +183,6 @@ for i in `seq 1 80` ; do spin; done ;echo "";
 echo -e "${NC}";
 fi
 fi
-#
-#----------------------------------------------------------------------------------------------------
-#
-#Clock in terminal (more or less useless since we have time output at the prompt
-#
-#clock ()
-#{
-#while true;do clear;echo "===========";date +"%r";echo "===========";sleep 1;done
-#}
 #
 #----------------------------------------------------------------------------------------------------
 # PROMPT
@@ -252,7 +249,7 @@ fi
 # Escape-Codes gehören _nicht_ dazwischen.				# Escape codes _do not_ belong in between.				#
 # (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste	# (These are only the most important escape codes, a complete list	#
 # findet ihr in der Manpage der Bash <Befehl "man bash"> oder unter	# can be found in the bash manpage <command "man bash"> or under	#
-# www.gnu.org/software/bash/manual/html_node/Printing-a-Prompt.html)	# www.gnu.org/software/bash/manual/html_node/Printing-a-Prompt.html)	#
+#                         https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt                     	#
 #################################################################################################################################################
 # End of .bashrc
 #----------------------------------------------------------------------------------------------------
