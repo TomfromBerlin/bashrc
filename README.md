@@ -86,17 +86,19 @@ Way to much to mention all here. Most of them are explained in the file, but cur
 
 The idea that came up with the what_shell file was to make it accessible to other shells as well and if possible, to prevent that any user-side changes to the files are necessary for it to work - apart from renaming the [.bashrc](/.bashrc) file. For now, this query (and I am talking here only about this query, read below) should work in the following environments:
 
-  bash) Bourne Again Shell
-  sh) Bourne Shell
-  ash) Almquist-Shell
-  dash) Debian-Almquist-Shell
-      + When using dash as an interactive shell it is recommended, to check that all scripts that don't have the `#!/bin/bash` directive in their shebang are fully POSIX compliant.
-  ksh) Korn Shell88/93
-  mksh) MirBSD Korn Shell
-  pdksh) "Puplic Domain Korn Shell
-  posh) Policy-compliant Ordinary SHell
-  yash) Yet Another Shell
-  zsh) Z Shell
+  1) Bourne Again Shell (bash)
+  2) Bourne Shell (sh)
+  3) Almquist-Shell (ash)
+  4) Debian-Almquist-Shell (dash)
+      + When using dash as an interactive shell it is recommended, to check that all scripts that don't have the `#!/bin/bash` directive in their shebang are fully POSIX compliant or you will get in trouble. This may apply also to Almquist Shell (ash)
+  5) Korn Shell88/93 (ksh)
+  6) MirBSD Korn Shell (mksh)
+  7) Puplic Domain Korn Shell (pdksh) <------ IMHO you shouldn't use this as it's deprecated and no longer maintained
+  8) Policy-compliant Ordinary SHell (posh) <------ could also be [Process Offload SHell](/../../../../../deeptir18/posh)
+  9) Yet Another Shell (yash)
+  10) Z Shell (zsh)
+
+The Friendly Interactive Shell (fish) will not work as it is not compatible with any other shell.
   
 However, there is another tiny problem: Different shells have different filenames and especially different features and functions. Also, the commands may vary depending on which shell is used and whether that is also the default shell or possibly called from another shell, which can lead to different results. This may require different queries. Therefore, the file [~/.shellcfg/what_shell](/.shellcfg/what_shell) is currently only safe to use in in the Bourne Again Shell (bash) and Bourne Shell (sh) and should not cause any problems here, but may work within Korn-Shell as well, perhaps even within the Z-Shell. But as I said, all the shells mentioned are initially recognized. However, whether the rest will also work is not certain at the moment.
 
@@ -207,3 +209,6 @@ If you want to modify or adapt the code for other shells, feel free to do so. On
 And now have fun!
 
 [^1]: Well, the command `allcolors` only outputs 16 foreground colors plus 16 background colors in the possible combinations. Additionally there are blinking versions if the terminal supports this attribute. The colors themselves are usually available in a dark and a light version. This should be sufficient in most cases. But if, for example, fifty shades of gray are needed (pun somewhat intended), I have something up my sleeve. Type `truecolors` on the command line and hit Enter. If the terminal has the capability (most will), you should now see the color codes for 256 colors. (I know, True Color actually means 16 million colors. The name of the function is reminiscent of the song "True Colors" by Cindy Lauper.)
+
+
+[def]: /../../../../../deeptir18/posh
