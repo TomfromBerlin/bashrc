@@ -23,7 +23,7 @@ You will only need the follwing files:
 + [~/.shellcfg/alias](/.shellcfg/alias) (necessary for full functionality)
 + [~/.shellcfg/colors](/.shellcfg/colors) (optional, necessary for color prompt and other color gimmicks)
 + [~/.shellcfg/functions](/.shellcfg/functions) (necessary for enhanced functionality)
-+ [~/.shellcfg/what_shell](/.shellcfg/what_shell) (see also [what-the-(s)hell section](/README.md#what-the-(s)hell) below)
++ [~/.shellcfg/what_shell](/.shellcfg/what_shell) (optional, see also wiki page [what-the-(s)hell]((/../../../../..//TomfromBerlin/bashrc/wiki/What-the-(S)hell))
 
 If any of these files are missing, the shell will still work. However, under certain circumstances (e.g., your `/etc/bash.bashrc` as well as your `~/.profile` don't contain alias definitions or functions) no or at least lesser [aliases](/.shellcfg/alias) or [functions](/.shellcfg/functions) will then be available. If [/.shellcfg/colors](/.shellcfg/colors) is missing, the prompt will still appear colored (lack of color support should be the exception), but customization will be more challenging, since you need to use color codes (see wiki page about [configuration of the prompt](/../../../../../TomfromBerlin/bashrc/wiki/Configure-your-prompt-conveniently).
 
