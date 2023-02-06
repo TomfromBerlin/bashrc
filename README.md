@@ -4,7 +4,8 @@
 
 ## For detailed information about this repo, please refer to the [wiki](/../../../../../TomfromBerlin/bashrc/wiki)
 
-
+| ❗ | If you want to use these files in shells other than bash, I strongly recommend checking the contents for compatibility.|
+|-|:-|
 
 This [.bashrc](/.bashrc) produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. GitHub then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
 
