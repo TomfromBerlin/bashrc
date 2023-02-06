@@ -2,14 +2,14 @@
 MYSHELL=$(ps -cp "$$" -o command="")
 case "$MYSHELL" in
   bash) echo "Bourne Again Shell ($(ps -cp "$$" -o command=""))  - ver. ${BASH_VERSION%.*}"  ;;
-  sh) echo "Bourne Shell ($(ps -cp "$$" -o command="")) - ver. ${SH_VERSION%.*}" ;;
+  sh) echo "Bourne Shell ($(ps -cp "$$" -o command="")) - ver. ${SH_VERSION%.*}"  ;;
   ash) echo "Almquist-Shell ($(ps -cp "$$" -o command=""))"  ;;
   dash) echo "Debian-Almquist-Shell ($(ps -cp "$$" -o command=""))"  ;;
-  ksh) echo "Korn Shell88/93 ($(ps -cp "$$" -o command="")) - ver. ${KSH_VERSION%.*}" ;;
-  mksh) echo "MirBSD Korn Shell ($(ps -cp "$$" -o command="")) - ver. ${KSH_VERSION%.*}" ;;
-  pdksh) echo "Puplic Domain Korn Shell ($(ps -cp "$$" -o command="")) - ver. ${KSH_VERSION%.*}" ;;
-  posh) echo "Policy-compliant Ordinary SHell ($(ps -cp "$$" -o command="")) - ver. ${POSH_VERSION%.*}" ;;
-  yash) echo "Yet Another Shell ($(ps -cp "$$" -o command="")) - ver. ${YASH_VERSION%.*}" ;;
+  ksh) echo "Korn Shell88/93 ($(ps -cp "$$" -o command="")) - ver. ${KSH_VERSION%.*}"  ;;
+  mksh) echo "MirBSD Korn Shell ($(ps -cp "$$" -o command="")) - ver. ${KSH_VERSION%.*}"  ;;
+  pdksh) echo "Puplic Domain Korn Shell ($(ps -cp "$$" -o command="")) - ver. ${KSH_VERSION%.*}"  ;;
+  posh) echo "Policy-compliant Ordinary SHell ($(ps -cp "$$" -o command="")) - ver. ${POSH_VERSION%.*}"  ;;
+  yash) echo "Yet Another Shell ($(ps -cp "$$" -o command="")) - ver. ${YASH_VERSION%.*}"  ;;
   zsh) echo "Z Shell ($(ps -cp "$$" -o command="")) - ver. ${ZSH_VERSION%.*}"  ;;
-  *) echo "Unknown Shell - ($(ps -cp "$$" -o command=""))" ;;
+  *) echo "Unknown Shell - ($(ps -cp "$$" -o command=""))"  ;;
 esac
