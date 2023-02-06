@@ -25,7 +25,7 @@ You will only need the follwing files:
 + [~/.shellcfg/functions](/.shellcfg/functions) (necessary for enhanced functionality)
 + [~/.shellcfg/what_shell](/.shellcfg/what_shell) (optional, see also wiki page [What-the-(S)hell](/../../../../..//TomfromBerlin/bashrc/wiki/What-the-(S)hell))
 
-If any of these files (except for [.bashrc](/.bashrc)) are missing, the shell will still work. However, under certain circumstances (e.g., your `/etc/bash.bashrc` as well as your `~/.profile` don't contain alias definitions or functions) no or at least lesser [aliases](/.shellcfg/alias) or [functions](/.shellcfg/functions) will then be available. If [/.shellcfg/colors](/.shellcfg/colors) is missing, the prompt will still appear colored (lack of color support should be the exception), but customization will be more challenging, since you need to use color codes (see wiki page about [configuration of the prompt](/../../../../../TomfromBerlin/bashrc/wiki/Configure-your-prompt-conveniently).
+If any of these files (except for [.bashrc](/.bashrc)) are missing, the shell will still work. However, under certain circumstances (e.g., your `/etc/bash.bashrc` as well as your `~/.profile` don't contain alias definitions or functions) no or at least lesser [aliases](/.shellcfg/alias) or [functions](/.shellcfg/functions) will then be available. If [/.shellcfg/colors](/.shellcfg/colors) is missing, the prompt will still appear colored (lack of color support should be the exception), but customization will be more challenging, since you need to use color codes (see wiki page about [configuration of the prompt](/../../../../../TomfromBerlin/bashrc/wiki/Configure-your-prompt-conveniently)).
 
 Other things that come with the zip file may also be important, but not required.
 
