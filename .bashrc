@@ -161,7 +161,7 @@ else
 # ...but we need the file ~/.shellcfg/colors to be present.
 if [ -f ~/.shellcfg/colors ]; then echo -e " ";
 for i in `seq 1 80` ; do spin; done ;echo "";
-echo -ne              "${WHITE}Welcome "`whoami`". ${NC}";
+echo -ne "${WHITE}Welcome "`whoami`". ${NC}";
 echo -e " ";
 echo -e "${NC}"
 if [ -f ~/.shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. ~/.shellcfg/what_shell); fi
@@ -172,12 +172,12 @@ echo -e "${WHITE}Kernel Release:		${LIGHTGREEN}" `uname -r`;
 echo -e "${WHITE}Kernel Version:    	${LIGHTGREEN}" `uname -v`;
 echo -e "${WHITE}Architecture:       	${LIGHTGREEN}" `uname -m`;
 echo -e "$NC";
-echo -e "${LIGHTCYAN}RAM:${LIGHTGREEN}";free -h;echo"";
-echo -e "${NC}";
-echo -e "${LIGHTCYAN}";netstat -i;echo "";
+if [ -x /bin/free ] then echo -e "${LIGHTCYAN}RAM:${LIGHTGREEN}";free -h;echo"";
+echo -e "${NC}"; fi
+if [ -x /bin/netstat ]; then echo -e "${LIGHTCYAN}";netstat -i;echo "";
 echo -e " ";
-echo -e "${NC}";
-# echo -ne "${LIGHTGREEN}";date '+%A, der %d.%m.%Y';
+echo -e "${NC}"; fi
+echo -ne "${LIGHTGREEN}";date;
 for i in `seq 1 80` ; do spin; done ;echo "";
 # animated intro (End)
 echo -e "${NC}";
