@@ -73,6 +73,6 @@ If you don't want to see a logo, just rename or delete the file in the /.shellcf
 
 How the logo can be changed can be read in the wiki page about [changing the logo](/../../../../../TomfromBerlin/bashrc/wiki/Changing-the-logo).
 
-If `lolcat` and/or the logo file in ~/.shellcfg/logos directory doesn't exist on your system and you don't see anything at all except the command prompt, the ~/.shell cfg/colors file is probably missing. This is no drama, you can still do your work, albeit less colorful.
+If `lolcat` and/or the logo file in ~/.shellcfg/logos directory doesn't exist on your system and you don't see anything at all except the command prompt, the ~/.shellcfg/colors file is probably missing. This is no drama, you can still do your work, albeit less colorful.
 
 Have fun and be nice.
