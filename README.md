@@ -78,3 +78,16 @@ If you want to change the logo read the wiki page on [how to](/../../../../../To
 If `lolcat` and/or the logo file in ~/.shellcfg/logos directory doesn't exist on your system and you don't see anything at all except the command prompt, the ~/.shellcfg/colors file is probably missing. This is no drama, you can still do your work, albeit less colorful.
 
 Have fun and be nice.
+
+--------------------------------------------------------------------------------------------------
+
+# To do
+
+- [ ] \(Optional) adding a handy rollback feature (rollback should be invoked by one command)
+- [ ] \(Optional) make the screen output bilingual 🇩🇪 🇺🇸
+- [ ] \(Optional) make more logos in ascii art for other distros and let the system decide wich one has to be shown
+- [ ] \(Optional) cancel full time job 🏴‍☠️
+- [ ] \(Optional) ❓
+- [ ] \(Optional) become rich 💎🍾
+- [ ] \(Optional) make more stuff
+- [ ] \(Optional) make even more stuff
