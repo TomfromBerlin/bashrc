@@ -12,7 +12,7 @@ Suggestions are always welcome. If errors occur, I would be grateful for informa
 
 ## System requirements
 
-This piece is intented to run on a Linux box with Bourne Again Shell (bash) as the default interactive shell. However, it may work with other shells (see section [what the (s)hell](/README.md#what-the-shell)) and should work with bash compatible shells.
+This piece is intented to run on a Linux box with Bourne Again Shell (bash) as the default interactive shell. However, it may work with other shells (see secwiki pagetion [What the (S)hell](/../../../../..//TomfromBerlin/bashrc/wiki/What-the-(S)hell)) and should work with bash compatible shells.
 
 Note that the amount of time before the command prompt or GUI is available can be noticeably increased. The weaker the hardware, the longer it can take (it seems logical).
 
@@ -61,16 +61,18 @@ If you're using `git`, the directory will be just called bashrc and you don't ha
 
 `git` should be installed by default on your Linux box. If not, just type `sudo apt-get install git` (or according to your distribution's command) in the command line and press Enter.
 
-If you leave it as it is, next time you start an interactive shell, the result will look like this:
+If you leave it as it is, next time you start an interactive shell, the result looks like this (assuming you have [lolcat](/../../../../../TomfromBerlin/bashrc/wiki/Optional-Programs) installed):
 
 ![screenshot of the terminal output with logo](terminal_logo.jpg)
 
-_The logo does not appear every time you issue a command. That would be annoying. You can recall the logo at any time with the command `lolcat ~/.shellcfg/logos/raspberrypi` or `cat ~/.shellcfg/logos/raspberrypi` as you wish._
+_The logo does not appear every time you issue a command. That would be annoying. You can recall the logo at any time with the command `lolcat ~/.shellcfg/logos/raspberrypi`, or `cat ~/.shellcfg/logos/raspberrypi` for for grayscale output._
 
-If you don't want to see a logo, just rename or delete the file in the /.shellcfg/logos/ directory. If the file named "raspberry" does not exist, a small text-based intro with some system information is output. Then the result looks like this:
+If you don't want to see a logo, just rename or delete the file in the /.shellcfg/logos/ directory. If the file named "raspberry" does not exist (or `lolcat` can't be found), a small text-based intro with some system information is output. Then the result looks like this:
 
 ![screenshot of the terminal output with intro](terminal_intro.jpg)
 
 How the logo can be changed can be read in the wiki page about [changing the logo](/../../../../../TomfromBerlin/bashrc/wiki/Changing-the-logo).
+
+If `lolcat` and/or the logo file in ~/.shellcfg/logos directory doesn't exist on your system and you don't see anything at all except the command prompt, the ~/.shell cfg/colors file is probably missing. This is no drama, you can still do your work, albeit less colorful.
 
 Have fun and be nice.
