@@ -69,7 +69,7 @@ If you leave it as it is, next time you start an interactive shell, the result l
 
 _The logo does not appear every time you issue a command. That would be annoying. You can recall the logo at any time with the command `lolcat ~/.shellcfg/logos/raspberrypi`, or `cat ~/.shellcfg/logos/raspberrypi` for grayscale output._
 
-If you don't want to see a logo, just rename or delete the file in the /.shellcfg/logos/ directory. If the file named "raspberry" does not exist (or `lolcat` can't be found), a small text-based intro with some system information is output. Then the result looks like this:
+If you don't want to see a logo, just rename or delete the file in the /.shellcfg/logos/ directory. If the file named "raspberrypi" does not exist (or `lolcat` can't be found), a small text-based intro with some system information is output. Then the result looks like this:
 
 ![screenshot of the terminal output with intro](terminal_intro.jpg)
 
