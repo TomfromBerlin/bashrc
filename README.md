@@ -12,9 +12,9 @@ Suggestions are always welcome. If errors occur, I would be grateful for informa
 
 ## System requirements
 
-This piece is intented to run on a Linux box with Bourne Again Shell (bash) as the default interactive shell. However, it may work with other shells (see secwiki pagetion [What the (S)hell](/../../../../..//TomfromBerlin/bashrc/wiki/What-the-(S)hell)) and should work with bash compatible shells.
+This piece is intented to run on a Linux box with Bourne Again Shell (bash) as the default interactive shell. However, it may work with other shells (see wiki page [What the (S)hell](/../../../../..//TomfromBerlin/bashrc/wiki/What-the-(S)hell)) and should work with bash compatible shells.
 
-Note that the amount of time before the command prompt or GUI is available can be noticeably increased. The weaker the hardware, the longer it can take (it seems logical).
+Note that the amount of time before the command prompt or GUI is available can be increased. The weaker the hardware, the longer it can take (it seems logical).
 
 You will only need the follwing files:
 
@@ -59,13 +59,13 @@ If you're using `git`, the directory will be just called bashrc and you don't ha
     $ source .bashrc
   ```
 
-`git` should be installed by default on your Linux box. If not, just type `sudo apt-get install git` (or according to your distribution's command) in the command line and press Enter.
+`git` should be installed by default on your Linux box. If not, just type `sudo apt-get install git` (replace apt-get according to your distribution's command, e.g. yum or dfn) in the command line and press Enter.
 
 If you leave it as it is, next time you start an interactive shell, the result looks like this (assuming you have [lolcat](/../../../../../TomfromBerlin/bashrc/wiki/Optional-Programs) installed):
 
 ![screenshot of the terminal output with logo](terminal_logo.jpg)
 
-_The logo does not appear every time you issue a command. That would be annoying. You can recall the logo at any time with the command `lolcat ~/.shellcfg/logos/raspberrypi`, or `cat ~/.shellcfg/logos/raspberrypi` for for grayscale output._
+_The logo does not appear every time you issue a command. That would be annoying. You can recall the logo at any time with the command `lolcat ~/.shellcfg/logos/raspberrypi`, or `cat ~/.shellcfg/logos/raspberrypi` for grayscale output._
 
 If you don't want to see a logo, just rename or delete the file in the /.shellcfg/logos/ directory. If the file named "raspberry" does not exist (or `lolcat` can't be found), a small text-based intro with some system information is output. Then the result looks like this:
 
