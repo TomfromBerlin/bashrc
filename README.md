@@ -2,7 +2,7 @@
 
 --------------------------------------------------------------------------------------------------------------------------
 
-## For detailed information about this repo, please refer to the [wiki](/../../../../../TomfromBerlin/bashrc/wiki/wiki)
+## For detailed information about this repo, please refer to the [wiki](/../../../../../TomfromBerlin/bashrc/wiki)
 
 
 
