@@ -37,29 +37,29 @@ If you want to use this stuff, you need do do a few simple things:
 ### Downloading as ZIP File
 When you downloaded the zip file use the following commands:
 
-  ```bash
-    $ cd ~
-    $ cp -i .bashrc bashrc.old
-    $ cd </download/directory/>
-    $ unzip bashrc-main.zip
-    $ cd bashrc-main
-    $ cp -iR .bashrc .shellcfg ~/
-    $ cd ~
-    $ source .bashrc
-  ```  
+```bash
+$ cd ~
+$ cp -i .bashrc bashrc.old
+$ cd </download/directory/>
+$ unzip bashrc-main.zip
+$ cd bashrc-main
+$ cp -iR .bashrc .shellcfg ~/
+$ cd ~
+$ source .bashrc
+```  
 
 ### Using Git
 Its a bit easier to clone the repo with `git`. The directory will be just called bashrc and you don't have to extract the files. If you want this you can use the following commands:
 
-  ```bash
-    $ cd ~
-    $ cp -i .bashrc bashrc.old
-    $ git clone https://github.com/TomfromBerlin/bashrc
-    $ cd bashrc
-    $ cp -iR .bashrc .shellcfg ~/
-    $ cd ~
-    $ source .bashrc
-  ```
+```bash
+$ cd ~
+$ cp -i .bashrc bashrc.old
+$ git clone https://github.com/TomfromBerlin/bashrc
+$ cd bashrc
+$ cp -iR .bashrc .shellcfg ~/
+$ cd ~
+$ source .bashrc
+```
 
 `git` should be installed by default on your Linux box. If not, just type `sudo apt-get install git` (replace apt-get according to your distribution's command, e.g. yum or dfn) in the command line and press Enter.
 
