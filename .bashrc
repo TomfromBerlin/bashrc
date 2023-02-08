@@ -177,7 +177,7 @@ echo -e "${NC}"; fi
 if [ -x /bin/netstat ]; then echo -e "${LIGHTCYAN}";netstat -i;echo "";
 echo -e " ";
 echo -e "${NC}"; fi
-echo -ne "${LIGHTGREEN}";date;
+echo -ne "${LIGHTGREEN}";sdate;
 for i in `seq 1 80` ; do spin; done ;echo "";
 # animated intro (End)
 echo -e "${NC}";
