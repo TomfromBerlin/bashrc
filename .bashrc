@@ -43,9 +43,9 @@ if [ -f /etc/bashrc ]; then . /etc/bash.bashrc; fi
 #
 #----------------------------------------------------------------------------------------------------
 # activates completion features (probably already activated in /etc/bash.bashrc or /etc/profile)
-#if [ -f /etc/bash_completion.d ]; then
-#	./etc/bash_completion
-#fi
+if [ -f /etc/bash_completion.d ]; then
+	./etc/bash_completion
+fi
 #
 #----------------------------------------------------------------------------------------------------
 # set variable identifying the chroot you work in (used in the prompt below)
@@ -96,6 +96,20 @@ set -o noclobber	# if set, bash will not overwrite existing files when using the
 # set -o ignoreeof
 set -o nounset
 # set -o xtrace		# helpfull while debugging.
+#
+# Do autolisting of commands while completing. Very handy. Example with "chmod": ch<TAB>
+set autolist
+#
+# Use the history of commands to aid expansion. Found in new versions of bash (at least 6.10)
+set autoexpand
+#
+# Symbolic links are expanded to their true values: chase (possible values 'chase' 'ignore' 'expand')
+# When traversing directories with symlinks, this substitures them with the real value.
+set symlinks=chase
+#
+# After a 'Ctrl-Z', it lists all the jobs.
+set listjobs
+#
 #----------------------------------------------------------------------------------------------------
 # shopt builtin
 # anschalten
