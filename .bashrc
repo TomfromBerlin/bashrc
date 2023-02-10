@@ -143,10 +143,11 @@ unset MAILCHECK         # no notification of incoming mails
 # You can bind the up and down arrow keys to search through Bash's history
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+bind Space:magic-space
 # 
 export HISTFILESIZE=100 # How many entries should be stored in history?
-export HISTCONTROL=ignoredups # ignore duplicates
-export HISTCONTROL=ignoreboth # ignore consecutive entries
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups:erasedups # ignore duplicates, don't overwrite GNU Midnight Commander's setting of `ignorespace'.
+#export HISTCONTROL=ignoreboth #... or force ignoredups and ignorespace, ignore consecutive entries 
 export HISTTIMEFORMAT="%H:%M > " # time format used in the history
 export HISTIGNORE="&:bg:fg:ll:h:dd" # commands that should not be included in the history
 #----------------------------------------------------------------------------------------------------
