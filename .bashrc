@@ -17,6 +17,13 @@
 #									#
 #########################################################################
 #
+#################################################################################
+# Everything below this line comes without any guarantee.			#
+# It is possible - although very unlikely - that these file(s) will		#
+# summon a big bad man to smash your computer into pieces with a sledgehammer.	#
+# That's NOT my problem. Use these files at your own risk!			#
+#################################################################################
+#
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 #
