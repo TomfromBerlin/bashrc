@@ -4,7 +4,7 @@
 # Path: /home/$user/							#
 #									#
 # by TomfromBerlin							#
-# https://github.com/TomfromBerlin                 			#
+# https://github.com/TomfromBerlin                  			#
 # Last changes: 05.02.2023						#
 #									#
 # Some commands or functions may not work on all distros		#
@@ -18,12 +18,11 @@
 #########################################################################
 #
 #################################################################################
-# Everything below this line comes without any guarantee.			#
-# It is possible - although very unlikely - that these file(s) will		#
-# summon a big bad man to smash your computer into pieces with a sledgehammer.	#
-# That's NOT my problem. Use these files at your own risk!			#
+# Everything below this line comes without any guarantee.                       #
+# It is possible - although very unlikely - that these file(s) will             #
+# summon a big bad man to smash your computer into pieces with a sledgehammer.  #
+# That's NOT my problem. Use these files at your own risk!                      #
 #################################################################################
-#
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 #
@@ -37,11 +36,12 @@ if [ -f ~/.shellcfg/backup/functions.backup ]; then cp -up -b ~/.shellcfg/functi
 if [ -f ~/.shellcfg/backup/colors.backup ]; then cp -up -b ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup; else cp -up ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup; fi
 if [ -f ~/.shellcfg/backup/what_shell.backup ]; then cp -up -b ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup; else cp -up ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup; fi
 cd ~ # back to home
+#
 #----------------------------------------------------------------------------------------------------
 # Read global settings if there are such things.
 # It makes no sense to throw this in /etc/bash.bashrc.
 #
-if [ -f /etc/bash.bashrc ]; then ./etc/bash.bashrc; fi
+if [ -f /etc/bashrc ]; then . /etc/bash.bashrc; fi
 #
 #----------------------------------------------------------------------------------------------------
 # Define language variable
@@ -50,7 +50,9 @@ if [ -f /etc/bash.bashrc ]; then ./etc/bash.bashrc; fi
 #
 #----------------------------------------------------------------------------------------------------
 # activates completion features (probably already activated in /etc/bash.bashrc or /etc/profile)
-if [ -f /etc/bash_completion.d ]; then ./etc/bash_completion; fi
+#if [ -f /etc/bash_completion.d ]; then
+#	./etc/bash_completion
+#fi
 #
 #----------------------------------------------------------------------------------------------------
 # set variable identifying the chroot you work in (used in the prompt below)
@@ -101,20 +103,6 @@ set -o noclobber	# if set, bash will not overwrite existing files when using the
 # set -o ignoreeof
 set -o nounset
 # set -o xtrace		# helpfull while debugging.
-#
-# Do autolisting of commands while completing. Very handy. Example with "chmod": ch<TAB>
-set autolist
-#
-# Use the history of commands to aid expansion. Found in new versions of bash (at least 6.10)
-set autoexpand
-#
-# Symbolic links are expanded to their true values: chase (possible values 'chase' 'ignore' 'expand')
-# When traversing directories with symlinks, this substitures them with the real value.
-set symlinks=chase
-#
-# After a 'Ctrl-Z', it lists all the jobs.
-set listjobs
-#
 #----------------------------------------------------------------------------------------------------
 # shopt builtin
 # anschalten
@@ -144,7 +132,6 @@ unset MAILCHECK         # no notification of incoming mails
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind Space:magic-space
-# 
 export HISTFILESIZE=100 # How many entries should be stored in history?
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups:erasedups # ignore duplicates, don't overwrite GNU Midnight Commander's setting of `ignorespace'.
 #export HISTCONTROL=ignoreboth #... or force ignoredups and ignorespace, ignore consecutive entries 
@@ -178,6 +165,7 @@ if [ -f ~/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/g
 # Otherwise continue here...
 else
 # animated intro (Start)
+clear
 # ...but we need the file ~/.shellcfg/colors to be present.
 if [ -f ~/.shellcfg/colors ]; then echo -e " ";
 for i in `seq 1 80` ; do spin; done ;echo "";
@@ -192,17 +180,17 @@ echo -e "${WHITE}Kernel Release:		${LIGHTGREEN}" `uname -r`;
 echo -e "${WHITE}Kernel Version:    	${LIGHTGREEN}" `uname -v`;
 echo -e "${WHITE}Architecture:       	${LIGHTGREEN}" `uname -m`;
 echo -e "$NC";
-if [ -x /bin/free ] then echo -e "${LIGHTCYAN}RAM:${LIGHTGREEN}";free -h;echo"";
+if [ -x /bin/free ]; then echo -e "${LIGHTCYAN}RAM:${LIGHTGREEN}";free -h;echo"";
 echo -e "${NC}"; fi
 if [ -x /bin/netstat ]; then echo -e "${LIGHTCYAN}";netstat -i;echo "";
 echo -e " ";
 echo -e "${NC}"; fi
-echo -ne "${LIGHTGREEN}";sdate;
 for i in `seq 1 80` ; do spin; done ;echo "";
 # animated intro (End)
 echo -e "${NC}";
 fi
 fi
+echo -ne "${LIGHTGREEN}";sdate;
 #
 #----------------------------------------------------------------------------------------------------
 # PROMPT
@@ -221,28 +209,33 @@ fi
 #
 #----------------------------------------------------------------------------------------------------
 #
+case $USER in
+  "root") PS_COLOR='\e[0;31m';;
+  *) PS_COLOR='\e[0;32m';;
+esac
+#
 if [ -f ~/.shellcfg/colors ]; then
     if [ "$color_prompt"=yes ]; then
         #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
-        PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"; else PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"; fi
+	export PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\[${PS_COLOR}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"; else PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"; fi
     unset color_prompt force_color_prompt
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in
     xterm*|rxvt*)
     #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
+	export PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\[${PS_COLOR}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
 	;;
     *)
         ;;
     esac
 else
-    if [ "$color_prompt"=yes ]; then PS1="\n\[\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$"; else PS2="\n\[\e]Systemzeit \A\n\u@\h: \w\a\:\$"; fi
+    if [ "$color_prompt"=yes ]; then PS1="\n\[\e[0;37mSystemzeit \A\n\[${PS_COLOR}\]\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$"; else PS2="\n\[\e]Systemzeit \A\n\u@\h: \w\a\:\$"; fi
     unset color_prompt force_color_prompt
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in
     xterm*|rxvt*)
     #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	PS1="\n\e[0;37mSystemzeit \A\n\e[1;34m\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$"
+	export PS1="\n\e[0;37mSystemzeit \A\n\[${PS_COLOR}\]\u \e[1;33m@ \e[1;32m\h \e[1;32m\w\\e[0m:\$"
         ;;
     *)
         ;;
@@ -269,7 +262,7 @@ fi
 # Escape-Codes gehören _nicht_ dazwischen.				# Escape codes _do not_ belong in between.				#
 # (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste	# (These are only the most important escape codes, a complete list	#
 # findet ihr in der Manpage der Bash <Befehl "man bash"> oder unter	# can be found in the bash manpage <command "man bash"> or under	#
-#				https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt					#
+#                         https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt			                     	#
 #################################################################################################################################################
 # End of .bashrc
 #----------------------------------------------------------------------------------------------------
