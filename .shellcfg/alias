@@ -1,6 +1,12 @@
+#################################################################################
+# Everything below this line comes without any guarantee.     #
+# It is possible - although very unlikely - that these file(s) will		#
+# summon a big bad man to smash your computer into pieces with a sledgehammer.	#
+# That's NOT my problem. Use these files at your own risk!			#
+#################################################################################
+#
 # ALIASES
 #
-# Mit Aliases können Befehle bzw. Befehlsketten mit eigenen Namen bzw. Kürzeln belegt werden.
 # more under https://www.gnu.org/software/bash/manual/html_node/Aliases.html
 #----------------------------------------------------------------------------------------------------
 # UMOUNT VS. UNMOUNT
@@ -14,17 +20,34 @@ alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umoun
 # alias unmount='echo -e "Syntax Error: Please use umount - without n after the first u"'
 #
 #----------------------------------------------------------------------------------------------------
-# ls 
-alias la='ls -Al'											# zeige versteckte Dateien in einer Liste
-alias ll='ls -l --group-directories-first --color=auto'		# ls als Liste, Verzeichnisse ganz oben
-alias ls='ls -aF --color=auto'								# Farbige Liste + Dateiendungen anzeigen
-alias lx='ls -lXB --color=auto'								# Sortierung nach Endung
-alias lk='ls -lSr --color=auto'								# Sortierung nach Grösse
-alias lc='ls -lcr --color=auto'								# Sortierung nach Änderungsdatum
-alias lu='ls -lur --color=auto'								# Sortierung nach letztem Zugriff
-alias lt='ls -ltr --color=auto'								# Sortierung nach Datum
-alias lm='ls -al |more --color=auto'						# ls mit more (scrollbar)
-alias lr='ls -lR |more --color=auto'						# Rekursive Liste mit more (scrollbar)
+# ls (suitable for Linux and OSX)
+# souce: https://github.com/johnnygaffey/dotfiles/bash_alias
+#
+if [[ -f /usr/bin/ls++ ]]; then
+    alias ls='ls -F --color=auto'    #colors
+    alias l='ls++ --potsf -F'    #colors
+    alias ll='ls++ --potsf -ah'  #long list
+    alias la='ls++ --potsf -A'  #show hidden
+    alias lx='ls++ --potsf -B'  #sort by sextension
+    alias lk='ls++ --potsf -Sr'  #sort by size biggest last
+    alias lc='ls++ --potsf -tcr' #sort by and show chagne times
+    alias lu='ls++ --potsf -tur' #sort by and show access time
+    alias lt='ls++ --potsf -tr'  #sort by date
+    alias lm='ls++ --potsf -a |more'          #pipe through more
+    alias lr='ls++ --potsf -R'                #recursive
+else
+    alias ls='ls -FG'    #colors
+    alias l='ls -FG'    #colors
+    alias ll='ls -lsahG'  #long list
+    alias la='ls -AFG'  #show hidden
+    alias lx='ls -lXBG'  #sort by sextension
+    alias lk='ls -lSrG'  #sort by size biggest last
+    alias lc='ls -ltcrG' #sort by and show chagne times
+    alias lu='ls -lturG' #sort by and show access time
+    alias lt='ls -ltrG'  #sort by date
+    alias lm='ls -al |more'          #pipe through more
+    alias lr='ls -lR'                #recursive
+fi
 #
 #----------------------------------------------------------------------------------------------------
 # File management 
