@@ -34,7 +34,7 @@ cd ~ # back to home
 # Read global settings if there are such things.
 # It makes no sense to throw this in /etc/bash.bashrc.
 #
-if [ -f /etc/bashrc ]; then . /etc/bash.bashrc; fi
+if [ -f /etc/bash.bashrc ]; then ./etc/bash.bashrc; fi
 #
 #----------------------------------------------------------------------------------------------------
 # Define language variable
@@ -43,9 +43,7 @@ if [ -f /etc/bashrc ]; then . /etc/bash.bashrc; fi
 #
 #----------------------------------------------------------------------------------------------------
 # activates completion features (probably already activated in /etc/bash.bashrc or /etc/profile)
-if [ -f /etc/bash_completion.d ]; then
-	./etc/bash_completion
-fi
+if [ -f /etc/bash_completion.d ]; then ./etc/bash_completion; fi
 #
 #----------------------------------------------------------------------------------------------------
 # set variable identifying the chroot you work in (used in the prompt below)
