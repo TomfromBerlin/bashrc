@@ -34,6 +34,13 @@ jobscount() {
     ((background)) && echo -n "(${background}) "
 }
 #
+# find where some function is defined---------------------------------------------------------------
+whereisfunc() {
+    shopt -s extdebug;
+    declare -F $1;
+    shopt -u extdebug;
+}
+#
 # Find file------------------------------------------------------------------------------------------
 # Usage: ff <filename>
 function ff() { find . -type f -iname '*'$*'*' -ls; }
