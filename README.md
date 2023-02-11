@@ -14,7 +14,7 @@ Suggestions are always welcome. If errors occur, I would be grateful for informa
 
 ## System requirements
 
-This piece is intented to run on a Linux box with Bourne Again Shell (bash) as the default interactive shell. However, it may work with other shells (see wiki page [What the (S)hell](/../../../../..//TomfromBerlin/bashrc/wiki/What-the-(S)hell)) and should work with bash compatible shells.
+This piece is intented to run on a Linux box with Bourne Again Shell (bash) as the default interactive shell.
 
 Note that the amount of time before the command prompt or GUI is available can be increased. The weaker the hardware, the longer it can take (it seems logical).
 
