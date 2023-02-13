@@ -5,7 +5,7 @@
 #									#
 # by TomfromBerlin							#
 # https://github.com/TomfromBerlin                  			#
-# Last changes: 05.02.2023						#
+# Last changes: 13.02.2023						#
 #									#
 # Some commands or functions may not work on all distros		#
 #									#
@@ -29,13 +29,13 @@
 #----------------------------------------------------------------------------------------------------
 # Backup the current .bashrc and other files without overwriting the last backup. You'll never know...
 # At first we look for the backup folder. If not exist create one
-if [ -d ~/.shellcfg/backup ]; then : ; else mkdir ~/.shellcfg/backup; fi
-if [ -f ~/.shellcfg/backup/bashrc.backup ]; then cp -up -b ~/.bashrc ~/.shellcfg/backup/bashrc.backup; else cp -up ~/.bashrc ~/.shellcfg/backup/bashrc.backup; fi
-if [ -f ~/.shellcfg/backup/alias.backup ]; then cp -up -b ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup; else cp -up ~/.shellcfg/alias ~/.shellcfg/backup/alias.backup; fi
-if [ -f ~/.shellcfg/backup/functions.backup ]; then cp -up -b ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup; else cp -up ~/.shellcfg/functions ~/.shellcfg/backup/functions.backup; fi
-if [ -f ~/.shellcfg/backup/colors.backup ]; then cp -up -b ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup; else cp -up ~/.shellcfg/colors ~/.shellcfg/backup/colors.backup; fi
-if [ -f ~/.shellcfg/backup/what_shell.backup ]; then cp -up -b ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup; else cp -up ~/.shellcfg/what_shell ~/.shellcfg/backup/what_shell.backup; fi
-cd ~ # back to home
+if [ -d $HOME/shellcfg/backup ]; then : ; else mkdir $HOME/.shellcfg/backup; fi
+if [ -f $HOME/.shellcfg/backup/bashrc.backup ]; then cp -up -b $HOME/.bashrc $HOME/.shellcfg/backup/bashrc.backup; else cp -up $HOME/.bashrc $HOME/.shellcfg/backup/bashrc.backup; fi
+if [ -f $HOME/.shellcfg/backup/alias.backup ]; then cp -up -b $HOME/.shellcfg/alias $HOME/.shellcfg/backup/alias.backup; else cp -up $HOME/.shellcfg/alias $HOME/.shellcfg/backup/alias.backup; fi
+if [ -f $HOME/.shellcfg/backup/functions.backup ]; then cp -up -b $HOME/.shellcfg/functions $HOME/.shellcfg/backup/functions.backup; else cp -up $HOME/.shellcfg/functions $HOME/.shellcfg/backup/functions.backup; fi
+if [ -f $HOME/.shellcfg/backup/colors.backup ]; then cp -up -b $HOME/.shellcfg/colors $HOME/.shellcfg/backup/colors.backup; else cp -up $HOME/.shellcfg/colors $HOME/.shellcfg/backup/colors.backup; fi
+if [ -f $HOME/.shellcfg/backup/what_shell.backup ]; then cp -up -b $HOME/.shellcfg/what_shell $HOME/.shellcfg/backup/what_shell.backup; else cp -up $HOME/.shellcfg/what_shell $HOME/.shellcfg/backup/what_shell.backup; fi
+cd $HOME/ # back to home
 #
 #----------------------------------------------------------------------------------------------------
 # Read global settings if there are such things.
@@ -64,10 +64,10 @@ if [ -f /etc/bashrc ]; then . /etc/bash.bashrc; fi
 #----------------------------------------------------------------------------------------------------
 # START COLORS, FUNCTIONS, & ALIASES
 # Let's have some fancy aliases, colors, and functions
-if [ -x /usr/bin/dircolors ]; then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-   if [ -f ~/.shellcfg/alias ]; then . ~/.shellcfg/alias; fi
-   if [ -f ~/.shellcfg/colors ]; then . ~/.shellcfg/colors; fi
-   if [ -f ~/.shellcfg/functions ]; then . ~/.shellcfg/functions; fi
+if [ -x /usr/bin/dircolors ]; then test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
+   if [ -f $HOME/.shellcfg/alias ]; then . $HOME/.shellcfg/alias; fi
+   if [ -f $HOME/.shellcfg/colors ]; then . $HOME/.shellcfg/colors; fi
+   if [ -f $HOME/.shellcfg/functions ]; then . $HOME/.shellcfg/functions; fi
 fi
 # END COLORS, FUNCTIONS, & ALIASES
 #
@@ -158,21 +158,21 @@ echo -ne "${RED}\b+${NC}"
 #################################################################################
 ## This is where the actual screen output starts
 ##
-# At first we are looking for a file named "~/.shellcfg/logos/raspberrypi". It must be a text file (or be empty) or you will see garbage on the screen
+# At first we are looking for a file named "$HOME/.shellcfg/logos/raspberrypi". It must be a text file (or be empty) or you will see garbage on the screen
 # Then we look for lolcat...
-if [ -f ~/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat ~/.shellcfg/logos/raspberrypi;
+if [ -f $HOME/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat $HOME/.shellcfg/logos/raspberrypi;
 # If we were successful we have an output, and we're done: the prompt will pop up.
 # Otherwise continue here...
 else
 # animated intro (Start)
 clear
-# ...but we need the file ~/.shellcfg/colors to be present.
-if [ -f ~/.shellcfg/colors ]; then echo -e " ";
+# ...but we need the file $HOME/.shellcfg/colors to be present.
+if [ -f $HOME/.shellcfg/colors ]; then echo -e " ";
 for i in `seq 1 80` ; do spin; done ;echo "";
 echo -ne "${WHITE}Welcome "`whoami`". ${NC}";
 echo -e " ";
 echo -e "${NC}"
-if [ -f ~/.shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. ~/.shellcfg/what_shell); fi
+if [ -f $HOME/.shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. $HOME/.shellcfg/what_shell); fi
 echo -e " ";
 echo -e "${WHITE}Host Name:		${LIGHTGREEN}" `uname -n`;
 if [ -f /etc/os-release ]; then echo -e "${WHITE}Distribution           ${LIGHTGREEN} " $(grep -E '^(NAME)=' /etc/*-release)" "$(grep -E '^(VERSION)=' /etc/*-release); else  echo -e "${WHITE}OS:		    	${LIGHTGREEN}" `uname -o`; fi
@@ -214,7 +214,7 @@ case $USER in
   *) PS_COLOR='\e[0;32m';;
 esac
 #
-if [ -f ~/.shellcfg/colors ]; then
+if [ -f $HOME/.shellcfg/colors ]; then
     if [ "$color_prompt"=yes ]; then
         #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
 	export PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\[${PS_COLOR}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"; else PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"; fi
