@@ -70,13 +70,13 @@ $ source .bashrc
 
 If you leave it as it is, next time you start an interactive shell, the result looks like this (assuming you have [lolcat](/../../../../../TomfromBerlin/bashrc/wiki/Optional-Programs) installed). The colors are slightly different each time you start an interactive shell:
 
-![screenshot of the terminal output with logo](terminal_logo.jpg)
+![screenshot of the terminal output with logo](https://user-images.githubusercontent.com/123265893/218565232-cfeccdb9-bee9-4dac-9ffe-2fb64160f92d.jpg)
 
 _The logo does not appear every time you issue a command. That would be annoying. You can recall the logo at any time with the command `lolcat ~/.shellcfg/logos/raspberrypi`, or `cat ~/.shellcfg/logos/raspberrypi` for grayscale output._
 
 If you don't want to see a logo, just rename or delete the file in the /.shellcfg/logos/ directory. If the file named "raspberrypi" does not exist (or `lolcat` can't be found), a small text-based intro with some system information is output. Then the result looks like this:
 
-![screenshot of the terminal output with intro](terminal_intro.jpg)
+![terminal_intro](https://user-images.githubusercontent.com/123265893/218565346-7b161f91-6fe7-411c-b547-d96406079639.jpg)
 
 If you want to change the logo read the wiki page on [how to](/../../../../../TomfromBerlin/bashrc/wiki/Changing-the-logo) do it.
 
