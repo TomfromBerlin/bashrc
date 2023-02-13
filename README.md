@@ -1,4 +1,4 @@
-| ![Custom badge](https://img.shields.io/endpoint?color=green&label=Viewers&logo=Debian&logoColor=red&style=plastic&url=https%3A%2F%2Fhits.dwyl.com%2FTomfromBerlin%2Fbashrc) | ![Custom badge](https://img.shields.io/endpoint?color=green&label=Unique%20Viewers&logo=Raspberry%20Pi&logoColor=pink&style=plastic&url=https%3A%2F%2Fhits.dwyl.com%2FTomfromBerlin%2Fbashrc%3Fshow%3Dunique) |
+| ![Custom badge](https://img.shields.io/endpoint?color=green&label=Views&logo=Debian&logoColor=red&style=plastic&url=https%3A%2F%2Fhits.dwyl.com%2FTomfromBerlin%2Fbashrc) | ![Custom badge](https://img.shields.io/endpoint?color=green&label=Unique%20Viewers&logo=Raspberry%20Pi&logoColor=pink&style=plastic&url=https%3A%2F%2Fhits.dwyl.com%2FTomfromBerlin%2Fbashrc%3Fshow%3Dunique) |
 |-|-|
 --------------------------------------------------------------------------------------------------------------------------
 
