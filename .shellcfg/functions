@@ -1,8 +1,8 @@
 #################################################################################
-# Everything below this line comes without any guarantee.			#
-# It is possible - although very unlikely - that these file(s) will		#
-# summon a big bad man to smash your computer into pieces with a sledgehammer.	#
-# That's NOT my problem. Use these files at your own risk!			#
+# Everything below this line comes without any guarantee.                       #
+# It is possible - although very unlikely - that these file(s) will             #
+# summon a big bad man to smash your computer into pieces with a sledgehammer.  #
+# That's NOT my problem. Use these files at your own risk!                      #
 #################################################################################
 #
 # function command-not-found--------------------------------------------------------------------------
@@ -28,22 +28,15 @@ if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-no
 fi
 #
 # function jobscount---------------------------------------------------------------------------------
-# source: https://github.com/johnnygaffey
 jobscount() {
     local background=$(jobs -p | wc -l)
     ((background)) && echo -n "(${background}) "
 }
 #
-# find where some function is defined---------------------------------------------------------------
-whereisfunc() {
-    shopt -s extdebug;
-    declare -F $1;
-    shopt -u extdebug;
-}
-#
 # Find file------------------------------------------------------------------------------------------
 # Usage: ff <filename>
-function ff() { find . -type f -iname '*'$*'*' -ls; }
+function ff()
+{ find . -type f -iname '*'$*'*' -ls; }
 #
 # function extract-----------------------------------------------------------------------------------
 # "extract <filename>" extracts all formats
@@ -96,8 +89,27 @@ __add_command_replace_alias df 'pydf'
 __add_command_replace_alias traceroute 'mtr'
 __add_command_replace_alias tracepath 'mtr'
 __add_command_replace_alias top 'htop'
-
+#
+# function colortest-----------------------------------------------------------------------------------
+#
+function colortest() {
+awk 'BEGIN{
+    s="/\\/\\/\\/\\Truecolors/\\/\\/\\/\\"; s=s s s s s s s s;
+    for (colnum = 0; colnum<80; colnum++) {
+        r = 255-(colnum*255/80);
+        g = (colnum*510/80);
+        b = (colnum*255/80);
+        if (g>255) g = 510-g;
+        printf "\033[48;2;%d;%d;%dm", r,g,b;
+        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+        printf "%s\033[0m", substr(s,colnum+1,1);
+    }
+    printf "\n";
+  }'
+}
+#
 # function allcolors-----------------------------------------------------------------------------------
+#
 # credit to Oktay https://askubuntu.com/users/147615/oktay
 # https://askubuntu.com/questions/27314/script-to-display-all-terminal-colors/279014#279014
 #
@@ -108,10 +120,12 @@ for x in 0 1 4 5 7 8; do for i in {30..37}; do for a in {40..47}; do echo -ne "\
 # Another solution is this: 'msgcat --color=test', but you need to install 'gettext': sudo apt install gettext
 #
 # function truecolors----------------------------------------------------------------------------------
-# This program is free software. It comes without any warranty, to the extent permitted by applicable law.
-# You can redistribute it and/or modify it under the terms of the Do What The Fuck You Want
-# To Public License, Version 2, as published by Sam Hocevar. See http://sam.zoy.org/wtfpl/COPYING for more details.
-function truecolors() {     
+# This program is free software. It comes without any warranty, to
+# the extent permitted by applicable law. You can redistribute it
+# and/or modify it under the terms of the Do What The Fuck You Want
+# To Public License, Version 2, as published by Sam Hocevar. See
+# http://sam.zoy.org/wtfpl/COPYING for more details.
+function truecolors() {
 for fgbg in 38 48 ; do # Foreground / Background
     for color in {0..255} ; do # Colors
         # Display the color
@@ -351,4 +365,3 @@ wtfis()
 
   return $ret
 }
-#
