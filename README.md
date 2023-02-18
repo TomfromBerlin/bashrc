@@ -6,9 +6,8 @@
 
 ## For detailed information about this repo, please refer to the [wiki](/../../../../../TomfromBerlin/bashrc/wiki)
 
-| ❗ | There is absolutely no warranty, that these files work. They may damage your system. USE IT AT YOUR OWN RISK!|
+| ❗ | There is absolutely no warranty, that these files work. USE AT YOUR OWN RISK!|
 |-|:-|
-| ❗ | If you want to use these files in shells other than bash, the code must be adapted.|
 
 This [.bashrc](/.bashrc) produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. GitHub then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
 
@@ -66,7 +65,7 @@ $ cd ~
 $ source .bashrc
 ```
 
-`git` should be installed by default on your Linux box. If not, just type `sudo apt-get install git` (replace apt-get according to your distribution's command, e.g. yum or dfn) in the command line and press Enter.
+`git` should be installed by default on your Linux box. If not, just type `sudo apt-get install git` (replace apt-get according to your distribution's command, e.g. yum or pacman) in the command line and press Enter.
 
 If you leave it as it is, next time you start an interactive shell, the result looks like this (assuming you have [lolcat](/../../../../../TomfromBerlin/bashrc/wiki/Optional-Programs) installed). The colors are slightly different each time you start an interactive shell:
 
