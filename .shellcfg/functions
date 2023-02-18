@@ -94,7 +94,7 @@ __add_command_replace_alias top 'htop'
 #
 function colortest() {
 awk 'BEGIN{
-    s="/\\/\\/\\/\\Truecolors/\\/\\/\\/\\"; s=s s s s s s s s;
+    s="/\\/\\/\\/\\Colortest/\\/\\/\\/\\"; s=s s s s s s s s;
     for (colnum = 0; colnum<80; colnum++) {
         r = 255-(colnum*255/80);
         g = (colnum*510/80);
