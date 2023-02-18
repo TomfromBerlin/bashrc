@@ -95,10 +95,10 @@ __add_command_replace_alias top 'htop'
 function colortest() {
 awk 'BEGIN{
     s="/\\/\\/\\/\\Colortest/\\/\\/\\/\\"; s=s s s s s s s s;
-    for (colnum = 0; colnum<80; colnum++) {
-        r = 255-(colnum*255/80);
-        g = (colnum*510/80);
-        b = (colnum*255/80);
+    for (colnum = 0; colnum<79; colnum++) {
+        r = 255-(colnum*255/79);
+        g = (colnum*510/79);
+        b = (colnum*255/79);
         if (g>255) g = 510-g;
         printf "\033[48;2;%d;%d;%dm", r,g,b;
         printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
@@ -106,6 +106,7 @@ awk 'BEGIN{
     }
     printf "\n";
   }'
+printf "\x1b[38;2;255;100;0mIf this text is brown, your terminal understands Xterm-style true-color escapes\x1b[0m\n"
 }
 #
 # function allcolors-----------------------------------------------------------------------------------
