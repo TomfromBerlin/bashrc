@@ -1,41 +1,41 @@
-#########################################################################
-# BASH Config File							#
-# Name: .bashrc								#
-# Path: /home/$user/							#
-#									#
-# by TomfromBerlin							#
-# https://github.com/TomfromBerlin                  			#
-# Last changes: 13.02.2023						#
-#									#
-# Some commands or functions may not work on all distros		#
-#									#
-# THIS FILE with its associated files MAY OR MAY NOT WORK WITH OTHER	#
-# SHELLS THAN BASH!							#
-#									#
-# THERE ARE A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED	#
-# TO WORK WITH OTHER SHELLS!						#
-#									#
-#########################################################################
+#################################################################################
+# BASH Config File								#
+# Name: .bashrc									#
+# Path: /$home/$user/								#
+#										#
+# made by TomfromBerlin								#
+# https://github.com/TomfromBerlin						#
+# Last changes: 19.02.2023							#
+#										#
+#										#
+#		Some commands or functions may not work on all distros		#
+# 	THERE IS A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED	#
+# 			TO WORK WITH OTHER SHELLS!				#
+#										#
+#################################################################################
 #
 #################################################################################
-# Everything below this line comes without any guarantee.                       #
-# It is possible - although very unlikely - that these file(s) will             #
-# summon a big bad man to smash your computer into pieces with a sledgehammer.  #
-# That's NOT my problem. Use these files at your own risk!                      #
+#										#
+#	Everything below this line comes without warranty of any kind.		#
+#		Use these files at your own risk!				#
+#										#
 #################################################################################
+#
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 #
 #----------------------------------------------------------------------------------------------------
-# Backup the current .bashrc and other files without overwriting the last backup. You'll never know...
+# Backup the current .bashrc and associated files without overwriting the last backup. You'll never know...
 # At first we look for the backup folder. If not exist create one
-if [ -d $HOME/shellcfg/backup ]; then : ; else mkdir $HOME/.shellcfg/backup; fi
+if [ -d $HOME/.shellcfg/backup ]; then : ; else mkdir $HOME/.shellcfg/backup; fi
+# Now we will make backups, but only if changes are made
 if [ -f $HOME/.shellcfg/backup/bashrc.backup ]; then cp -up -b $HOME/.bashrc $HOME/.shellcfg/backup/bashrc.backup; else cp -up $HOME/.bashrc $HOME/.shellcfg/backup/bashrc.backup; fi
 if [ -f $HOME/.shellcfg/backup/alias.backup ]; then cp -up -b $HOME/.shellcfg/alias $HOME/.shellcfg/backup/alias.backup; else cp -up $HOME/.shellcfg/alias $HOME/.shellcfg/backup/alias.backup; fi
 if [ -f $HOME/.shellcfg/backup/functions.backup ]; then cp -up -b $HOME/.shellcfg/functions $HOME/.shellcfg/backup/functions.backup; else cp -up $HOME/.shellcfg/functions $HOME/.shellcfg/backup/functions.backup; fi
 if [ -f $HOME/.shellcfg/backup/colors.backup ]; then cp -up -b $HOME/.shellcfg/colors $HOME/.shellcfg/backup/colors.backup; else cp -up $HOME/.shellcfg/colors $HOME/.shellcfg/backup/colors.backup; fi
 if [ -f $HOME/.shellcfg/backup/what_shell.backup ]; then cp -up -b $HOME/.shellcfg/what_shell $HOME/.shellcfg/backup/what_shell.backup; else cp -up $HOME/.shellcfg/what_shell $HOME/.shellcfg/backup/what_shell.backup; fi
-cd $HOME/ # back to home
+# and we go back to home
+cd $HOME/ 
 #
 #----------------------------------------------------------------------------------------------------
 # Read global settings if there are such things.
@@ -44,15 +44,8 @@ cd $HOME/ # back to home
 if [ -f /etc/bashrc ]; then . /etc/bash.bashrc; fi
 #
 #----------------------------------------------------------------------------------------------------
-# Define language variable
-# LANG=de_DE.UTF-8	# substitute de_DE.UTF-8 with your desired one and uncomment, if your 'locale' is not set
-# export LANG		# and if you want localized output, default is English
-#
-#----------------------------------------------------------------------------------------------------
 # activates completion features (probably already activated in /etc/bash.bashrc or /etc/profile)
-#if [ -f /etc/bash_completion.d ]; then
-#	./etc/bash_completion
-#fi
+if [ -f /etc/bash_completion.d ]; then ./etc/bash_completion ; fi
 #
 #----------------------------------------------------------------------------------------------------
 # set variable identifying the chroot you work in (used in the prompt below)
@@ -63,12 +56,11 @@ if [ -f /etc/bashrc ]; then . /etc/bash.bashrc; fi
 #fi
 #----------------------------------------------------------------------------------------------------
 # START COLORS, FUNCTIONS, & ALIASES
-# Let's have some fancy aliases, colors, and functions
-if [ -x /usr/bin/dircolors ]; then test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
-   if [ -f $HOME/.shellcfg/alias ]; then . $HOME/.shellcfg/alias; fi
-   if [ -f $HOME/.shellcfg/colors ]; then . $HOME/.shellcfg/colors; fi
-   if [ -f $HOME/.shellcfg/functions ]; then . $HOME/.shellcfg/functions; fi
-fi
+#
+if [ -x /usr/bin/dircolors ]; then test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"; if [ -f $HOME/.shellcfg/colors ]; then . $HOME/.shellcfg/colors; fi; else echo -e "Where have all the colors gone..."; fi
+if [ -f $HOME/.shellcfg/alias ]; then . $HOME/.shellcfg/alias; else echo -e "There will be no or less aliases, since the alias file is missing."; fi
+if [ -f $HOME/.shellcfg/functions ]; then . $HOME/.shellcfg/functions; else echo -e "Unfortunately, some conveniant functions are not available, because the functions file is missing."; fi
+#
 # END COLORS, FUNCTIONS, & ALIASES
 #
 #----------------------------------------------------------------------------------------------------
@@ -133,8 +125,8 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind Space:magic-space
 export HISTFILESIZE=100 # How many entries should be stored in history?
-export HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups:erasedups # ignore duplicates, don't overwrite GNU Midnight Commander's setting of `ignorespace'.
-#export HISTCONTROL=ignoreboth #... or force ignoredups and ignorespace, ignore consecutive entries 
+export HISTCONTROL=ignoreboth #... or force ignoredups and ignorespace, ignore consecutive entries 
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups:erasedups # ignore duplicates, do not overwrite GNU Midnight Commanders setting of 'ignorespace'.
 export HISTTIMEFORMAT="%H:%M > " # time format used in the history
 export HISTIGNORE="&:bg:fg:ll:h:dd" # commands that should not be included in the history
 #----------------------------------------------------------------------------------------------------
@@ -160,29 +152,29 @@ echo -ne "${RED}\b+${NC}"
 ##
 # At first we are looking for a file named "$HOME/.shellcfg/logos/raspberrypi". It must be a text file (or be empty) or you will see garbage on the screen
 # Then we look for lolcat...
-if [ -f $HOME/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat $HOME/.shellcfg/logos/raspberrypi;
-# If we were successful we have an output, and we're done: the prompt will pop up.
+if [ -f $HOME/.shellcfg/logos/raspberrypi~ ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat $HOME/.shellcfg/logos/raspberrypi;
+# If we were successful we have an output, and we are done: the prompt will pop up.
 # Otherwise continue here...
 else
 # animated intro (Start)
-clear
+#clear
 # ...but we need the file $HOME/.shellcfg/colors to be present.
 if [ -f $HOME/.shellcfg/colors ]; then echo -e " ";
-for i in `seq 1 80` ; do spin; done ;echo "";
+for i in `seq 1 80` ; do spin; done ;echo " ";
 echo -ne "${WHITE}Welcome "`whoami`". ${NC}";
 echo -e " ";
 echo -e "${NC}"
 if [ -f $HOME/.shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" $(. $HOME/.shellcfg/what_shell); fi
 echo -e " ";
 echo -e "${WHITE}Host Name:		${LIGHTGREEN}" `uname -n`;
-if [ -f /etc/os-release ]; then echo -e "${WHITE}Distribution           ${LIGHTGREEN} " $(grep -E '^(NAME)=' /etc/*-release)" "$(grep -E '^(VERSION)=' /etc/*-release); else  echo -e "${WHITE}OS:		    	${LIGHTGREEN}" `uname -o`; fi
+if [ -f /etc/os-release ]; then echo -e "${WHITE}Distribution:		${LIGHTGREEN} "$(grep -E '^(NAME)=' /etc/*-release)" "$(grep -E '^(VERSION)=' /etc/*-release); else  echo -e "${WHITE}OS:			${LIGHTGREEN}" `uname -o`; fi
 echo -e "${WHITE}Kernel Release:		${LIGHTGREEN}" `uname -r`;
-echo -e "${WHITE}Kernel Version:    	${LIGHTGREEN}" `uname -v`;
-echo -e "${WHITE}Architecture:       	${LIGHTGREEN}" `uname -m`;
+echo -e "${WHITE}Kernel Version:		${LIGHTGREEN}" `uname -v`;
+echo -e "${WHITE}Architecture:		${LIGHTGREEN}" `uname -m`;
 echo -e "$NC";
-if [ -x /bin/free ]; then echo -e "${LIGHTCYAN}RAM:${LIGHTGREEN}";free -h;echo"";
+if [ -x /bin/free ]; then echo -e "${LIGHTCYAN}";free -h;echo"";
 echo -e "${NC}"; fi
-if [ -x /bin/netstat ]; then echo -e "${LIGHTCYAN}";netstat -i;echo "";
+if [ -x /bin/netstat ]; then echo -e "${LIGHTBLUE}";netstat -i;echo "";
 echo -e " ";
 echo -e "${NC}"; fi
 for i in `seq 1 80` ; do spin; done ;echo "";
@@ -190,7 +182,7 @@ for i in `seq 1 80` ; do spin; done ;echo "";
 echo -e "${NC}";
 fi
 fi
-echo -ne "${LIGHTGREEN}";sdate;
+echo -ne "${YELLOW}";sdate;
 #
 #----------------------------------------------------------------------------------------------------
 # PROMPT
@@ -198,7 +190,7 @@ echo -ne "${LIGHTGREEN}";sdate;
 force_color_prompt=yes
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
+	# We have color support; assume it is compliant with Ecma-48
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
@@ -217,13 +209,13 @@ esac
 if [ -f $HOME/.shellcfg/colors ]; then
     if [ "$color_prompt"=yes ]; then
         #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$ "
-	export PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTCYAN}\]\[${PS_COLOR}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"; else PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"; fi
+	export PS1="\n\[${WHITE}\]Systemzeit \A\n\[${LIGHTCYAN}\]\[${PS_COLOR}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"; else PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"; fi
     unset color_prompt force_color_prompt
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in
     xterm*|rxvt*)
     #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	export PS1="\n\[${LIGHTGRAY}\]Systemzeit \A\n\[${LIGHTBLUE}\]\[${PS_COLOR}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
+	export PS1="\n\[${WHITE}\]Systemzeit \A\n\[${LIGHTBLUE}\]\[${PS_COLOR}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
 	;;
     *)
         ;;
