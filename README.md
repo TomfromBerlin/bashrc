@@ -31,6 +31,7 @@ You will only need the follwing files:
 + [~/.shellcfg/colors](/.shellcfg/colors) (optional, necessary for color prompt and other color gimmicks)
 + [~/.shellcfg/functions](/.shellcfg/functions) (necessary for enhanced functionality)
 + [~/.shellcfg/what_shell](/.shellcfg/what_shell) (optional, see also wiki page [What-the-(S)hell](/../../../../..//TomfromBerlin/bashrc/wiki/What-the-(S)hell))
++ [~/.mostrc](/.mostrc) (optional, contains color definitions for `most`)
 
 The [~/.bashrc](/.bashrc) has to be a script file but without shebang `#!/bin/bash`. The other files must not be script files, only text files. Otherwise an error message will probably appear.
 
@@ -45,13 +46,13 @@ If you want to use this stuff, you need do do a few simple things:
 ### Downloading as ZIP File
 When you downloaded the zip file use the following commands:
 
-```bash
+```#!/bin/bash
 $ cd ~
 $ cp -i .bashrc bashrc.old
 $ cd </download/directory/>
 $ unzip bashrc-main.zip
 $ cd bashrc-main
-$ cp -iR .bashrc .shellcfg ~/
+$ cp -iR .bashrc .mostrc .shellcfg ~/
 $ cd ~
 $ source .bashrc
 ```  
@@ -59,12 +60,12 @@ $ source .bashrc
 ### Using Git
 Its a bit easier to clone the repo with `git`. The directory will be just called bashrc and you don't have to extract the files. If you want this you can use the following commands:
 
-```bash
+```#!/bin/bash
 $ cd ~
 $ cp -i .bashrc bashrc.old
 $ git clone https://github.com/TomfromBerlin/bashrc
 $ cd bashrc
-$ cp -iR .bashrc .shellcfg ~/
+$ cp -iR .bashrc .mostrc .shellcfg ~/
 $ cd ~
 $ source .bashrc
 ```
@@ -85,17 +86,15 @@ If you want to change the logo read the wiki page on [how to](/../../../../../To
 
 If `lolcat` and/or the logo file in ~/.shellcfg/logos directory doesn't exist on your system and you don't see anything at all except the command prompt, the ~/.shellcfg/colors file is probably missing. This is no drama, you can still do your work, albeit less colorful.
 
+The file `.mostrc` shall provide color definitions for `most`. It does not work, e.g., with `PowerShell 7.3.2` over ssh, so this is to be considered as _WIP_! This may be removed again if I don't come up with a good solution.
+
 Have fun and be nice.
 
 --------------------------------------------------------------------------------------------------
 
 # To do
 
-- [ ] \(Optional) adding a handy rollback feature (rollback should be invoked by one command)
-- [ ] \(Optional) make the screen output bilingual 🇩🇪 🇺🇸
-- [ ] \(Optional) make more logos in ascii art for other distros and let the system decide wich one has to be shown
 - [ ] \(Optional) cancel full time job 🏴‍☠️
 - [ ] \(Optional) ❓
+- [ ] \(Optional) make profit
 - [ ] \(Optional) become rich 💎🍾
-- [ ] \(Optional) make more stuff
-- [ ] \(Optional) make even more stuff
