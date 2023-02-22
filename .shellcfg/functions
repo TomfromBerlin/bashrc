@@ -3,6 +3,13 @@
 #			Use these files at your own risk!			#
 #################################################################################
 #
+#
+functions() {
+    # Usage: get_functions
+    IFS=$'\n' read -d "" -ra functions < <(declare -F)
+    printf '%s\n' "${functions[@]//declare -f }"
+}
+#
 # function command-not-found-----------------------------------------------------
 # call in /etc/bash.bashrc to have it available globally
 #
@@ -10,7 +17,7 @@
 # Under Arch Linux comment in following line:
 #source /usr/share/doc/pkgfile/command-not-found.bash
 if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
-    function command_not_found_handle {
+    command_not_found_handle() {
 	    # check because c-n-f could've been removed in the meantime
                if [ -x /usr/lib/command-not-found ]; then
            /usr/bin/python /usr/lib/command-not-found -- "$1"
@@ -33,14 +40,13 @@ jobscount() {
 #
 # Find file----------------------------------------------------------------------
 # Usage: ff <filename>
-function ff()
+ff()
 { find . -type f -iname '*'$*'*' -ls; }
 #
 # function extract---------------------------------------------------------------
 # "extract <filename>" extracts all formats
 # credits: urukrama, Ubuntuforums.org
-function extract()
-{
+extract() {
 if [ -f $1 ] ; then
  case $1 in
  *.tar.bz2)   tar xvjf $1     ;;
@@ -67,20 +73,11 @@ fi
 # will be used, e.g. 'htop' instead of 'top'
 # sauce: https://github.com/slomkowski/bash-full-of-colors/blob/master/bash_aliases.sh
 #
-function __add_command_replace_alias() {
-    if [ -x "`which $2 2>&1`" ]; then
-        alias $1=$2
-    fi
-}
+__add_command_replace_alias() { if [ -x "`which $2 2>&1`" ]; then alias $1=$2; fi; }
 
-if [ -x "`which most 2>&1`" ]; then
-    alias less=most
-    export PAGER=most
-fi
+if [ -x "`which most 2>&1`" ]; then alias less=most; export PAGER=most; fi
 
-if [ -x "`which vim 2>&1`" ]; then
-        export EDITOR=vim
-fi
+if [ -x "`which vim 2>&1`" ]; then export EDITOR=vim; fi
 
 __add_command_replace_alias tail 'multitail'
 __add_command_replace_alias df 'pydf'
@@ -90,7 +87,7 @@ __add_command_replace_alias top 'htop'
 #
 # function colortest-------------------------------------------------------------
 #
-function colortest() {
+colortest() {
 awk 'BEGIN{
     s="/\\/\\/\\/\\Colortest/\\/\\/\\/\\"; s=s s s s s s s s;
     for (colnum = 0; colnum<79; colnum++) {
@@ -112,7 +109,7 @@ printf "\x1b[38;2;255;100;0mIf this text is brown, your terminal understands Xte
 # credit to Oktay https://askubuntu.com/users/147615/oktay
 # https://askubuntu.com/questions/27314/script-to-display-all-terminal-colors/279014#279014
 #
-function allcolors() {
+allcolors() {
 for x in 0 1 4 5 7 8; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""; 
 }
 #
@@ -141,7 +138,7 @@ echo "";
 #
 # function showcolors256---------------------------------------------------------
 #
-function showcolors256() {
+showcolors256() {
     local row col blockrow blockcol red green blue
     local showcolor=_showcolor256_${1:-bg}
     local white="\033[1;37m"
@@ -186,14 +183,14 @@ function showcolors256() {
     echo
 }
 
-function _showcolor256_fg() {
+_showcolor256_fg() {
     local code=$( printf %03d $1 )
     echo -ne "\033[38;5;${code}m"
     echo -nE " $code "
     echo -ne "\033[0m"
 }
 
-function _showcolor256_bg() {
+_showcolor256_bg() {
     if (( $2 % 2 == 0 )); then
         echo -ne "\033[1;37m"
     else
