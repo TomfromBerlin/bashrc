@@ -72,6 +72,9 @@ alias vdir='vdir --color=always'
 alias grep='grep --color=always'
 alias fgrep='fgrep --color=always'
 alias egrep='egrep --color=always'
+alias dmesg='dmesg --color=always | less'
+alias DISTVER='grep -E ^VERSION= /etc/os-release'
+alias DISTNAME='grep -E ^NAME= /etc/os-release'
 #----------------------------------------------------------------------------------------------------
 #sudo
 alias si='sudo -i'                # Starts a login-shell. It means all variables will be set like at login.
