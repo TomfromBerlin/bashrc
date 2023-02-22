@@ -1,8 +1,11 @@
 #################################################################################
-# Everything below this line comes without any guarantee.			#
-# It is possible - although very unlikely - that these file(s) will		#
-# summon a big bad man to smash your computer into pieces with a sledgehammer.	#
-# That's NOT my problem. Use these files at your own risk!			#
+#										#
+#		Everything below this line comes without any guarantee.		#
+#			Use these files at your own risk!			#
+#										#
+#	For more information about this file have a look at the wiki at		#
+#			 http://github.com/TomfromBerlin			#
+#										#
 #################################################################################
 #
 # What Shell do we have?
@@ -15,6 +18,7 @@ case "$MYSHELL" in
   ksh) echo "Korn Shell88/93 ($(ps -cp "$$" -o command="")) - ver. ${KSH_VERSION%.*}"  ;;
   mksh) echo "MirBSD Korn Shell ($(ps -cp "$$" -o command="")) - ver. ${KSH_VERSION%.*}"  ;;
   pdksh) echo "Puplic Domain Korn Shell ($(ps -cp "$$" -o command="")) - ver. ${KSH_VERSION%.*}"  ;;
+  lksh) echo "You should not use Legacy Korn Shell (lksh) as an interactive shell.\nIt is intended exclusively for running legacy scripts. Use mksh instead." ;;
   posh) echo "Policy-compliant Ordinary SHell ($(ps -cp "$$" -o command="")) - ver. ${POSH_VERSION%.*}"  ;;
   yash) echo "Yet Another Shell ($(ps -cp "$$" -o command="")) - ver. ${YASH_VERSION%.*}"  ;;
   zsh) echo "Z Shell ($(ps -cp "$$" -o command="")) - ver. ${ZSH_VERSION%.*}"  ;;
