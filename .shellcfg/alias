@@ -31,9 +31,9 @@ if [ -f /usr/bin/ls++ ]; then
     alias lr='ls++ --potsf -R'		#recursive
 else
     alias ls='ls -F --color=auto'				# colors
-    alias l='ls -F --group-directories-first --color=auto'	# ls als Liste, Verzeichnisse ganz oben
+    alias l='ls -F --group-directories-first --color=auto'	# list files & dirs with directories first / ls als Liste, Verzeichnisse ganz oben
     alias ll='ls -lsah --color=auto'				# long list
-    alias la='ls -AF --color=auto'				# show hidden # alias la='ls -Al'			# zeige versteckte Dateien in einer Liste
+    alias la='ls -AF --color=auto'				# show hidden # alias la='ls -Al' / zeige versteckte Dateien in einer Liste
     alias lx='ls -lXB --color=auto'				# sort by extension
     alias lk='ls -lSr --color=auto'				# sort by size biggest last
     alias lc='ls -ltcr --color=auto'				# sort by and show change times
@@ -67,17 +67,17 @@ alias h='history'				# BASH command history
 alias bashedit='nano ~/.bashrc'			# replace "nano" with editor of you choice, e.g. leafpad or vim
 alias reload='source ~/.bashrc'			# clears terminal window and reloads .bashrc
 alias ip='ip --color=auto'			# colored ip-adresses
-alias dir='dir --color=always'
-alias vdir='vdir --color=always'
-alias grep='grep --color=always'
-alias fgrep='fgrep --color=always'
-alias egrep='egrep --color=always'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias dmesg='dmesg --color=always | less'
 alias DISTVER='grep -E ^VERSION= /etc/os-release'
 alias DISTNAME='grep -E ^NAME= /etc/os-release'
 #----------------------------------------------------------------------------------------------------
 #sudo
-alias si='sudo -i'                # Starts a login-shell. It means all variables will be set like at login.
+alias si='sudo -i'	# Starts a login-shell. It means all variables will be set like at login.
 #----------------------------------------------------------------------------------------------------
 # Directory Navigation
 alias ..='cd ..'

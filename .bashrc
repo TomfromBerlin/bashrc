@@ -22,7 +22,7 @@
 #################################################################################
 #
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+[[ $- != *i* ]] && return
 #
 #----------------------------------------------------------------------------------------------------
 # Backup the current .bashrc and associated files without overwriting the last backup. You'll never know...
@@ -136,7 +136,7 @@ export COLORTERM=truecolor
 #----------------------------------------------------------------------------------------------------
 # SCREEN
 # checks the window size after each command and updates the number of rows and columns
-shopt -s checkwinsize
+[[ $DISPLAY ]] && shopt -s checkwinsize
 #----------------------------------------------------------------------------------------------------
 #
 # Preparation for the animated intro when entering the interactive shell
@@ -168,8 +168,8 @@ echo -e "${NC}"
 if [ -f $HOME/.shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" "$(. $HOME/.shellcfg/what_shell)"; fi
 echo -e " ";
 echo -e "${WHITE}Host Name:		${LIGHTGREEN}" "$(uname -n)";
-if [ -f /etc/os-release ]; then echo -e "${WHITE}Distribution:		${LIGHTGREEN} "$(DISTNAME)" "$(DISTVER)""; else : ;
-echo -e "${WHITE}OS:			${LIGHTGREEN}" "$(uname -o)"; fi
+echo -e "${WHITE}OS:			${LIGHTGREEN}" "$(uname -o)";
+if [ -f /etc/os-release ]; then echo -e "${WHITE}Distribution:		${LIGHTGREEN} "$(DISTNAME)" "$(DISTVER)""; else :; fi
 echo -e "${WHITE}Kernel Release:		${LIGHTGREEN}" "$(uname -r)";
 echo -e "${WHITE}Kernel Version:		${LIGHTGREEN}" "$(uname -v)";
 echo -e "${WHITE}Architecture:		${LIGHTGREEN}" "$(uname -m)";
@@ -184,7 +184,7 @@ for i in $(seq 1 80) ; do spin; done; echo "";
 echo -e "${NC}";
 fi
 fi
-echo -ne "${YELLOW}";sdate;
+echo -ne "${YELLOW}";sdate; echo -ne "${NC}";
 #
 #----------------------------------------------------------------------------------------------------
 # PROMPT
@@ -205,31 +205,31 @@ fi
 #
 case $USER in
   "root") PS_COLOR='\e[0;31m';;
-  *) PS_COLOR='\e[0;32m';;
+  *) PS_COLOR='\e[1;36;40m';;
 esac
 #
 if [ -f "$HOME"/.shellcfg/colors ]; then
     if [ "$color_prompt" = yes ]; then
         #PS1="\n\Systemzeit \A\n\u@\h: \w\a\:\$"
-	export PS1="\n\[${WHITE}\]Systemzeit \A\n\[${LIGHTCYAN}\]\[${PS_COLOR}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"; else PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"; fi
+	export PS1="\n\[${WHITE}\]Systemzeit \A\n\[${LIGHTCYAN}\]\[${PS_COLOR}\]\u\[${YELLOW}\]@\[${LIGHTGREEN}\]\h \[${LIGHTCYAN}\]\w\[${NC}\]:\$"; else PS2="\n\Systemzeit \A\n\u@\h: \w\a\:\$"; fi
     unset color_prompt force_color_prompt
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in
-    xterm*|rxvt*)
+    Eterm*|alacritty*|aterm*|foot*|gnome*|konsole*|kterm*|putty*|rxvt*|tmux*|xterm*)
     #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1\]"
-	export PS1="\n\[${WHITE}\]Systemzeit \A\n\[${LIGHTBLUE}\]\[${PS_COLOR}\]\u \[${YELLOW}\]@ \[${LIGHTGREEN}\]\h \[${LIGHTGREEN}\]\w\[${NC}\]:\$"
+	export PS1="\n\[${WHITE}\]Systemzeit \A\n\[${LIGHTBLUE}\]\[${PS_COLOR}\]\u\[${YELLOW}\]@\[${LIGHTGREEN}\]\h \[${YELLOW}\]\w\[${NC}\]:\$"
 	;;
     *)
         ;;
     esac
 else
-    if [ "$color_prompt" = yes ]; then PS1="\n\[\e[0;37m\]Systemzeit \A\n\[${PS_COLOR}\]\u \[\e[1;33m\]@ \e[1;32m\h \[\e[1;32m\]\w\\[\e[0m\]:\$"; else PS2="\n\[\e]Systemzeit \A\n\u@\h: \w\a\:\$"; fi
+    if [ "$color_prompt" = yes ]; then PS1="\n\[\e[0;37m\]Systemzeit \A\n\[${PS_COLOR}\]\u\[\e[1;33m\]@\e[1;32m\h \[\e[1;32m\]\w\[\e[0m\]:\$"; else PS2="\n\[\e]Systemzeit \A\n\u@\h: \w\a\:\$"; fi
     unset color_prompt force_color_prompt
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in
-    xterm*|rxvt*)
+    Eterm*|alacritty*|aterm*|foot*|gnome*|konsole*|kterm*|putty*|rxvt*|tmux*|xterm*)
     #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	export PS1="\n\[\e[0;37m\]Systemzeit \A\n\[${PS_COLOR}\]\u \[\e[1;33m\]@ \[\e[1;32m\]\h \[\e[1;32m\]\w\\[\e[0m\]:\$"
+	export PS1="\n\[\e[0;37m\]Systemzeit \A\n\[${PS_COLOR}\]\u\[\e[1;33m\]@\[\e[1;32m\]\h \[\e[1;32m\]\w\[\e[0m\]:\$"
         ;;
     *)
         ;;
@@ -255,7 +255,7 @@ fi
 # Anzeigefehlern, e.g. \[${LIGHTCYAN}\] resp. \[\e[1;36m\].		# resp. \[\e[1;36m\], otherwise display errors will occur.		#
 # Escape-Codes gehören _nicht_ dazwischen.				# Escape codes _do not_ belong in between.				#
 # (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste	# (These are only the most important escape codes, a complete list	#
-# findet ihr in der Manpage der Bash <Befehl: man bash> oder unter	# can be found in the bash manpage <command: man bash> or under	#
+# findet ihr in der Manpage der Bash <Befehl: man bash> oder unter	# can be found in the bash manpage <command: man bash> or under		#
 #                         https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt			                     	#
 #################################################################################################################################################
 # End of .bashrc
