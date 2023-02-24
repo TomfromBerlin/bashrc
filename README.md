@@ -1,8 +1,8 @@
 | ![Views](https://img.shields.io/endpoint?color=green&label=Views&logoColor=red&style=plastic&url=https%3A%2F%2Fhits.dwyl.com%2FTomfromBerlin%2Fbashrc) | ![Unique Viewers](https://img.shields.io/endpoint?color=green&label=Unique%20Viewers&logoColor=pink&style=plastic&url=https%3A%2F%2Fhits.dwyl.com%2FTomfromBerlin%2Fbashrc%3Fshow%3Dunique) |
 |-|-|
 
-| ![GNU BASH](https://img.shields.io/badge/GNU%20Bash-4EAA25?style=for-the-badge&logo=GNU%20Bash&logoColor=white) | ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) | ![Debian](https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white) | ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white) | ![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white) | ![Linux Mint](https://img.shields.io/badge/Linux_Mint-87CF3E?style=for-the-badge&logo=linux-mint&logoColor=white) | ![Kubuntu](https://img.shields.io/badge/-KUbuntu-%230079C1?style=for-the-badge&logo=kubuntu&logoColor=white) |
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| ![GNU BASH](https://img.shields.io/badge/GNU%20Bash-4EAA25?style=for-the-badge&logo=GNU%20Bash&logoColor=white) | ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) |
+|-|-|
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -23,6 +23,15 @@ This piece is intented to run on a Linux box with Bourne Again Shell (bash) as t
 
 Note that the amount of time before the command prompt or GUI is available can be increased. The weaker the hardware, the longer it can take (it seems logical).
 
+Tested on:
+
+|![Debian](https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white) | ![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi) | ![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white) | ![Kubuntu](https://img.shields.io/badge/-KUbuntu-%230079C1?style=for-the-badge&logo=kubuntu&logoColor=white) | ![Xubuntu](https://img.shields.io/badge/Xubuntu-E95420?style=for-the-badge&logo=xubuntu&logoColor=white) |
+|:-:|:-:|:-:|:-:|:-:|
+
+Will be tested on:
+| ![Linux Mint](https://img.shields.io/badge/Linux_Mint-87CF3E?style=for-the-badge&logo=linux-mint&logoColor=white) | ![Lubuntu](https://img.shields.io/badge/-Lubuntu-%230065C2?style=for-the-badge&logo=lubuntu&logoColor=white) | ![openSUSE](https://img.shields.io/badge/openSUSE-%2364B345?style=for-the-badge&logo=openSUSE&logoColor=white) | ![Fedora](https://img.shields.io/badge/Fedora-294172?style=for-the-badge&logo=fedora&logoColor=white) | ![Manjaro](https://img.shields.io/badge/Manjaro-35BF5C?style=for-the-badge&logo=Manjaro&logoColor=white) | and more |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+
 You will only need the follwing files:
 
 + [~/.bashrc](/.bashrc) (necessary)
@@ -32,6 +41,8 @@ You will only need the follwing files:
 + [~/.shellcfg/functions](/.shellcfg/functions) (necessary for enhanced functionality)
 + [~/.shellcfg/what_shell](/.shellcfg/what_shell) (optional, see also wiki page [What-the-(S)hell](/../../../../..//TomfromBerlin/bashrc/wiki/What-the-(S)hell))
 + [~/.mostrc](/.mostrc) (optional, contains color definitions for `most`)
+
+__Installation of command-not-found-package is recommended!__
 
 The [~/.bashrc](/.bashrc) has to be a script file but without shebang `#!/bin/bash`. The other files must not be script files, only text files. Otherwise an error message will probably appear.
 
@@ -93,8 +104,8 @@ Have fun and be nice.
 --------------------------------------------------------------------------------------------------
 
 # To do
-
-- [ ] \(Optional) cancel full time job 🏴‍☠️
+- [ ] Include routine to determine distribution to expose command-not-found feature
+- [ ] \(Optional) cancel full time job🏴‍☠️
 - [ ] \(Optional) ❓
 - [ ] \(Optional) make profit
 - [ ] \(Optional) become rich 💎🍾
