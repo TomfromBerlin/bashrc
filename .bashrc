@@ -153,7 +153,7 @@ echo -ne "${RED}\b+${NC}"
 ##
 # At first we are looking for a file named "$HOME/.shellcfg/logos/raspberrypi". It must be a text file (or be empty) or you will see garbage on the screen
 # Then we look for lolcat...
-if [ -f $HOME/.shellcfg/logos/raspberrypi~ ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat $HOME/.shellcfg/logos/raspberrypi;
+if [ -f $HOME/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat $HOME/.shellcfg/logos/raspberrypi;
 # If we were successful we have an output, and we are done: the prompt will pop up.
 # Otherwise continue here...
 else
