@@ -1,25 +1,25 @@
 #
 #################################################################################
-# BASH Config File																#
-# Name: .bashrc																	#
-# Path: /$home/$user/															#
-#																				#
-# made by TomfromBerlin															#
-# https://github.com/TomfromBerlin												#
-# Last changes: 04.03.2023														#
-#																				#
-#																				#
-#			Some commands or functions may not work on all distros				#
-#		THERE IS A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED		#
-#						TO WORK WITH OTHER SHELLS!								#
-#																				#
+# BASH Config File								#
+# Name: .bashrc									#
+# Path: /$home/$user/								#
+#										#
+# made by TomfromBerlin								#
+# https://github.com/TomfromBerlin						#
+# Last changes: 04.03.2023							#
+#										#
+#										#
+#		Some commands or functions may not work on all distros		#
+#	THERE IS A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED	#
+#			TO WORK WITH OTHER SHELLS!				#
+#										#
 #################################################################################
 #
 #################################################################################
-#																				#
-#			Everything below this line comes without warranty of any kind.		#
-#						Use these files at your own risk!						#
-#																				#
+#										#
+#	Everything below this line comes without warranty of any kind.		#
+#			Use these files at your own risk!			#
+#										#
 #################################################################################
 #
 # If not running interactively, don't do anything
@@ -256,26 +256,26 @@ else
 fi
 #
 #################################################################################################################################################
-# Code fuer den Prompt:													# Codes for the prompt:													#
-# \@ = Zeit																# \@ = time																#
-# \u = aktueller Benutzer												# \u = current user														#
-# \h = Rechnername														# \h = computer name													#
-# \t = Zeit																# \t = time																#
-# \d = Datum															# \d = date																#
-# \W = aktuelles Verzeichnis											# \W = current directory												#
-# \w = kompleter Pfad zum aktuellen Verzeichnis							# \w = full path to current directory									#
-# \n = neue Zeile														# \n = new line															#
-# \j = Anzahl der z.Z. verwalteten Prozesse								# \j = number of currently managed processes							#
-# \s = Name der Shell													# \s = shell name														#
-# \v = die Version der Bash												# \v = the version of bash												#
-# \\ = ein \															# \\ = a \																#
-# \[ und \] = Alles was dazwischen steht wird nicht ausgegeben.			# \[ \] = Everything between \[ and \] is not output.					#
-# Farbcodes gehören zwischen diese Zeichen, sonst kommt es zu			# Color codes belong between these characters, e.g. \[${LIGHTCYAN}\]	#
-# Anzeigefehlern, e.g. \[${LIGHTCYAN}\] resp. \[\e[1;36m\].				# resp. \[\e[1;36m\], otherwise display errors will occur.				#
-# Escape-Codes gehören _nicht_ dazwischen.								# Escape codes _do not_ belong in between.								#
-# (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste		# (These are only the most important escape codes, a complete list		#
-# findet ihr in der Manpage der Bash <Befehl: man bash> oder unter		# can be found in the bash manpage <command: man bash> or under			#
-#							https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt											#
+# Code fuer den Prompt:							# Codes for the prompt:							#
+# \@ = Zeit								# \@ = time								#
+# \u = aktueller Benutzer						# \u = current user							#
+# \h = Rechnername							# \h = computer name							#
+# \t = Zeit								# \t = time								#
+# \d = Datum								# \d = date								#
+# \W = aktuelles Verzeichnis						# \W = current directory						#
+# \w = kompleter Pfad zum aktuellen Verzeichnis				# \w = full path to current directory					#
+# \n = neue Zeile							# \n = new line								#
+# \j = Anzahl der z.Z. verwalteten Prozesse				# \j = number of currently managed processes				#
+# \s = Name der Shell							# \s = shell name							#
+# \v = die Version der Bash						# \v = the version of bash						#
+# \\ = ein \								# \\ = a \								#
+# \[ und \] = Alles was dazwischen steht wird nicht ausgegeben.		# \[ \] = Everything between \[ and \] is not output.			#
+# Farbcodes gehören zwischen diese Zeichen, sonst kommt es zu		# Color codes belong between these characters, e.g. \[${LIGHTCYAN}\]	#
+# Anzeigefehlern, e.g. \[${LIGHTCYAN}\] resp. \[\e[1;36m\].		# resp. \[\e[1;36m\], otherwise display errors will occur.		#
+# Escape-Codes gehören _nicht_ dazwischen.				# Escape codes _do not_ belong in between.				#
+# (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste	# (These are only the most important escape codes, a complete list	#
+# findet ihr in der Manpage der Bash <Befehl: man bash> oder unter	# can be found in the bash manpage <command: man bash> or under		#
+#					https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt				#
 #################################################################################################################################################
 # End of .bashrc
 #----------------------------------------------------------------------------------------------------
