@@ -21,16 +21,16 @@ Suggestions are always welcome. If errors occur, I would be grateful for informa
 
 This piece is intented to run on a Linux box with Bourne Again Shell (bash) as the default interactive shell.
 
-Note that the amount of time before the command prompt or GUI is available can be increased. The weaker the hardware, the longer it can take (it seems logical).
+Note that the amount of time before the command prompt or GUI is available can be increased. Unfortunately, Debian 11 (Bullseye) is - out of the box - a bad example here when it comes to boot times, even without this dot-bashrc. But the weaker the hardware, the longer it can take in principle (that seems logical).
 
 Tested on:
 
-|![Debian](https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white) | ![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi) | ![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white) | ![Kubuntu](https://img.shields.io/badge/-KUbuntu-%230079C1?style=for-the-badge&logo=kubuntu&logoColor=white) | ![Ubuntu](https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white) | ![XFCE](https://img.shields.io/badge/XFCE-%232284F2.svg?style=for-the-badge&logo=xfce&logoColor=white) |
-|:-:|:-:|:-:|:-:|:-:|:-:|
+|![Debian](https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white) | ![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi) | ![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white) | ![Kubuntu](https://img.shields.io/badge/-KUbuntu-%230079C1?style=for-the-badge&logo=kubuntu&logoColor=white) | ![Ubuntu](https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white) | ![XFCE](https://img.shields.io/badge/XFCE-%232284F2.svg?style=for-the-badge&logo=xfce&logoColor=white) | ![Manjaro-Gnome](https://img.shields.io/badge/Manjaro-35BF5C?style=for-the-badge&logo=Manjaro&logoColor=white) |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 
 Will be tested on:
-| ![Linux Mint](https://img.shields.io/badge/Linux_Mint-87CF3E?style=for-the-badge&logo=linux-mint&logoColor=white) | ![Lubuntu](https://img.shields.io/badge/-Lubuntu-%230065C2?style=for-the-badge&logo=lubuntu&logoColor=white) | ![openSUSE](https://img.shields.io/badge/openSUSE-%2364B345?style=for-the-badge&logo=openSUSE&logoColor=white) | ![Fedora](https://img.shields.io/badge/Fedora-294172?style=for-the-badge&logo=fedora&logoColor=white) | ![Manjaro](https://img.shields.io/badge/Manjaro-35BF5C?style=for-the-badge&logo=Manjaro&logoColor=white) | and more |
-|:-:|:-:|:-:|:-:|:-:|:-:|
+| ![Linux Mint](https://img.shields.io/badge/Linux_Mint-87CF3E?style=for-the-badge&logo=linux-mint&logoColor=white) | ![Lubuntu](https://img.shields.io/badge/-Lubuntu-%230065C2?style=for-the-badge&logo=lubuntu&logoColor=white) | ![openSUSE](https://img.shields.io/badge/openSUSE-%2364B345?style=for-the-badge&logo=openSUSE&logoColor=white) | ![Fedora](https://img.shields.io/badge/Fedora-294172?style=for-the-badge&logo=fedora&logoColor=white) | and more |
+|:-:|:-:|:-:|:-:|:-:|
 
 You will only need the follwing files:
 
@@ -39,8 +39,9 @@ You will only need the follwing files:
 + [~/.shellcfg/alias](/.shellcfg/alias) (necessary for full functionality)
 + [~/.shellcfg/colors](/.shellcfg/colors) (optional, necessary for color prompt and other color gimmicks)
 + [~/.shellcfg/functions](/.shellcfg/functions) (necessary for enhanced functionality)
-+ [~/.shellcfg/what_shell](/.shellcfg/what_shell) (optional, see also wiki page [What-the-(S)hell](/../../../../..//TomfromBerlin/bashrc/wiki/What-the-(S)hell))
++ [~/.shellcfg/what_shell](/.shellcfg/what_shell) (optional, see also wiki page [What the (S)hell](/../../../../..//TomfromBerlin/bashrc/wiki/What-the-(S)hell))
 + [~/.mostrc](/.mostrc) (optional, contains color definitions for `most`)
++ [~/.dircolors](/.dircolors) (optional, contains color definitions for `less`)
 
 __Installation of command-not-found-package is recommended!__
 
