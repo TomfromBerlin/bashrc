@@ -1,11 +1,11 @@
 #################################################################################
-#		Everything below this line comes without any guarantee.		#
-#			Use these files at your own risk!			#
+#				Everything below this line comes without any warranty.			#
+#							Use these file at your own risk!					#
 #################################################################################
 #
 #
 functions() {
-    # Usage: get_functions
+    # Usage: functions (without any argument)
     IFS=$'\n' read -d "" -ra functions < <(declare -F)
     printf '%s\n' "${functions[@]//declare -f }"
 }
@@ -18,7 +18,7 @@ functions() {
 #source /usr/share/doc/pkgfile/command-not-found.bash
 if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
     command_not_found_handle() {
-	    # check because c-n-f could've been removed in the meantime
+		# check because c-n-f could've been removed in the meantime
                if [ -x /usr/lib/command-not-found ]; then
            /usr/bin/python /usr/lib/command-not-found -- "$1"
                    return $?
@@ -40,8 +40,9 @@ jobscount() {
 #
 # Find file----------------------------------------------------------------------
 # Usage: ff <filename>
-ff()
-{ find . -type f -iname '*'$*'*' -ls; }
+ff() {
+ find . -type f -iname '*'$*'*' -ls
+}
 #
 # function extract---------------------------------------------------------------
 # "extract <filename>" extracts all formats
@@ -85,6 +86,48 @@ __add_command_replace_alias traceroute 'mtr'
 __add_command_replace_alias tracepath 'mtr'
 __add_command_replace_alias top 'htop'
 #
+# function colors----------------------------------------------------------------
+colors() {
+	local fgc fgc1 bgc bgc1 vals seq0 seq1
+
+	printf " Color escapes are %s\n" '\e[${value};...;${value}m'
+	printf " Values 30..37: \e[33mforeground colors\e[m\n"
+	printf " Values 40..47: \e[43mbackground colors\e[m\n\n"
+	printf " \e[36mDepending on the capability of your terminal, the value 1 gives a \e[36;1mbright or bold look\e[m\n\n"
+	printf " Example: \e[33;1m\\\e[33;1m = BOLD YELLOW\e[m - \e[33m\\\e[33m = NORMAL YELLOW\e[m\n\n"
+
+	# foreground colors
+		for fgc in {30..33}; do
+			# background colors
+			for bgc in {40..43}; do
+				fgc=${fgc#37} # white
+				bgc=${bgc#47} # black
+				vals="${fgc:+$fgc;}${bgc}"
+				vals=${vals%%;}
+
+				seq0="${vals:+\e[${vals}m}"
+				printf "  %-9s" "${seq0:-(default)}"
+				printf " ${seq0}NORM\e[m"
+				printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
+			done
+			echo; echo
+		done
+		for fgc1 in {34..37}; do
+			for bgc1 in {44..47}; do
+				fgc1=${fgc1#37} # white
+				bgc1=${bgc1#47} # black
+				vals1="${fgc1:+$fgc1;}${bgc1}"
+				vals1=${vals1%%;}
+
+				seq1="${vals1:+\e[${vals1}m}"
+				printf "  %-9s" "${seq1:-(default)}"
+				printf " ${seq1}NORM\e[m"
+				printf " \e[${vals1:+${vals1+$vals1;}}1mBOLD\e[m"
+			done
+			echo; echo
+		done
+	printf "   \x1b[38;2;255;100;0mIf this text is brown, your terminal understands Xterm-style true-color escapes\x1b[0m\n"
+}
 # function colortest-------------------------------------------------------------
 #
 colortest() {
@@ -101,7 +144,7 @@ awk 'BEGIN{
     }
     printf "\n";
   }'
-printf "\x1b[38;2;255;100;0mIf this text is brown, your terminal understands Xterm-style true-color escapes\x1b[0m\n"
+printf " \x1b[38;2;255;100;0mIf the text is brown, your terminal understands Xterm-style true-color escapes\x1b[0m\n"
 }
 #
 # function allcolors-------------------------------------------------------------
@@ -121,19 +164,8 @@ for x in 0 1 4 5 7 8; do for i in {30..37}; do for a in {40..47}; do echo -ne "\
 # and/or modify it under the terms of the Do What The Fuck You Want
 # To Public License, Version 2, as published by Sam Hocevar. See
 # http://sam.zoy.org/wtfpl/COPYING for more details.
-function truecolors() {
-for fgbg in 38 48 ; do # Foreground / Background
-    for color in {0..255} ; do # Colors
-        # Display the color
-        printf "\e[${fgbg};5;%sm  %3s  \e[0m" $color $color
-        # Display 12 colors per lines
-        if [ $((($color + 1) % 12)) == 4 ] ; then
-        echo # New line
-        fi
-    done
-    echo # New line
-done;
-echo "";
+truecolors() {
+for fgbg in 38 48; do for color in {0..255}; do printf "\e[${fgbg};5;%sm  %3s  \e[0m" $color $color; if [ $((($color + 1) % 12)) == 4 ]; then echo; fi; done; echo; done; echo "";
 }
 #
 # function showcolors256---------------------------------------------------------
