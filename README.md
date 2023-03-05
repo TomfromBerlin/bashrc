@@ -92,8 +92,7 @@ _The logo does not appear every time you issue a command. That would be annoying
 
 If you don't want to see a logo, just rename or delete the file in the /.shellcfg/logos/ directory. If the file named "raspberrypi" does not exist (or `lolcat` can't be found), a small text-based intro with some system information is output. Then the result looks like this:
 
-![terminal_intro](https://user-images.githubusercontent.com/123265893/222989390-1e65217b-54a2-4f88-8e16-2b31bdea919e.jpg)
-
+![terminal_intro](https://user-images.githubusercontent.com/123265893/222990703-e3fad171-1906-4a24-b089-5780168ec23f.png)
 
 If you want to change the logo read the wiki page on [how to](/../../../../../TomfromBerlin/bashrc/wiki/Changing-the-logo) do it.
 
