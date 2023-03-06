@@ -1,25 +1,25 @@
 #
 #################################################################################
-# BASH Config File								#
-# Name: .bashrc									#
-# Path: /$home/$user/								#
-#										#
-# made by TomfromBerlin								#
-# https://github.com/TomfromBerlin						#
-# Last changes: 04.03.2023							#
-#										#
-#										#
-#		Some commands or functions may not work on all distros		#
-#	THERE IS A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED	#
-#			TO WORK WITH OTHER SHELLS!				#
-#										#
+# BASH Config File																#
+# Name: .bashrc																	#
+# Path: /$home/$user/															#
+#																				#
+# made by TomfromBerlin															#
+# https://github.com/TomfromBerlin												#
+# Last changes: 04.03.2023														#
+#																				#
+#																				#
+#			Some commands or functions may not work on all distros				#
+#		THERE IS A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED		#
+#						TO WORK WITH OTHER SHELLS!								#
+#																				#
 #################################################################################
 #
 #################################################################################
-#										#
-#	Everything below this line comes without warranty of any kind.		#
-#			Use these files at your own risk!			#
-#										#
+#																				#
+#			Everything below this line comes without warranty of any kind.		#
+#						Use these files at your own risk!						#
+#																				#
 #################################################################################
 #
 # If not running interactively, don't do anything
@@ -172,7 +172,7 @@ echo -ne "${RED}\b+${NC}"
 ##
 # At first we are looking for a file named "$HOME/.shellcfg/logos/raspberrypi". It must be a text file (or be empty) or you will see garbage on the screen
 # Then we look for lolcat...
-if [ -f $HOME/.shellcfg/logos/raspberrypi~ ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat $HOME/.shellcfg/logos/raspberrypi;
+if [ -f $HOME/.shellcfg/logos/raspberrypi ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat $HOME/.shellcfg/logos/raspberrypi;
 # If we were successful we have an output, and we are done: the prompt will pop up.
 # Otherwise continue here...
 else
@@ -186,7 +186,7 @@ echo -e "${WHITE}Welcome "$(whoami)". ${NC}";
 echo -e "${NC}";
 echo -e "${NC}";
 echo -e "${WHITE}OS:			${LIGHTGREEN}" "$(uname -o)";
-if [ -f /etc/os-release ]; then echo -e "${WHITE}Distribution:		${LIGHTGREEN} "$(DISTNAME)" "$(DISTVER)""; else : ; fi;
+if [ -f /etc/lsb-release ]; then echo -e "${WHITE}Distribution:		${LIGHTGREEN} "$(lsb_release -ds)" "$(lsb_release -rs)" "$(lsb_release -c)""; else if [ -f /etc/*-release ]; then echo -e "${WHITE}Distribution:		${LIGHTGREEN} "$(distname)" "$(distver)""; else :; fi; fi;
 echo -e "${WHITE}Kernel Release:		${LIGHTGREEN}" "$(uname -r)";
 echo -e "${WHITE}Kernel Version:		${LIGHTGREEN}" "$(uname -v)";
 echo -e "${WHITE}Architecture:		${LIGHTGREEN}" "$(uname -m)";
@@ -246,7 +246,7 @@ else
     unset color_prompt force_color_prompt
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in
-	Eterm*|alacritty*|aterm*|foot*|gnome*|konsole*|kterm*|putty*|rxvt*|tmux*|xterm*)
+	Eterm*|alacritty*|aterm|foot|gnome*|interix|konsole*|kterm|putty*|rxvt*|tmux*|xterm*)
 #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 	export PS1="\n\[\e[0;37m\]Systemzeit \A\n\[${PS_COLOR}\]\u\[\e[1;33m\]@\[\e[1;32m\]\h: \[\e[1;32m\]\w\[\e[0m\]\$"
         ;;
@@ -256,26 +256,26 @@ else
 fi
 #
 #################################################################################################################################################
-# Code fuer den Prompt:							# Codes for the prompt:							#
-# \@ = Zeit								# \@ = time								#
-# \u = aktueller Benutzer						# \u = current user							#
-# \h = Rechnername							# \h = computer name							#
-# \t = Zeit								# \t = time								#
-# \d = Datum								# \d = date								#
-# \W = aktuelles Verzeichnis						# \W = current directory						#
-# \w = kompleter Pfad zum aktuellen Verzeichnis				# \w = full path to current directory					#
-# \n = neue Zeile							# \n = new line								#
-# \j = Anzahl der z.Z. verwalteten Prozesse				# \j = number of currently managed processes				#
-# \s = Name der Shell							# \s = shell name							#
-# \v = die Version der Bash						# \v = the version of bash						#
-# \\ = ein \								# \\ = a \								#
-# \[ und \] = Alles was dazwischen steht wird nicht ausgegeben.		# \[ \] = Everything between \[ and \] is not output.			#
-# Farbcodes gehören zwischen diese Zeichen, sonst kommt es zu		# Color codes belong between these characters, e.g. \[${LIGHTCYAN}\]	#
-# Anzeigefehlern, e.g. \[${LIGHTCYAN}\] resp. \[\e[1;36m\].		# resp. \[\e[1;36m\], otherwise display errors will occur.		#
-# Escape-Codes gehören _nicht_ dazwischen.				# Escape codes _do not_ belong in between.				#
-# (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste	# (These are only the most important escape codes, a complete list	#
-# findet ihr in der Manpage der Bash <Befehl: man bash> oder unter	# can be found in the bash manpage <command: man bash> or under		#
-#					https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt				#
+# Code fuer den Prompt:													# Codes for the prompt:													#
+# \@ = Zeit																# \@ = time																#
+# \u = aktueller Benutzer												# \u = current user														#
+# \h = Rechnername														# \h = computer name													#
+# \t = Zeit																# \t = time																#
+# \d = Datum															# \d = date																#
+# \W = aktuelles Verzeichnis											# \W = current directory												#
+# \w = kompleter Pfad zum aktuellen Verzeichnis							# \w = full path to current directory									#
+# \n = neue Zeile														# \n = new line															#
+# \j = Anzahl der z.Z. verwalteten Prozesse								# \j = number of currently managed processes							#
+# \s = Name der Shell													# \s = shell name														#
+# \v = die Version der Bash												# \v = the version of bash												#
+# \\ = ein \															# \\ = a \																#
+# \[ und \] = Alles was dazwischen steht wird nicht ausgegeben.			# \[ \] = Everything between \[ and \] is not output.					#
+# Farbcodes gehören zwischen diese Zeichen, sonst kommt es zu			# Color codes belong between these characters, e.g. \[${LIGHTCYAN}\]	#
+# Anzeigefehlern, e.g. \[${LIGHTCYAN}\] resp. \[\e[1;36m\].				# resp. \[\e[1;36m\], otherwise display errors will occur.				#
+# Escape-Codes gehören _nicht_ dazwischen.								# Escape codes _do not_ belong in between.								#
+# (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste		# (These are only the most important escape codes, a complete list		#
+# findet ihr in der Manpage der Bash <Befehl: man bash> oder unter		# can be found in the bash manpage <command: man bash> or under			#
+#							https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt											#
 #################################################################################################################################################
 # End of .bashrc
 #----------------------------------------------------------------------------------------------------
