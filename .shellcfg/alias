@@ -1,46 +1,52 @@
 # ALIASES
 #
-# Mit Aliases können Befehle bzw. Befehlsketten mit eigenen Namen bzw. Kürzeln belegt werden.
 # more under https://www.gnu.org/software/bash/manual/html_node/Aliases.html
 #----------------------------------------------------------------------------------------------------
 # UMOUNT VS. UNMOUNT
 # Deutsche Fehlermeldung, wenn umount nicht richtig verwendet wird.
 #
+if [ -f $HOME/.shellcfg/colors ]; then
 alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umount${NC} - ohne ${RED}n${NC} nach dem ersten ${RED}u${NC}."'
-# alias unmount='echo -e "Syntaxfehler: der Befehl lautet umount - ohne n nach dem ersten u."'
+else
+alias unmount='echo -e "Syntaxfehler: der Befehl lautet umount - ohne n nach dem ersten u."'
+fi
 #
 # English error msg, when using umount incorrectly
+# if [ -f $HOME/.shellcfg/colors ]; then
 # alias unmount='echo -e "${RED}Syntax Error${NC}: Please use ${GREEN}umount${NC} - without ${RED}n${NC} after the first ${RED}u${NC}."'
+# else
 # alias unmount='echo -e "Syntax Error: Please use umount - without n after the first u"'
+# fi
 #
 #----------------------------------------------------------------------------------------------------
 # ls (suitable for Linux and OSX)
 # souce: https://github.com/johnnygaffey/dotfiles/bash_alias
 #
 if [ -f /usr/bin/ls++ ]; then
-    alias ls='ls++ --potf -F'		#colors
-    alias l='ls++ --potsf -F'		#colors
-    alias ll='ls++ --potsf -ah'		#long list
-    alias la='ls++ --potsf -A'		#show hidden
-    alias lx='ls++ --potsf -B'		#sort by sextension
-    alias lk='ls++ --potsf -Sr'		#sort by size biggest last
-    alias lc='ls++ --potsf -tcr'	#sort by and show chagne times
-    alias lu='ls++ --potsf -tur'	#sort by and show access time
-    alias lt='ls++ --potsf -tr'		#sort by date
-    alias lm='ls++ --potsf -a |more'	#pipe through more
-    alias lr='ls++ --potsf -R'		#recursive
+    alias ls='ls++ --potf -F'					#colors
+    alias l='ls++ --potsf -F'					#colors
+    alias ll='ls++ --potsf -ah'					#long list
+    alias la='ls++ --potsf -A'					#show hidden
+    alias lx='ls++ --potsf -B'					#sort by sextension
+    alias lk='ls++ --potsf -Sr'					#sort by size biggest last
+    alias lc='ls++ --potsf -tcr'				#sort by and show chagne times
+    alias lu='ls++ --potsf -tur'				#sort by and show access time
+    alias lt='ls++ --potsf -tr'					#sort by date
+    alias lm='ls++ --potsf -a |more'			#pipe through more
+    alias lr='ls++ --potsf -R'					#recursive
 else
     alias ls='ls -F --color=auto'				# colors
-    alias l='ls -F --group-directories-first --color=auto'	# list files & dirs with directories first / ls als Liste, Verzeichnisse ganz oben
-    alias ll='ls -lsah --color=auto'				# long list
-    alias la='ls -AF --color=auto'				# show hidden # alias la='ls -Al' / zeige versteckte Dateien in einer Liste
+    alias l='ls -F --group-directories-first --color=auto'	# ls als Liste, Verzeichnisse ganz oben
+    alias ll='ls -lsah --color=auto'			# long list
+    alias la='ls -AF --color=auto'				# show hidden
+#    alias la='ls -Al --color=auto'				# zeige versteckte Dateien in einer Liste
     alias lx='ls -lXB --color=auto'				# sort by extension
     alias lk='ls -lSr --color=auto'				# sort by size biggest last
-    alias lc='ls -ltcr --color=auto'				# sort by and show change times
-    alias lu='ls -ltur --color=auto'				# sort by and show access time
+    alias lc='ls -ltcr --color=auto'			# sort by and show change times
+    alias lu='ls -ltur --color=auto'			# sort by and show access time
     alias lt='ls -ltr --color=auto'				# sort by date
-    alias lm='ls -al --color=always |more'			# pipe through more, preserve colors
-    alias lr='ls -lR --color=always |more'			# recursive
+    alias lm='ls -al --color=always |more'		# pipe through more, preserve colors
+    alias lr='ls -lR --color=always |more'		# recursive
 fi
 #
 #--------------------------------------------------------------------------------
@@ -51,33 +57,33 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 #--------------------------------------------------------------------------------
 # MISC & STUFF
-# alias tree='tree -Csu|more'			# Alternative zum rekursiven ls; Für Tree noch Befehl "sudo apt-get install tree"
-alias ping='ping -c 3'				# 3 pings
-#alias beep='echo -en "\x07"'			# beep
-alias cls='clear'				# clears the terminal window
-alias which='type -a'				# usage 'wich name' (consider using 'wtfis' instead, since it exposes more info about the file)
-alias du='du -kh --max-depth=1'			# readable output
-alias df='df -kTh'				#    ^       ^
+# alias tree='tree -Csu|more'				# Alternative zum rekursiven ls; Für Tree noch Befehl "sudo apt-get install tree"
+alias ping='ping -c 3'						# 3 pings
+#alias beep='echo -en "\x07"'				# beep
+alias cls='clear'							# clears the terminal window
+alias which='type -a'						# usage 'wich name' (consider using 'wtfis' instead, since it exposes more info about the file)
+alias du='du -kh --max-depth=1'				# readable output
+alias df='df -kTh'							#    ^       ^
 # alias psa='ps auxf'
-# alias pg='ps aux | grep'			# Prozess greppen -> pg name
-alias home='cd ~'				# change to the current users home directory
+# alias pg='ps aux | grep'					# Prozess greppen -> pg name
+alias home='cd ~'							# change to the current users home directory
 alias fdate='date "+%A, %d.%B %Y    %T %Z"'	# weekday+date+time+timezone
-alias sdate='date "+%A, %d.%B %Y"'		# weekday+date
-alias h='history'				# BASH command history
-alias bashedit='nano ~/.bashrc'			# replace "nano" with editor of you choice, e.g. leafpad or vim
-alias reload='source ~/.bashrc'			# clears terminal window and reloads .bashrc
-alias ip='ip --color=auto'			# colored ip-adresses
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias sdate='date "+%A, %d.%B %Y"'			# weekday+date
+alias h='history'							# BASH command history
+alias bashedit='nano ~/.bashrc'				# replace "nano" with editor of you choice, e.g. leafpad or vim
+alias reload='source ~/.bashrc'				# clears terminal window and reloads .bashrc
+alias ip='ip --color=auto'					# colored ip-adresses
+alias dir='dir --color=always'
+alias vdir='vdir --color=always'
+alias grep='grep --color=always'
+alias fgrep='fgrep --color=always'
+alias egrep='egrep --color=always'
 alias dmesg='dmesg --color=always | less'
-alias DISTVER='grep -E ^VERSION= /etc/os-release'
-alias DISTNAME='grep -E ^NAME= /etc/os-release'
+alias distver='grep -E ^VERSION= /etc/os-release'
+alias distname='grep -E ^NAME= /etc/os-release'
 #----------------------------------------------------------------------------------------------------
 #sudo
-alias si='sudo -i'	# Starts a login-shell. It means all variables will be set like at login.
+alias si='sudo -i'				# Starts a login-shell. It means all variables will be set like at login.
 #----------------------------------------------------------------------------------------------------
 # Directory Navigation
 alias ..='cd ..'
