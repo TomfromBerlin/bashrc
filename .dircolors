@@ -41,6 +41,7 @@ TERM gnome
 TERM gnome-256color
 TERM gnome-terminal
 TERM hurd
+TERM interix
 TERM jfbterm
 TERM konsole
 TERM kterm
@@ -78,8 +79,10 @@ TERM xterm-88color
 TERM xterm-color
 TERM xterm-debian
 
-# Below are the color init strings for the basic file types. A color init
-# string consists of one or more of the following numeric codes:
+# Below are the color init strings for the basic file types.
+# One can use codes for 256 or more colors supported by modern terminals.
+# The default color codes use the capabilities of an 8 color terminal
+# with some additional attributes as per the following codes:
 # Attribute codes:
 # 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
 # Text color codes:
@@ -294,3 +297,22 @@ EXEC 01;32
 .oga 00;36
 .spx 00;36
 .xspf 00;36
+
+# backup files
+*~ 00;90
+*# 00;90
+.bak 00;90
+.old 00;90
+.orig 00;90
+.part 00;90
+.rej 00;90
+.swp 00;90
+.tmp 00;90
+.dpkg-dist 00;90
+.dpkg-old 00;90
+.ucf-dist 00;90
+.ucf-new 00;90
+.ucf-old 00;90
+.rpmnew 00;90
+.rpmorig 00;90
+.rpmsave 00;90
