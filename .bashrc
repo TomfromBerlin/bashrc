@@ -1,25 +1,25 @@
 #
 #################################################################################
-# BASH Config File																#
-# Name: .bashrc																	#
-# Path: /$home/$user/															#
-#																				#
-# made by TomfromBerlin															#
-# https://github.com/TomfromBerlin												#
-# Last changes: 04.03.2023														#
-#																				#
-#																				#
-#			Some commands or functions may not work on all distros				#
-#		THERE IS A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED		#
-#						TO WORK WITH OTHER SHELLS!								#
-#																				#
+# BASH Config File                                                              #
+# Name: .bashrc                                                                 #
+# Path: /$home/$user/                                                           #
+#                                                                               #
+# made by TomfromBerlin                                                         #
+# https://github.com/TomfromBerlin                                              #
+# Last changes: 04.03.2023                                                      #
+#                                                                               #
+#                                                                               #
+#         Some commands or functions may not work on all distros                #
+#     THERE IS A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED         #
+#                      TO WORK WITH OTHER SHELLS!                               #
+#                                                                               #
 #################################################################################
 #
 #################################################################################
-#																				#
-#			Everything below this line comes without warranty of any kind.		#
-#						Use these files at your own risk!						#
-#																				#
+#                                                                               #
+#      Everything below this line comes without warranty of any kind.           #
+#                    Use these files at your own risk!                          #
+#                                                                               #
 #################################################################################
 #
 # If not running interactively, don't do anything
@@ -39,14 +39,13 @@
 #----------------------------------------------------------------------------------------------------
 # Backup the current .bashrc and associated files without overwriting the last backup. You'll never know...
 # At first we look for the backup folder. If not exist create one
-if [ -d $HOME/.config/shellcfg/backup ]; then : ; else mkdir $HOME/.config/shellcfg/backup; fi
+if [[ -d $HOME/.shellcfg/backup ]]; then : ; else mkdir $HOME/.shellcfg/backup; fi
 # Now we will make backups, but only if changes are made
-if [ -f $HOME/.config/shellcfg/backup/bashrc.backup ]; then cp -up -b $HOME/.bashrc $HOME/.config/shellcfg/backup/bashrc.backup; else cp -up $HOME/.bashrc $HOME/.config/shellcfg/backup/bashrc.backup; fi
-if [ -f $HOME/.config/shellcfg/backup/zshrc.backup ]; then cp -up -b $HOME/.zshrc $HOME/.config/shellcfg/backup/zshrc.backup; else cp -up $HOME/.zshrc $HOME/.config/shellcfg/backup/zshrc.backup; fi
-if [ -f $HOME/.config/shellcfg/backup/shell_alias.backup ]; then cp -up -b $HOME/.config/shellcfg/shell_alias $HOME/.config/shellcfg/backup/shell_alias.backup; else cp -up $HOME/.config/shellcfg/shell_alias $HOME/.config/shellcfg/backup/shell_alias.backup; fi
-if [ -f $HOME/.config/shellcfg/backup/shell_functions.backup ]; then cp -up -b $HOME/.config/shellcfg/shell_functions $HOME/.config/shellcfg/backup/shell_functions.backup; else cp -up $HOME/.config/shellcfg/shell_functions $HOME/.config/shellcfg/backup/shell_functions.backup; fi
-if [ -f $HOME/.config/shellcfg/backup/shell_colors.backup ]; then cp -up -b $HOME/.config/shellcfg/shell_colors $HOME/.config/shellcfg/backup/shell_colors.backup; else cp -up $HOME/.config/shellcfg/shell_colors $HOME/.config/shellcfg/backup/shell_colors.backup; fi
-if [ -f $HOME/.config/shellcfg/backup/what_shell.backup ]; then cp -up -b $HOME/.config/shellcfg/what_shell $HOME/.config/shellcfg/backup/what_shell.backup; else cp -up $HOME/.config/shellcfg/what_shell $HOME/.config/shellcfg/backup/what_shell.backup; fi
+if [[ -f $HOME/.shellcfg/backup/bashrc.backup ]]; then cp -up -b $HOME/.bashrc $HOME/.shellcfg/backup/bashrc.backup; else cp -up $HOME/.bashrc $HOME/.shellcfg/backup/bashrc.backup; fi
+if [[ -f $HOME/.shellcfg/backup/shell_alias.backup ]]; then cp -up -b $HOME/.shellcfg/shell_alias $HOME/.shellcfg/backup/shell_alias.backup; else cp -up $HOME/.shellcfg/shell_alias $HOME/.shellcfg/backup/shell_alias.backup; fi
+if [[ -f $HOME/.shellcfg/backup/shell_functions.backup ]]; then cp -up -b $HOME/.shellcfg/shell_functions $HOME/.shellcfg/backup/shell_functions.backup; else cp -up $HOME/.shellcfg/shell_functions $HOME/.shellcfg/backup/shell_functions.backup; fi
+if [[ -f $HOME/.shellcfg/backup/shell_colors.backup ]]; then cp -up -b $HOME/.shellcfg/shell_colors $HOME/.shellcfg/backup/shell_colors.backup; else cp -up $HOME/.shellcfg/shell_colors $HOME/.shellcfg/backup/shell_colors.backup; fi
+if [[ -f $HOME/.shellcfg/backup/what_shell.backup ]]; then cp -up -b $HOME/.shellcfg/what_shell $HOME/.shellcfg/backup/what_shell.backup; else cp -up $HOME/.shellcfg/what_shell $HOME/.shellcfg/backup/what_shell.backup; fi
 # and we go back to home
 cd $HOME/  || return
 #
@@ -54,27 +53,18 @@ cd $HOME/  || return
 # Read global settings if there are such things.
 # It makes no sense to throw this in /etc/bash.bashrc.
 #
-if [ "$(ps -cp "$$" -o command="")" = bash ]; then if [ -f /etc/bash.bashrc ]; then . /etc/bash.bashrc; fi
+if [[ -f /etc/bash.bashrc ]]; then . /etc/bash.bashrc; fi
 #
 #----------------------------------------------------------------------------------------------------
 # activates bash completion features (probably already activated in /etc/bash.bashrc or /etc/profile)
-if [ -f /etc/bash_completion ]; then . /etc/bash_completion ; fi
+if [[ -f /etc/bash_completion ]]; then . /etc/bash_completion; fi
 #
 # If you have your own bash_completion file put it in ~/.bash_completion.d
-if [ -d $HOME/bash_completion.d ]; then
-for ownbcfile in ~/.bash_completion.d/* ; do
-	[ -f "$ownbcfile" ] && . "$ownbcfile"
-done
-fi
+if [[ -d $HOME/bash_completion.d ]]; then for ownbcfile in ~/.bash_completion.d/* ; do [ -f "$ownbcfile" ] && . "$ownbcfile"; done; fi
 #
 # Some developers put their own bash_completion in /etc/bash_completion.d
 # We will use it, if present
-if [ -d /etc/bash_completion.d ]; then
-for bcfile in /etc/bash_completion.d/* ; do
-	[ -f "$bcfile" ] && . "$bcfile"
-done
-fi
-fi
+if [[ -d /etc/bash_completion.d ]]; then for bcfile in /etc/bash_completion.d/* ; do [ -f "$bcfile" ] && . "$bcfile"; done; fi
 #
 #----------------------------------------------------------------------------------------------------
 # set variable identifying the chroot you work in (used in the prompt below)
@@ -86,10 +76,10 @@ fi
 #----------------------------------------------------------------------------------------------------
 # START COLORS, FUNCTIONS, & ALIASES
 #
-if [ -x /usr/bin/dircolors ]; then test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"; fi
-if [ -f $HOME/.config/shellcfg/shell_colors ]; then . $HOME/.config/shellcfg/shell_colors; else echo -e "Where have all the colors gone..."; fi
-if [ -f $HOME/.config/shellcfg/shell_alias ]; then . $HOME/.config/shellcfg/shell_alias; else echo -e "There will be no or less aliases, since the alias file is missing."; fi
-if [ -f $HOME/.config/shellcfg/shell_functions ]; then . $HOME/.config/shellcfg/shell_functions; else echo -e "\n\e[1;32m Unfortunately, some functions are not available,\n because the file \e[33;31m"$HOME"/.config/shellcfg/functions\e[49m\e[1;32m is missing.\n"; fi
+if [[ -x /usr/bin/dircolors ]]; then test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"; fi
+if [[ -f $HOME/.shellcfg/shell_colors ]]; then . $HOME/.shellcfg/shell_colors; else echo -e "Where have all the colors gone..."; fi
+if [[ -f $HOME/.shellcfg/shell_alias ]]; then . $HOME/.shellcfg/shell_alias; else echo -e "There will be no or less aliases, since the alias file is missing."; fi
+if [[ -f $HOME/.shellcfg/shell_functions ]]; then . $HOME/.shellcfg/shell_functions; else echo -e "\n\e[1;32m Unfortunately, some functions are not available,\n because the file \e[33;31m"$HOME"/.config/shellcfg/functions\e[49m\e[1;32m is missing.\n"; fi
 #
 # END COLORS, FUNCTIONS, & ALIASES
 #
@@ -111,12 +101,8 @@ if [ -f $HOME/.config/shellcfg/shell_functions ]; then . $HOME/.config/shellcfg/
 #----------------------------------------------------------------------------------------------------
 #
 # It's the directories on the $PATH that show us the way to our files
-if [ "$(ps -cp "$$" -o command="")" = bash ]; then
-PATH=$PATH	# This will read when an interactive shell will be started
-export PATH=$PATH$( shopt -s globstar; printf ':%s' "$PWD"/**/; ) # append all subdirectories of $HOME to path
-else
-export PATH=$PATH
-fi
+export PATH=$PATH	# This will read when an interactive shell will be started
+# export PATH=$PATH$( shopt -s globstar; printf ':%s' "$PWD"/**/; ) # append all subdirectories of $HOME to path
 #----------------------------------------------------------------------------------------------------
 #
 #####################################################################################################
@@ -130,7 +116,6 @@ set -o noclobber	# if set bash will not overwrite existing files when using the 
 set -o nounset
 # set -o xtrace		# helpfull while debugging.
 #----------------------------------------------------------------------------------------------------
-if [ "$(ps -cp "$$" -o command="")" = bash ]; then
 # shopt builtin
 # anschalten
 #
@@ -174,7 +159,6 @@ HISTIGNORE="&:?:??" # do not remember trivial 1- and 2-letter commands
 # commands from multiple terminals in correct chronological order).
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 #----------------------------------------------------------------------------------------------------
-fi
 # export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 export HOSTFILE=$HOME/.hosts    # Put list of remote hosts in ~/.hosts
@@ -197,31 +181,31 @@ echo -ne "${RED}\b+${NC}"
 ##
 # At first we are looking for a file named "$HOME/.config/shellcfg/logos/raspberrypi". It must be a text file (or be empty) or you will see garbage on the screen
 # Then we look for lolcat...
-if [ -f $HOME/.config/shellcfg/logos/raspberrypi~ ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat $HOME/.config/shellcfg/logos/raspberrypi;
+if [ -f $HOME/.shellcfg/logos/raspberrypi~ ] && [ -x /usr/games/lolcat ]; then /usr/games/lolcat $HOME/.shellcfg/logos/raspberrypi;
 # If we were successful we have an output, and we are done: the prompt will pop up.
 # Otherwise continue here...
 else
 # animated intro (Start)
 #clear
-# ...but we need the file $HOME/.config/shellcfg/shell_colors to be present.
-if [ -f "$HOME"/.config/shellcfg/shell_colors ]; then echo -e " ";
+# ...but we need the file $HOME/.shellcfg/shell_colors to be present.
+if [[ -f "$HOME"/.shellcfg/shell_colors ]]; then echo -e " ";
 for i in {1..80} ; do spin; done; echo "";
 echo -e "${NC}";
 echo -e "${WHITE}Welcome "$(whoami)". ${NC}";
 echo -e "${NC}";
 echo -e "${NC}";
 echo -e "${WHITE}OS:			${LIGHTGREEN}" "$(uname -o)";
-if [ -f /etc/lsb-release ]; then echo -e "${WHITE}Distribution:		${LIGHTGREEN} "$(lsb_release -ds)" "$(lsb_release -rs)" "$(lsb_release -c)""; else if [ -f /etc/os-release ]; then echo -e "${WHITE}Distribution:		${LIGHTGREEN} "$(distname)" "$(distver)""; else :; fi; fi;
+if [[ -f /etc/lsb-release ]]; then echo -e "${WHITE}Distribution:		${LIGHTGREEN} "$(lsb_release -ds)" "$(lsb_release -rs)" "$(lsb_release -c)""; else if [[ -f /etc/os-release ]]; then echo -e "${WHITE}Distribution:		${LIGHTGREEN} "$(distname)" "$(distver)""; else :; fi; fi;
 echo -e "${WHITE}Kernel Release:		${LIGHTGREEN}" "$(uname -r)";
 echo -e "${WHITE}Kernel Version:		${LIGHTGREEN}" "$(uname -v)";
 echo -e "${WHITE}Architecture:		${LIGHTGREEN}" "$(uname -m)";
 echo -e "${WHITE}Hostname:		${LIGHTGREEN}" "$(uname -n)";
 echo -e "${NC}";
-if [ -f $HOME/.config/shellcfg/what_shell ]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" "$(. $HOME/.config/shellcfg/what_shell)"; fi;
+if [[ -f $HOME/.shellcfg/what_shell ]]; then echo -e "${WHITE}SHELL:			${LIGHTGREEN}" "$(. $HOME/.shellcfg/what_shell)"; fi;
 echo -e "$NC";
-if [ -x /bin/free ]; then echo -e "${LIGHTCYAN}";free -h;echo "";
+if [[ -x /bin/free ]]; then echo -e "${LIGHTCYAN}";free -h;echo "";
 echo -e "${NC}"; fi;
-if [ -x /bin/netstat ]; then echo -e "${LIGHTBLUE}";netstat -i;echo "";
+if [[ -x /bin/netstat ]]; then echo -e "${LIGHTBLUE}";netstat -i;echo "";
 echo -e "${NC}"; fi;
 for i in {1..80} ; do spin; done; echo "";
 # animated intro (End)
@@ -234,8 +218,8 @@ echo -e "${YELLOW}";sdate;
 # PROMPT
 # Do we have color output? In most cases we do, but lets test it.
 force_color_prompt=yes
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+if [[ -n "$force_color_prompt" ]]; then
+    if [[ -x /usr/bin/tput ]] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it is compliant with Ecma-48
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
@@ -252,40 +236,24 @@ fi
 #----------------------------------------------------------------------------------------------------
 #
 active_shell="$(ps -cp "$$" -o command="")"
-if [ -f $HOME/.config/shellcfg/shell_colors ]; then
-    if [ $active_shell = bash ]; then
+if [[ -f $HOME/.shellcfg/shell_colors ]]; then
         trap 'echo -ne "\033]2;$(history 1 | sed "s/^[ ]*[0-9]*[ ]*//g")\007"' DEBUG
         if [ "$color_prompt" = yes ]; then
 	        PS1="\n\[${WHITE}\]Systemzeit \A\n\[${PS_COLOR}\][${active_shell}]: \[${LIGHTCYAN}\]\w\[${NC}\]$ "
+	        PS2="\n\[${PS_COLOR}\][${active_shell}] \[${LIGHTCYAN}\] is waiting for input\[${NC}\]: "
             unset color_prompt force_color_prompt
             # If this is an xterm set the title to user@host:dir
             case "$TERM" in
             Eterm*|alacritty*|aterm*|foot*|gnome*|konsole*|kterm*|putty*|rxvt*|tmux*|xterm*)
         #   PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1\]"
-	        PS1="\n\[${WHITE}\]Systemzeit \A\n\[${GREEN}\][\[${PS_COLOR}\]\[${active_shell}\]\[${GREEN}\]]\[${WHITE}\]: \[${CYAN}\]\w\[${NC}\]$ "
+	        PS1="\n\[${WHITE}\]\A\n\[${GREEN}\][\[${PS_COLOR}\]\[${active_shell}\]\[${GREEN}\]]\[${WHITE}\]: \[${CYAN}\]\w\[${NC}\]$ "
+		PS2="\n\[${PS_COLOR}\][${active_shell}] \[${LIGHTCYAN}\]is waiting for user input\[${NC}\]: "
 	        ;;
             *)
             ;;
             esac
         fi
-    else
-# precmd is called just before the prompt is printed
-        function precmd() {
-        timer=${time:-$SECONDS}
-        }
-# preexec is called just before any command line is executed
-        preexec () {
-        if [[ $timer ]]; then timer_show=$(($SECONDS - $timer))
-        export RPROMPT='%B%F{cyan}${timer_show}s%b%f %(?.%F{green}√.%K{red}%F{black}Nope!)%f%k'
-        unset timer
-        fi
-        }
-        echo -e -n "\x1b[\x33 q"
-        export PS1='%F{green}[%F{magenta}${active_shell}%F{green}]%f:%F{cyan}%(5~|%-1~/…/%3~|%4~)%F{white}%# '
-        export PS2='%F{cyan}%(5~|%-1~/…/%3~|%4~)%F{white} - %F{green}$active_shell is waiting for input%f:%# '
-    fi
 else
-    if [ $active_shell = bash ]; then
     trap 'echo -ne "\033]2;$(history 1 | sed "s/^[ ]*[0-9]*[ ]*//g")\007"' DEBUG
         if [ "$color_prompt" = yes ]; then
             PS1="\n\[\e[0;37m\]Systemzeit \A\n\[${PS_COLOR}\][${active_shell}]: \[\e[1;32m\]\w\[\e[m\]\$ "
@@ -295,43 +263,35 @@ else
 	        Eterm*|alacritty*|aterm|foot|gnome*|interix|konsole*|kterm|putty*|rxvt*|tmux*|xterm*)
         #	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 	        PS1="\n\[\e[0;37m\]Systemzeit \A\n\[${PS_COLOR}\][${active_shell}]: \[\e[1;32m\]\w\[\e[m\]$ "
+		PS1="\n\[${PS_COLOR}\][${active_shell}] \[\e[1;32m\]is waiting for user input\[\e[m\]: "
             ;;
             *)
             ;;
             esac
         fi
-    else
-        echo -e -n "\x1b[\x33 q"
-        export PS1='%F{green}[%F{magenta}${active_shell}%F{green}]%f:%F{cyan}%(5~|%-1~/…/%3~|%4~)%F{white}%# '
-        export PS2='%F{cyan}%(5~|%-1~/…/%3~|%4~)%F{white} - %F{green}$active_shell is waiting for input%f:%# '
-        export RPROMPT='%(?.%F{green}√.%K{red}%F{black}"Nope!")%k%f'
-    fi
 fi
-# if we are using bash show the running command in window title bar
-# if [ "$(ps -cp "$$" -o command="")" = bash ]; then trap 'echo -ne "\033]2;$(history 1 | sed "s/^[ ]*[0-9]*[ ]*//g")\007"' DEBUG; fi
 #
 #################################################################################################################################################
-# Code fuer den Prompt:													# Codes for the prompt:													#
-# \@ = Zeit																# \@ = time																#
-# \u = aktueller Benutzer												# \u = current user														#
-# \h = Rechnername														# \h = computer name													#
-# \t = Zeit																# \t = time																#
-# \d = Datum															# \d = date																#
-# \W = aktuelles Verzeichnis											# \W = current directory												#
-# \w = kompleter Pfad zum aktuellen Verzeichnis							# \w = full path to current directory									#
-# \n = neue Zeile														# \n = new line															#
-# \j = Anzahl der z.Z. verwalteten Prozesse								# \j = number of currently managed processes							#
-# \s = Name der Shell													# \s = shell name														#
-# \v = die Version der Bash												# \v = the version of bash												#
-# \\ = ein \															# \\ = a \																#
-# \[ und \] = Alles was dazwischen steht wird nicht ausgegeben.			# \[ \] = Everything between \[ and \] is not output.					#
-# Farbcodes gehören zwischen diese Zeichen, sonst kommt es zu			# Color codes belong between these characters, e.g. \[${LIGHTCYAN}\]	#
-# Anzeigefehlern, e.g. \[${LIGHTCYAN}\] resp. \[\e[1;36m\].				# resp. \[\e[1;36m\], otherwise display errors will occur.				#
-# Escape-Codes gehören _nicht_ dazwischen.								# Escape codes _do not_ belong in between.								#
-# (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste		# (These are only the most important escape codes, a complete list		#
-# findet ihr in der Manpage der Bash <Befehl: man bash> oder unter		# can be found in the bash manpage <command: man bash> or under			#
-#							https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt											#
+# Code fuer den Prompt:                                               # Codes for the prompt:                                                   #
+# \@ = Zeit                                                           # \@ = time                                                               #
+# \u = aktueller Benutzer                                             # \u = current user                                                       #
+# \h = Rechnername                                                    # \h = computer name                                                      #
+# \t = Zeit                                                           # \t = time                                                               #
+# \d = Datum                                                          # \d = date                                                               #
+# \W = aktuelles Verzeichnis                                          # \W = current directory                                                  #
+# \w = kompleter Pfad zum aktuellen Verzeichnis                       # \w = full path to current directory                                     #
+# \n = neue Zeile                                                     # \n = new line                                                           #
+# \j = Anzahl der z.Z. verwalteten Prozesse                           # \j = number of currently managed processes                              #
+# \s = Name der Shell                                                 # \s = shell name                                                         #
+# \v = die Version der Bash                                           # \v = the version of bash                                                #
+# \\ = ein \                                                          # \\ = a \                                                                #
+# \[ und \] = Alles was dazwischen steht wird nicht ausgegeben.       # \[ \] = Everything between \[ and \] is not output.                     #
+# Farbcodes gehören zwischen diese Zeichen, sonst kommt es zu         # Color codes belong between these characters, e.g. \[${LIGHTCYAN}\]	#
+# Anzeigefehlern, e.g. \[${LIGHTCYAN}\] resp. \[\e[1;36m\].           # resp. \[\e[1;36m\], otherwise display errors will occur.                #
+# Escape-Codes gehören _nicht_ dazwischen.                            # Escape codes _do not_ belong in between.                                #
+# (Das sind nur die wichtigsten Escape-Codes, eine komplette Liste    # (These are only the most important escape codes, a complete list        #
+# findet ihr in der Manpage der Bash <Befehl: man bash> oder unter    # can be found in the bash manpage <command: man bash> or under           #
+#                              https://www.gnu.org/software/bash/manual/bash.html#Controlling-the-Prompt                                        #
 #################################################################################################################################################
 # End of .bashrc
 #----------------------------------------------------------------------------------------------------
-
