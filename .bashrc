@@ -46,12 +46,10 @@ if [[ -f $HOME/.shellcfg/backup/shell_alias.backup ]]; then cp -up -b $HOME/.she
 if [[ -f $HOME/.shellcfg/backup/shell_functions.backup ]]; then cp -up -b $HOME/.shellcfg/shell_functions $HOME/.shellcfg/backup/shell_functions.backup; else cp -up $HOME/.shellcfg/shell_functions $HOME/.shellcfg/backup/shell_functions.backup; fi
 if [[ -f $HOME/.shellcfg/backup/shell_colors.backup ]]; then cp -up -b $HOME/.shellcfg/shell_colors $HOME/.shellcfg/backup/shell_colors.backup; else cp -up $HOME/.shellcfg/shell_colors $HOME/.shellcfg/backup/shell_colors.backup; fi
 if [[ -f $HOME/.shellcfg/backup/what_shell.backup ]]; then cp -up -b $HOME/.shellcfg/what_shell $HOME/.shellcfg/backup/what_shell.backup; else cp -up $HOME/.shellcfg/what_shell $HOME/.shellcfg/backup/what_shell.backup; fi
-# and we go back to home
-cd $HOME/  || return
 #
 #----------------------------------------------------------------------------------------------------
 # Read global settings if there are such things.
-# It makes no sense to throw this in /etc/bash.bashrc.
+# It makes no sense to throw this in /etc/bash.bashrc
 #
 if [[ -f /etc/bash.bashrc ]]; then . /etc/bash.bashrc; fi
 #
@@ -100,13 +98,15 @@ if [[ -f $HOME/.shellcfg/shell_functions ]]; then . $HOME/.shellcfg/shell_functi
 #
 #----------------------------------------------------------------------------------------------------
 #
-# It's the directories on the $PATH that show us the way to our files
 export PATH=$PATH	# This will read when an interactive shell will be started
 # export PATH=$PATH$( shopt -s globstar; printf ':%s' "$PWD"/**/; ) # append all subdirectories of $HOME to path
+#
 #----------------------------------------------------------------------------------------------------
 #
 #####################################################################################################
-# BASH Builtin-Settings... (-s Enable (set) each optname; -u Disable (unset) each optname; -q Suppresses normal output; the return status indicates whether the optname is set or unset. If multiple optname arguments are given with -q, the return status is zero if all optnames are enabled; non-zero otherwise.
+# BASH Builtin-Settings... (-s Enable (set) each optname; -u Disable (unset) each optname; -q Suppresses normal output; the return status indicates
+# whether the optname is set or unset. If multiple optname arguments are given with -q, the return status is zero if all optnames are enabled;
+# non-zero otherwise.
 # more under https://www.gnu.org/software/bash/manual/bash.html#The-Shopt-Builtin
 #.......................................................................
 ulimit -S -c 0		# We don not want coredumps (state of memory at a certain time, generally when a program crashed)
