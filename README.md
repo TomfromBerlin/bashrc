@@ -47,7 +47,7 @@ __Installation of command-not-found-package is recommended!__
 
 The [~/.bashrc](/.bashrc) has to be a script file but without shebang `#!/bin/bash`. The other files must not be script files, only text files. Otherwise an error message will probably appear.
 
-If any of these files (except for [.bashrc](/.bashrc)) are missing, the shell will still work. However, under certain circumstances (e.g., your `/etc/bash.bashrc` as well as your `~/.profile` don't contain alias definitions or functions) no or at least lesser [aliases](/.shellcfg/alias) or [functions](/.shellcfg/functions) will then be available. If [/.shellcfg/colors](/.shellcfg/colors) is missing, the prompt will still appear colored (lack of color support should be the exception), but customization will be more challenging, since you need to use color codes (see wiki page about [configuration of the prompt](/../../../../../TomfromBerlin/bashrc/wiki/Configure-your-prompt-conveniently)).
+If any of these files (except for [~/.bashrc](/.bashrc)) are missing, the shell will still work. However, under certain circumstances (e.g., your `/etc/bash.bashrc` as well as your `~/.profile` don't contain alias definitions or functions) no or at least lesser [aliases](/.shellcfg/alias) or [functions](/.shellcfg/functions) will then be available. If [~/.shellcfg/colors](/.shellcfg/colors) is missing, the prompt will still appear colored (lack of color support should be the exception), but customization will be more challenging, since you need to use color codes (see wiki page about [configuration of the prompt](/../../../../../TomfromBerlin/bashrc/wiki/Configure-your-prompt-conveniently)).
 
 Other things that come with the zip file may also be important, but not required.
 
@@ -90,7 +90,7 @@ If you leave it as it is, next time you start an interactive shell, the result l
 
 _The logo does not appear every time you issue a command. That would be annoying. You can recall the logo at any time with the command `lolcat ~/.shellcfg/logos/raspberrypi`, or `cat ~/.shellcfg/logos/raspberrypi` for grayscale output._
 
-If you don't want to see a logo, just rename or delete the file in the /.shellcfg/logos/ directory. If the file named "raspberrypi" does not exist (or `lolcat` can't be found), a small text-based intro with some system information is output. Then the result looks like this:
+If you don't want to see a logo, just rename or delete the file in the ~/.shellcfg/logos/ directory. If the file named "raspberrypi" does not exist (or `lolcat` can't be found), a small text-based intro with some system information is output. Then the result looks like this:
 
 ![terminal_intro](https://user-images.githubusercontent.com/123265893/222990703-e3fad171-1906-4a24-b089-5780168ec23f.png)
 
@@ -105,7 +105,6 @@ Have fun and be nice.
 --------------------------------------------------------------------------------------------------
 
 # To do
-- [ ] Find a better way to determine distribution
 - [ ] \(Optional) cancel full time job🏴‍☠️
 - [ ] \(Optional) ❓
 - [ ] \(Optional) make profit
