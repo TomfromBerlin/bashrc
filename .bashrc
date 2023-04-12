@@ -10,8 +10,6 @@
 #                                                                               #
 #                                                                               #
 #         Some commands or functions may not work on all distros                #
-#     THERE IS A CHANCE THAT IT HAS TO BE MODIFIED AND PROBABLY RENAMED         #
-#                      TO WORK WITH OTHER SHELLS!                               #
 #                                                                               #
 #################################################################################
 #
