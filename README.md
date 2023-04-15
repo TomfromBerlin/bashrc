@@ -4,14 +4,14 @@
 | ![GNU BASH](https://img.shields.io/badge/GNU%20Bash-4EAA25?style=for-the-badge&logo=GNU%20Bash&logoColor=white) | ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) |
 |-|-|
 
---------------------------------------------------------------------------------------------------------------------------
+---
 
 # The .bashrc-file
 
 ## For detailed information about this repo, please refer to the [wiki](/../../../../../TomfromBerlin/bashrc/wiki)
 
-| ❗ | There is absolutely no warranty of any kind! Use at your own risk!|
-|-|-|
+| ❗ | There is absolutely no warranty of any kind! Use at your own risk! | ❗ |
+|-|-|-|
 
 This [.bashrc](/.bashrc) produces a simple but nice output and is suitable for the average user. If you want more functionality while using e.g. GitHub then you should look for other repos like [Voku/dotfiles](../../../../../voku/dotfiles).
 
@@ -102,7 +102,7 @@ The file `.mostrc` shall provide color definitions for `most`. It does not work,
 
 Have fun and be nice.
 
---------------------------------------------------------------------------------------------------
+---
 
 # To do
 - [ ] \(Optional) cancel full time job🏴‍☠️
