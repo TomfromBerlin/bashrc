@@ -1,19 +1,24 @@
 # ALIASES
 #
+# short man pages
+if [[ -x tldr ]] ; then
+    alias man='tldr $1' # use 'command man' for full man pages
+fi
+#
 # more under https://www.gnu.org/software/bash/manual/html_node/Aliases.html
 #----------------------------------------------------------------------------------------------------
 # UMOUNT VS. UNMOUNT
 # Deutsche Fehlermeldung, wenn umount nicht richtig verwendet wird.
 #
-if [ -f $HOME/.shellcfg/colors ]; then
-alias unmount='echo -e "${RED}Syntaxfehler${NC}: der Befehl lautet ${GREEN}umount${NC} - ohne ${RED}n${NC} nach dem ersten ${RED}u${NC}."'
+if [[ "$SHELL" == /bin/zsh ]]; then
+    alias unmount='print -P "%F{red}Syntaxfehler%f: der Befehl lautet %F{green}umount%f - ohne %F{red}n%f nach dem ersten %F{red}u%f."'
 else
-alias unmount='echo -e "Syntaxfehler: der Befehl lautet umount - ohne n nach dem ersten u."'
+    alias unmount='print -P "Syntaxfehler: der Befehl lautet umount - ohne n nach dem ersten u."'
 fi
 #
 # English error msg, when using umount incorrectly
-# if [ -f $HOME/.shellcfg/colors ]; then
-# alias unmount='echo -e "${RED}Syntax Error${NC}: Please use ${GREEN}umount${NC} - without ${RED}n${NC} after the first ${RED}u${NC}."'
+# if [ -f $HOME/.config/shellcfg/colors ]; then
+# alias unmount='print -P "%F{red}Syntax Error%f: Please use %F{green}}umount%f - without %F{red}n%f after the first %F{red}u%f."'
 # else
 # alias unmount='echo -e "Syntax Error: Please use umount - without n after the first u"'
 # fi
@@ -22,65 +27,123 @@ fi
 # ls (suitable for Linux and OSX)
 # souce: https://github.com/johnnygaffey/dotfiles/bash_alias
 #
-if [ -f /usr/bin/ls++ ]; then
-    alias ls='ls++ --potf -F'					#colors
-    alias l='ls++ --potsf -F'					#colors
-    alias ll='ls++ --potsf -ah'					#long list
-    alias la='ls++ --potsf -A'					#show hidden
-    alias lx='ls++ --potsf -B'					#sort by sextension
-    alias lk='ls++ --potsf -Sr'					#sort by size biggest last
-    alias lc='ls++ --potsf -tcr'				#sort by and show chagne times
-    alias lu='ls++ --potsf -tur'				#sort by and show access time
-    alias lt='ls++ --potsf -tr'					#sort by date
-    alias lm='ls++ --potsf -a |more'			#pipe through more
-    alias lr='ls++ --potsf -R'					#recursive
+if [[ -f /usr/bin/ls++ ]]; then
+alias ls='ls++ --potf -F'					#colors
+alias l='ls++ --potsf -F'					#colors
+alias ll='ls++ --potsf -ah'					#long list
+alias la='ls++ --potsf -A'					#show hidden
+alias lx='ls++ --potsf -B'					#sort by sextension
+alias lk='ls++ --potsf -Sr'					#sort by size biggest last
+alias lc='ls++ --potsf -tcr'				#sort by and show chagne times
+alias lu='ls++ --potsf -tur'				#sort by and show access time
+alias lt='ls++ --potsf -tr'					#sort by date
+alias lm='ls++ --potsf -a |more'			#pipe through more
+alias lr='ls++ --potsf -R'					#recursive
 else
-    alias ls='ls -F --color=auto'				# colors
-    alias l='ls -F --group-directories-first --color=auto'	# ls als Liste, Verzeichnisse ganz oben
-    alias ll='ls -lsah --color=auto'			# long list
-    alias la='ls -AF --color=auto'				# show hidden
-#    alias la='ls -Al --color=auto'				# zeige versteckte Dateien in einer Liste
-    alias lx='ls -lXB --color=auto'				# sort by extension
-    alias lk='ls -lSr --color=auto'				# sort by size biggest last
-    alias lc='ls -ltcr --color=auto'			# sort by and show change times
-    alias lu='ls -ltur --color=auto'			# sort by and show access time
-    alias lt='ls -ltr --color=auto'				# sort by date
-    alias lm='ls -al --color=always |more'		# pipe through more, preserve colors
-    alias lr='ls -lR --color=always |more'		# recursive
+alias ls='ls --color=auto --human-readable --group-directories-first --classify'				# colors
+alias l='ls -F --group-directories-first --color=auto'	# visual classification of files With special characters, directories first
+# alias ll='ls -lsah --group-directories-first --color=auto'			# long list
+alias ll='ls --color=auto --human-readable --group-directories-first --classify -l'
+alias la='ls -AF --group-directories-first --color=auto'			# show hidden
+alias lh='ls -Al --group-directories-first --color=auto'			# show list of all +hidden files
+alias lla='ls -la --color=auto --human-readable --group-directories-first --classify'
+alias lx='ls -lXB --group-directories-first --color=auto'			# sort by extension
+alias lk='ls -lSr --group-directories-first --color=auto'			# sort by size biggest last
+alias lc='ls -ltcr --group-directories-first --color=auto'			# sort by and show change times
+alias lu='ls -ltur --group-directories-first --color=auto'			# sort by and show access time
+alias lt='ls -ltr --group-directories-first --color=auto'			# sort by date
+alias lm='ls -al --group-directories-first --color=always |more'	# pipe through more, preserve colors
+alias lr='ls -lR --group-directories-first --color=always |more'	# recursive
 fi
 #
-#--------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 # File Management
+# if [[ ! -d $HOME/.Trash ]]; then command mkdir $HOME/.Trash; fi
 alias del='mv --target-directory=$HOME/.Trash/'
-alias rm='rm -iv'
-alias cp='cp -iv'
+alias cp='cp -iv --reflink=auto'
+alias rcp='rsync -v --progress'
+alias rmv='rsync -v --progress --remove-source-files'
 alias mv='mv -iv'
-#--------------------------------------------------------------------------------
+alias rm='rm -iv'
+alias rmdir='rmdir -v'
+alias ln='ln -v'
+alias chmod="chmod -c"
+alias chown="chown -c"
+alias mkdir="mkdir -v"
+#
+#-------------------------------------------------------------------------------
+# diff
+if command -v colordiff > /dev/null 2>&1; then
+    alias diff="colordiff -Nuarsy --suppress-blank-empty --paginate"
+else
+    alias diff="diff -Nuarsy --suppress-blank-empty --paginate --color=auto --palette=$LS_COLORS"
+fi
+#
+#-------------------------------------------------------------------------------
 # MISC & STUFF
-# alias tree='tree -Csu|more'				# Alternative zum rekursiven ls; Für Tree noch Befehl "sudo apt-get install tree"
-alias ping='ping -c 3'						# 3 pings
+# alias tree='tree -Csu|more'				# Alternative zum rekursiven ls; install tree with "sudo pacman/apt-get install tree"
+alias ping='ping -c3'						# 3 pings
 #alias beep='echo -en "\x07"'				# beep
 alias cls='clear'							# clears the terminal window
-alias which='type -a'						# usage 'wich name' (consider using 'wtfis' instead, since it exposes more info about the file)
+alias type='type -a'						# usage 'type name' (consider using 'wtfis' instead, since it exposes more info about the file, to bypass this alias use 'command type name')
 alias du='du -kh --max-depth=1'				# readable output
 alias df='df -kTh'							#    ^       ^
 # alias psa='ps auxf'
-# alias pg='ps aux | grep'					# Prozess greppen -> pg name
+# alias pg='ps aux | grep'					# grep process usage: pg name
 alias home='cd ~'							# change to the current users home directory
 alias fdate='date "+%A, %d.%B %Y    %T %Z"'	# weekday+date+time+timezone
 alias sdate='date "+%A, %d.%B %Y"'			# weekday+date
-alias h='history'							# BASH command history
-alias bashedit='nano ~/.bashrc'				# replace "nano" with editor of you choice, e.g. leafpad or vim
-alias reload='source ~/.bashrc'				# clears terminal window and reloads .bashrc
+alias h='history'							# show bash history
+alias rcedit='nano $HOME/.$(command ps -cp "$$" -o command="")rc' # edit rc-file of the active shell
+alias reload='source $HOME/.$(command ps -cp "$$" -o command="")rc' # reload rc-file of the active shell
 alias ip='ip --color=auto'					# colored ip-adresses
 alias dir='dir --color=always'
 alias vdir='vdir --color=always'
 alias grep='grep --color=always'
-alias fgrep='fgrep --color=always'
-alias egrep='egrep --color=always'
+alias fgrep='grep -F --color=always'
+alias egrep='grep -E --color=always'
 alias dmesg='dmesg --color=always | less'
-alias distver='grep -E ^VERSION= /etc/os-release'
-alias distname='grep -E ^NAME= /etc/os-release'
+alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+alias wget='wget -c '
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias hw='hwinfo --short'                                   # Hardware Info
+
+# Get fastest mirrors
+if [[ -x /bin/cachyos-rate-mirrors || -x /usr/bin/cachyos-rate-mirrors ]] ; then
+    alias cos_mirror="sudo cachyos-rate-mirrors"
+fi
+
+if [[ -x /bin/rate-mirrors || -x /usr/bin/rate-mirrors ]] ; then
+    alias mirror="sudo rate-mirrors $1"
+fi
+
+# Help people new to Arch
+if [[ -x /bin/pacman || -x /usr/bin/pacman ]] ; then
+    alias fixpacman="sudo rm /var/lib/pacman/db.lck"
+    alias apt='man pacman'
+    alias apt-get='man pacman'
+    alias please='sudo'
+    alias tb='nc termbin.com 9999'
+    alias clean_orphans='sudo pacman -Rns (pacman -Qtdq)' # Cleanup orphaned packages
+    alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'          # List amount of -git packages
+    alias update='sudo pacman -Syu'
+fi
+# Get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
+# Recent installed packages
+if [[ -x /bin/expac || -x /usr/bin/expac ]] ; then
+    alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+    alias big="expac -H M '%m\t%n' | sort -h | nl"              # Sort installed packages according to size in MB
+fi
+if [[ -f /etc/os-release ]] ; then
+    alias dist_id="$(grep '^ID=' /etc/os-release | cut -d= -f2 | tr '[:upper:]' '[:lower:]')"
+# Fallback lsb_release
+elif [[ -x lsb_release ]] ; then
+    alias dist_id="$(lsb_release -si 2> /dev/null | tr '[:upper:]' '[:lower:]')"
+fi
 #----------------------------------------------------------------------------------------------------
 #sudo
 alias si='sudo -i'				# Starts a login-shell. It means all variables will be set like at login.
@@ -88,6 +151,9 @@ alias si='sudo -i'				# Starts a login-shell. It means all variables will be set
 # Directory Navigation
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 #----------------------------------------------------------------------------------------------------
 # chmod
 alias mx='chmod a+x'
@@ -95,36 +161,46 @@ alias 000='chmod 000'
 alias 644='chmod 644'
 alias 755='chmod 755'
 #----------------------------------------------------------------------------------------------------
+if [[ -x /bin/apt-get || -x /usr/bin/apt-get ]] ; then
 # apt-get Shortcuts
 alias ags='apt-cache search'
 alias agi='sudo apt-get install'					# install package
 alias agr='sudo apt-get remove'						# remove package
-alias agar='sudo apt-get autoremove'					# remove unused packages
+alias agar='sudo apt-get autoremove'				# remove unused packages
 alias agu='sudo apt-get update'						# update package lists
 alias agg='sudo apt-get upgrade'					# install updates
-# Replace "nano" with editor of you choice, e.g. leafpad or vim
-alias sources='sudo nano /etc/apt/sources.list'				# Don't confuse the ALIAS named "sources" with the source COMMAND
+alias sources='sudo nano /etc/apt/sources.list'		# Don't confuse the ALIAS named "sources" with the source COMMAND. Replace "nano" with editor of you choice, e.g. leafpad or vim
+fi
 #----------------------------------------------------------------------------------------------------
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert << replace the command 'sleep 10' with a desired one
 # notification will show up in the graphical environment
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-#####################################################################################################
-#
-# Here you can define an alias for your own script
 #----------------------------------------------------------------------------------------------------
-# alias ms='bash $HOME/$USER/my_script.sh'
-#----------------------------------------------------------------------------------------------------
-#
-#####################################################################################################
-#
-#----------------------------------------------------------------------------------------------------
-# Start X-Windows (only usefull if X is not started at boot)
+if [[ -x /bin/startx || -x /usr/bin/startx ]] ; then
+# Start X-Windows (only usefull if X is not started at boot, does not work on all distros)
 alias sx='startx'
+fi
 #
 # Reboot gracefully
-alias restart='sudo systemctl start reboot.target'
-alias restart1='sudo shutdown --reboot'
+if [[ -x systemctl ]] ; then
+    alias restart='sudo systemctl start reboot.target' # immediate restart without user notification
+elif [[ ! -x systemctl && $SHELL == /bin/zsh ]] ; then
+    alias systemctl='print -P "%F{red}systemctl not available%f"'
+    alias restart='print -P "%F{red}systemctl not available%f"'
+elif [[ ! -x systemctl ]] ; then
+    alias restart='print -P "systemctl not available"'
+    alias systemctl='print -P "systemctl not available"'
+fi
+if [[ -x shutdown ]] ; then
+    alias restart1='sudo shutdown --reboot' # delayed reboot with broadcasting reboot message to users
+elif [[ ! -x shutdown && $SHELL == /bin/zsh ]] ; then
+    alias restart1='print -P "%F{red}shutdown not available%f"'
+    alias shutdown='print -P "%F{red}shutdown not available%f"'
+elif [[ ! -x shutdown ]] ; then
+    alias restart1='print -P "shutdown not available"'
+    alias shutdown='print -P "shutdown not available"'
+fi
 #
 #----------------------------------------------------------------------------------------------------
 #
